@@ -92,7 +92,7 @@
 
     knownNetworkServices = [ "Wi-Fi" ];
 
-    hostName = "MacBook-Pro-intel";
+    hostName = "MacBook-Pro-Intel";
   };
 
   # Make zsh the default shell
