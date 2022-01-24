@@ -40,6 +40,29 @@
 
         starship.enable = true;
 
+        vscode = {
+          enable = true;
+          extensions = with pkgs.vscode-extensions; [
+            bbenoist.nix
+            brettm12345.nixfmt-vscode
+            eamodio.gitlens
+            pkief.material-icon-theme
+          ];
+          userSettings = {
+            "diffEditor.ignoreTrimWhitespace" = false;
+            "editor.fontFamily" = "'FiraCode Nerd Font'";
+            "editor.fontLigatures" = true;
+            "editor.minimap.enabled" = false;
+            "editor.tabSize" = 2;
+            "extensions.autoUpdate" = false;
+            "files.insertFinalNewline" = true;
+            "git.confirmSync" = false;
+            "telemetry.telemetryLevel" = "off";
+            "workbench.colorTheme" = "Solarized Dark";
+            "workbench.iconTheme" = "material-icon-theme";
+          };
+        };
+
         zsh = {
           dotDir = ".config/zsh";
           enable = true;
@@ -76,7 +99,6 @@
       "raycast"
       "spotify"
       "todoist"
-      "visual-studio-code"
     ];
   };
 
