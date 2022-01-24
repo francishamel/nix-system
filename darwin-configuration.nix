@@ -63,6 +63,7 @@
 
   homebrew = {
     autoUpdate = false;
+    cleanup = "zap";
     enable = true;
     global = {
       brewfile = true;
