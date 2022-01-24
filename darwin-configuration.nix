@@ -73,6 +73,7 @@
       "1password"
       "discord"
       "firefox"
+      "raycast"
       "spotify"
       "todoist"
       "visual-studio-code"
