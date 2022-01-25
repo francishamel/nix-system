@@ -175,6 +175,10 @@
     QuitMenuItem = true;
   };
 
+  # Sound settings
+  system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" =
+    "/System/Library/Sounds/Blow.aiff";
+
   networking = {
     dns = [
       "1.1.1.1" # Cloudflare's primary dns
