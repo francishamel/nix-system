@@ -65,6 +65,18 @@
           };
         };
 
+        bat = {
+          enable = true;
+          themes = {
+            solarized = builtins.readFile (pkgs.fetchFromGitHub {
+              owner = "braver";
+              repo = "Solarized";
+              rev = "24d8ee80f30aff296fd54025b28e190b18a35e69";
+              sha256 = "ABQagZIiA836ks/PmYG+PU9fSYEivAzchoW1RMGd2LA=";
+            } + "/Solarized (dark).sublime-color-scheme");
+          };
+        };
+
         gh = {
           enable = true;
           enableGitCredentialHelper = true;
@@ -122,7 +134,10 @@
             enable = true;
             plugins = [ "sudo" ];
           };
-          shellAliases = { ".." = "cd .."; };
+          shellAliases = {
+            "cat" = "bat";
+            ".." = "cd ..";
+          };
         };
       };
     };
