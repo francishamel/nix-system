@@ -169,6 +169,12 @@
     static-only = true;
   };
 
+  system.defaults.finder = {
+    AppleShowAllExtensions = true;
+    FXEnableExtensionChangeWarning = false;
+    QuitMenuItem = true;
+  };
+
   networking = {
     dns = [
       "1.1.1.1" # Cloudflare's primary dns
