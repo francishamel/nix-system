@@ -5,6 +5,16 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  users = {
+    knownUsers = [ "francis" ];
+    
+    users.francis = {
+      createHome = true;
+      home = "/Users/francis";
+      uid = 1000;
+    };
+  };
+
   home-manager = {
     users.francis = { pkgs, ... }: {
       home.packages = with pkgs; [ nixfmt ];
