@@ -161,6 +161,7 @@
       "1password"
       "discord"
       "firefox"
+      "obsidian"
       "raycast"
       "spotify"
       "todoist"
