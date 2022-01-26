@@ -11,7 +11,7 @@
     users.francis = {
       createHome = true;
       home = "/Users/francis";
-      uid = 1000;
+      uid = 501;
     };
   };
 
