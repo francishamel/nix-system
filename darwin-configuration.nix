@@ -7,7 +7,7 @@
 
   users = {
     knownUsers = [ "francis" ];
-    
+
     users.francis = {
       createHome = true;
       home = "/Users/francis";
