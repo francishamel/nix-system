@@ -80,11 +80,6 @@
           enable = true;
         };
 
-        gh = {
-          enable = true;
-          enableGitCredentialHelper = true;
-        };
-
         git = {
           aliases = { fp = "fetch --prune"; };
           enable = true;
