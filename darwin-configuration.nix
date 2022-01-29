@@ -109,6 +109,7 @@
             brettm12345.nixfmt-vscode
             eamodio.gitlens
             pkief.material-icon-theme
+            redhat.vscode-yaml
           ];
           userSettings = {
             "diffEditor.ignoreTrimWhitespace" = false;
