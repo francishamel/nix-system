@@ -163,8 +163,10 @@
       "firefox"
       "obsidian"
       "raycast"
+      "slack"
       "spotify"
       "todoist"
+      "zoom"
     ];
   };
 
