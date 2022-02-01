@@ -131,7 +131,7 @@
             plugins = [ "sudo" ];
           };
           shellAliases = {
-            "cat" = "bat";
+            "cat" = "${pkgs.bat}/bin/bat";
             ".." = "cd ..";
           };
         };
