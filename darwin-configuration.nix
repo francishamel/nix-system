@@ -19,9 +19,6 @@
     users.francis = { pkgs, ... }: {
       home.packages = with pkgs; [ nixfmt ];
 
-      # Having this empty file in the home dir removes the last login message from the native terminal app.
-      home.file.".hushlogin".text = "";
-
       programs = {
         alacritty = {
           enable = true;
