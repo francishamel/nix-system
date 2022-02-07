@@ -89,6 +89,11 @@
     options = "--delete-older-than 30d";
   };
 
+  # Enable nix flakes
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
   time.timeZone = "America/Montreal";
 
   system.defaults.loginwindow.GuestEnabled = false;
