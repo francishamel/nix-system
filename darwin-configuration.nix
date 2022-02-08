@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./home-manager.nix ];
-
   nixpkgs.config.allowUnfree = true;
 
   users = {
