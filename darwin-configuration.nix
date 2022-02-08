@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./home-manager.nix ];
-
   nixpkgs.config.allowUnfree = true;
 
   users = {
@@ -88,6 +86,11 @@
     interval = { Weekday = 0; };
     options = "--delete-older-than 30d";
   };
+
+  # Enable nix flakes
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
 
   time.timeZone = "America/Montreal";
 
