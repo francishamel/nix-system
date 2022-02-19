@@ -2,8 +2,7 @@
 
 {
   homebrew = {
-    casks = [
-      "burp-suite"
-    ];
+    brews = [ "inetutils" "truncate" ];
+    casks = [ "burp-suite" ];
   };
 }
