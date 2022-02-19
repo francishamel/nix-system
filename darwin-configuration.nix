@@ -31,6 +31,7 @@
       "discord"
       "firefox"
       "obsidian"
+      "openvpn-connect"
       "raycast"
       "slack"
       "spotify"
