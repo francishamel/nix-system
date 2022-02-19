@@ -108,6 +108,10 @@
     zsh = {
       dotDir = ".config/zsh";
       enable = true;
+      initExtra = ''
+        bindkey '^[[1;3C' emacs-forward-word
+        bindkey '^[[1;3D' emacs-backward-word
+      '';
       oh-my-zsh = {
         enable = true;
         plugins = [ "sudo" ];
