@@ -86,6 +86,7 @@
     vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions; [
+        alefragnani.project-manager
         bbenoist.nix
         brettm12345.nixfmt-vscode
         eamodio.gitlens
@@ -101,6 +102,7 @@
         "extensions.autoUpdate" = false;
         "files.insertFinalNewline" = true;
         "git.confirmSync" = false;
+        "projectManager.git.baseFolders" = [ "~/.nixpkgs" "~/src" ];
         "telemetry.telemetryLevel" = "off";
         "workbench.colorTheme" = "Solarized Dark";
         "workbench.iconTheme" = "material-icon-theme";
