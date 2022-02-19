@@ -81,6 +81,8 @@
 
     starship.enable = true;
 
+    tmux.enable = true;
+
     vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions; [
