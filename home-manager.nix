@@ -59,6 +59,12 @@
       enable = true;
     };
 
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
+
     git = {
       aliases = { fp = "fetch --prune"; };
       enable = true;
