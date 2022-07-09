@@ -36,3 +36,12 @@ Following this blogpost: https://hardselius.github.io/2020/nix-please/
 ### Apply the config
 
 Run `darwin-rebuild switch` to apply the configuration from this repository on the Mac.
+
+
+### See applications in Raycast
+
+1. Apply the new config
+2. Do `which alacritty` to see the symlink
+3. `ll` the link returned by the previous line
+4. Go to this path and find the `Applications` folder
+5. Add the Applications folder link to the Raycast config
