@@ -140,12 +140,7 @@
       shellAliases = {
         "cat" = "${pkgs.bat}/bin/bat";
         ".." = "cd ..";
-        "gh" = "op run --env-file=${config.xdg.configHome}/op/gh.env -- gh";
       };
     };
   };
-
-  xdg.configFile."op/gh.env".text = ''
-    GH_TOKEN=op://Private/GitHub/Credentials/gh_pat
-  '';
 }
