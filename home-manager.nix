@@ -132,6 +132,7 @@
       initExtra = ''
         bindkey '^[[1;3C' emacs-forward-word
         bindkey '^[[1;3D' emacs-backward-word
+        eval "$(op completion zsh)"; compdef _op op
       '';
       oh-my-zsh = {
         enable = true;
