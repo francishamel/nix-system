@@ -27,20 +27,5 @@
         }
       ];
     };
-
-    darwinConfigurations."CTF-Machine" = darwin.lib.darwinSystem {
-      system = "x86_64-darwin";
-      modules = [
-        ./ctf.nix
-        ./darwin-configuration.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.francis = import ./home-manager-ctf.nix;
-        }
-      ];
-
-    };
   };
 }
