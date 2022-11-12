@@ -75,6 +75,16 @@
         init.defaultBranch = "main";
         pull.rebase = true;
         rebase.autoStash = true;
+
+        # Commit Signing
+        commit.gpgsign = true;
+        gpg = {
+          format = "ssh";
+          ssh.program =
+            "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        };
+        user.signingkey =
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuLaEvAkPRVZ5v7uVOxM+Te9n/iJom7RSZogNHK+Jd3";
       };
       userEmail = "francishamel96@gmail.com";
       userName = "Francis Hamel";
