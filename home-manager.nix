@@ -145,6 +145,7 @@
         "git.confirmSync" = false;
         "projectManager.git.baseFolders" = [ "~/.nixpkgs" "~/src" ];
         "telemetry.telemetryLevel" = "off";
+        "update.mode" = "none";
         "workbench.colorTheme" = "Solarized Dark";
         "workbench.iconTheme" = "material-icon-theme";
       };
