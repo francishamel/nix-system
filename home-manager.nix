@@ -129,8 +129,8 @@
       enable = true;
       extensions = with pkgs.vscode-extensions; [
         alefragnani.project-manager
-        bbenoist.nix
         eamodio.gitlens
+        jnoortheen.nix-ide
         pkief.material-icon-theme
         redhat.vscode-yaml
       ];
