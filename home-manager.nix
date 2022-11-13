@@ -148,6 +148,7 @@
         "git.confirmSync" = false;
         "git.experimental.mergeEditor" = true;
         "git.untrackedChanges" = "separate";
+        "githubPullRequests.pushBranch" = "always";
         "projectManager.git.baseFolders" = [ "~/.nixpkgs" "~/src" ];
         "telemetry.telemetryLevel" = "off";
         "update.mode" = "none";
