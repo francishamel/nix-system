@@ -88,7 +88,10 @@
         init.defaultBranch = "main";
         merge.conflictstyle = "diff3";
         pull.rebase = true;
-        rebase.autoStash = true;
+        rebase = {
+          autoStash = true;
+          autosquash = true;
+        };
 
         # Commit Signing
         commit.gpgsign = true;
