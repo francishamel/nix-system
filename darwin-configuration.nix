@@ -29,13 +29,11 @@
   };
 
   homebrew = {
-    autoUpdate = false;
-    cleanup = "zap";
-    enable = true;
-    global = {
-      brewfile = true;
-      noLock = true;
+    onActivation = {
+      autoUpdate = false;
+      cleanup = "zap";
     };
+    enable = true;
     casks = [
       "1password"
       "1password-cli"
@@ -51,12 +49,12 @@
 
   # Mouse settings
   system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
-  system.defaults.NSGlobalDomain."com.apple.trackpad.scaling" = "1.25";
+  system.defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 1.25;
 
   system.defaults.dock = {
     autohide = true;
-    autohide-delay = "0.1";
-    autohide-time-modifier = "0.5";
+    autohide-delay = 0.1;
+    autohide-time-modifier = 0.5;
     enable-spring-load-actions-on-all-items = false;
     launchanim = false;
     mru-spaces = false;
