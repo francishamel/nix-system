@@ -1,6 +1,19 @@
 { config, pkgs, ... }: {
   home.packages = with pkgs; [ nixfmt ];
 
+  nix.registry.francishamel = {
+    from = {
+      id = "francishamel";
+      type = "indirect";
+    };
+    to = {
+      owner = "francishamel";
+      repo = "nix-templates";
+      type = "github";
+      ref = "main";
+    };
+  };
+
   programs = {
     alacritty = {
       enable = true;
