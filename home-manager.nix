@@ -114,12 +114,7 @@
       enableAliases = true;
     };
 
-    ssh = {
-      enable = true;
-      extraConfig = ''
-        IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-      '';
-    };
+    ssh.enable = true;
 
     starship.enable = true;
 
@@ -170,6 +165,9 @@
       oh-my-zsh = {
         enable = true;
         plugins = [ "sudo" ];
+      };
+      sessionVariables = {
+        SSH_AUTH_SOCK = "~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock";
       };
       shellAliases = {
         "cat" = "${pkgs.bat}/bin/bat";
