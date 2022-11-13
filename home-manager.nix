@@ -133,6 +133,7 @@
         "diffEditor.ignoreTrimWhitespace" = false;
         "editor.fontFamily" = "'FiraCode Nerd Font'";
         "editor.fontLigatures" = true;
+        "editor.formatOnSave" = true;
         "editor.minimap.enabled" = false;
         "editor.tabSize" = 2;
         "elixirLS.dialyzerEnabled" = false;
