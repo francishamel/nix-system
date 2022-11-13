@@ -142,7 +142,12 @@
         "elixirLS.suggestSpecs" = false;
         "extensions.autoUpdate" = false;
         "files.insertFinalNewline" = true;
+        "git.allowForcePush" = true;
+        "git.branchProtection" = [ "main" "master" "trunk" ];
+        "git.branchProtectionPrompt" = "alwaysCommitToNewBranch";
         "git.confirmSync" = false;
+        "git.experimental.mergeEditor" = true;
+        "git.untrackedChanges" = "separate";
         "projectManager.git.baseFolders" = [ "~/.nixpkgs" "~/src" ];
         "telemetry.telemetryLevel" = "off";
         "update.mode" = "none";
