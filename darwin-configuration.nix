@@ -4,7 +4,9 @@
   nixpkgs.config.allowUnfree = true;
 
   users = {
-    knownUsers = [ "francis" ];
+    knownUsers = [
+      "francis"
+    ];
 
     users.francis = {
       createHome = true;
@@ -15,7 +17,15 @@
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
+    fonts = with pkgs; [
+      (
+        nerdfonts.override {
+          fonts = [
+            "FiraCode"
+          ];
+        }
+      )
+    ];
   };
 
   homebrew = {
@@ -61,8 +71,7 @@
   };
 
   # Sound settings
-  system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" =
-    "/System/Library/Sounds/Blow.aiff";
+  system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
 
   networking = {
     dns = [
@@ -83,7 +92,9 @@
   # Cleanup nix weekly on Sundays
   nix.gc = {
     automatic = true;
-    interval = { Weekday = 0; };
+    interval = {
+      Weekday = 0;
+    };
     options = "--delete-older-than 30d";
   };
 
