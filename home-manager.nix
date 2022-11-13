@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  home.packages = with pkgs; [ nixfmt ];
+  home.packages = with pkgs; [ nixpkgs-fmt ];
 
   nix.registry.francishamel = {
     from = {
@@ -68,7 +68,9 @@
     };
 
     bat = {
-      config = { theme = "Solarized (dark)"; };
+      config = {
+        theme = "Solarized (dark)";
+      };
       enable = true;
     };
 
@@ -97,11 +99,9 @@
         commit.gpgsign = true;
         gpg = {
           format = "ssh";
-          ssh.program =
-            "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+          ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
         };
-        user.signingkey =
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuLaEvAkPRVZ5v7uVOxM+Te9n/iJom7RSZogNHK+Jd3";
+        user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuLaEvAkPRVZ5v7uVOxM+Te9n/iJom7RSZogNHK+Jd3";
       };
       userEmail = "francishamel96@gmail.com";
       userName = "Francis Hamel";
@@ -129,9 +129,8 @@
       enable = true;
       extensions = with pkgs.vscode-extensions; [
         alefragnani.project-manager
-        bbenoist.nix
-        brettm12345.nixfmt-vscode
         eamodio.gitlens
+        jnoortheen.nix-ide
         pkief.material-icon-theme
         redhat.vscode-yaml
       ];
