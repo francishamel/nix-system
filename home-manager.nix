@@ -1,5 +1,8 @@
 { config, pkgs, ... }: {
-  home.packages = with pkgs; [ nixpkgs-fmt ];
+  home = {
+    packages = with pkgs; [ nixpkgs-fmt ];
+    stateVersion = "22.11";
+  };
 
   nix.registry.francishamel = {
     from = {
