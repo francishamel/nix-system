@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  home.packages = with pkgs; [ nixfmt ];
+  home.packages = with pkgs; [ nixpkgs-fmt ];
 
   nix.registry.francishamel = {
     from = {
@@ -130,7 +130,6 @@
       extensions = with pkgs.vscode-extensions; [
         alefragnani.project-manager
         bbenoist.nix
-        brettm12345.nixfmt-vscode
         eamodio.gitlens
         pkief.material-icon-theme
         redhat.vscode-yaml
