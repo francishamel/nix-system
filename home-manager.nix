@@ -148,7 +148,9 @@
         "git.branchProtectionPrompt" = "alwaysCommitToNewBranch";
         "git.confirmSync" = false;
         "git.experimental.mergeEditor" = true;
+        "git.terminalAuthentication" = false;
         "git.untrackedChanges" = "separate";
+        "github.gitAuthentication" = false;
         "githubPullRequests.pushBranch" = "always";
         "projectManager.git.baseFolders" = [ "~/.nixpkgs" "~/src" ];
         "telemetry.telemetryLevel" = "off";
