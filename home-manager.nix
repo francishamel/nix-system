@@ -167,11 +167,6 @@
         bindkey -e  # set emacs bindkeys
         eval "$(op completion zsh)"; compdef _op op
       '';
-      initExtraBeforeCompInit = ''
-        # HACK #67
-        # Fix broken autocompletion. See https://github.com/nix-community/home-manager/issues/2562.
-        fpath+=("${config.home.profileDirectory}"/share/zsh/site-functions "${config.home.profileDirectory}"/share/zsh/$ZSH_VERSION/functions "${config.home.profileDirectory}"/share/zsh/vendor-completions)
-      '';
       oh-my-zsh = {
         enable = true;
         plugins = [ "sudo" ];
