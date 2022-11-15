@@ -1,4 +1,10 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+
+{
+  imports = [
+    ./1password.nix
+  ];
+
   home = {
     packages = with pkgs; [ nixpkgs-fmt ];
     stateVersion = "22.11";
@@ -97,14 +103,6 @@
           autoStash = true;
           autosquash = true;
         };
-
-        # Commit Signing
-        commit.gpgsign = true;
-        gpg = {
-          format = "ssh";
-          ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-        };
-        user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuLaEvAkPRVZ5v7uVOxM+Te9n/iJom7RSZogNHK+Jd3";
       };
       userEmail = "francishamel96@gmail.com";
       userName = "Francis Hamel";
@@ -165,14 +163,10 @@
       enable = true;
       initExtra = ''
         bindkey -e  # set emacs bindkeys
-        eval "$(op completion zsh)"; compdef _op op
       '';
       oh-my-zsh = {
         enable = true;
         plugins = [ "sudo" ];
-      };
-      sessionVariables = {
-        SSH_AUTH_SOCK = "~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock";
       };
       shellAliases = {
         "cat" = "${pkgs.bat}/bin/bat";
