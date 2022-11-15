@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  sockPath = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+in
 {
   # Setup commit signing through 1Password
   programs = {
@@ -12,9 +15,13 @@
       user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuLaEvAkPRVZ5v7uVOxM+Te9n/iJom7RSZogNHK+Jd3";
     };
 
+    ssh.extraConfig = ''
+      IdentityAgent "${sockPath}"
+    '';
+
     zsh = {
       initExtra = ''
-        SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+        SSH_AUTH_SOCK="${sockPath}"
         if command -v op >/dev/null; then
           eval "$(op completion zsh)"; compdef _op op
         fi
