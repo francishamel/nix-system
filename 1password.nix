@@ -19,13 +19,11 @@ in
       IdentityAgent "${sockPath}"
     '';
 
-    zsh = {
-      initExtra = ''
-        SSH_AUTH_SOCK="${sockPath}"
-        if command -v op >/dev/null; then
-          eval "$(op completion zsh)"; compdef _op op
-        fi
-      '';
-    };
+    zsh.initExtra = ''
+      SSH_AUTH_SOCK="${sockPath}"
+      if command -v op >/dev/null; then
+        eval "$(op completion zsh)"; compdef _op op
+      fi
+    '';
   };
 }
