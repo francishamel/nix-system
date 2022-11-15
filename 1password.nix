@@ -15,7 +15,9 @@
     zsh = {
       initExtra = ''
         SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
-        eval "$(op completion zsh)"; compdef _op op
+        if command -v op >/dev/null; then
+          eval "$(op completion zsh)"; compdef _op op
+        fi
       '';
     };
   };
