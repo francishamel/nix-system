@@ -7,6 +7,7 @@
     ./bat.nix
     ./direnv.nix
     ./git.nix
+    ./lsd.nix
     ./vscode.nix
     ./zsh.nix
   ];
@@ -33,11 +34,6 @@
     gh.enable = true;
 
     home-manager.enable = true;
-
-    lsd = {
-      enable = true;
-      enableAliases = true;
-    };
 
     ssh.enable = true;
 
