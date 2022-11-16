@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 let
   sockPath = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
 in
 {
-  # Setup commit signing through 1Password
   programs = {
+    # Setup commit signing through 1Password
     git.extraConfig = {
       commit.gpgsign = true;
       gpg = {
