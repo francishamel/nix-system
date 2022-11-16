@@ -31,6 +31,7 @@
       "github.gitAuthentication" = false;
       "githubPullRequests.pushBranch" = "always";
       "projectManager.git.baseFolders" = [ "~/.nixpkgs" "~/src" ];
+      "redhat.telemetry.enabled" = false;
       "telemetry.telemetryLevel" = "off";
       "update.mode" = "none";
       "workbench.colorTheme" = "Solarized Dark";
