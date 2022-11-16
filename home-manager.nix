@@ -4,6 +4,7 @@
   imports = [
     ./1password.nix
     ./alacritty.nix
+    ./bat.nix
     ./vscode.nix
   ];
 
@@ -26,13 +27,6 @@
   };
 
   programs = {
-    bat = {
-      config = {
-        theme = "Solarized (dark)";
-      };
-      enable = true;
-    };
-
     direnv = {
       enable = true;
       enableZshIntegration = true;
@@ -82,7 +76,6 @@
         plugins = [ "sudo" ];
       };
       shellAliases = {
-        "cat" = "${pkgs.bat}/bin/bat";
         ".." = "cd ..";
       };
     };
