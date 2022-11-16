@@ -8,6 +8,7 @@
     ./direnv.nix
     ./git.nix
     ./vscode.nix
+    ./zsh.nix
   ];
 
   home = {
@@ -43,20 +44,5 @@
     starship.enable = true;
 
     tmux.enable = true;
-
-    zsh = {
-      dotDir = ".config/zsh";
-      enable = true;
-      initExtra = ''
-        bindkey -e  # set emacs bindkeys
-      '';
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "sudo" ];
-      };
-      shellAliases = {
-        ".." = "cd ..";
-      };
-    };
   };
 }
