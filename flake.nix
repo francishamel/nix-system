@@ -23,7 +23,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.francis = import ./home-manager;
+          home-manager.users.francis = import ./home-manager/home.nix;
         }
       ];
     };
