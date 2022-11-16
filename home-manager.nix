@@ -5,6 +5,7 @@
     ./1password.nix
     ./alacritty.nix
     ./bat.nix
+    ./direnv.nix
     ./vscode.nix
   ];
 
@@ -27,12 +28,6 @@
   };
 
   programs = {
-    direnv = {
-      enable = true;
-      enableZshIntegration = true;
-      nix-direnv.enable = true;
-    };
-
     gh.enable = true;
 
     git = {
