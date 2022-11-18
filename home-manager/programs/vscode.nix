@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    nil
     nixpkgs-fmt
   ];
 
@@ -34,6 +35,8 @@
       "git.untrackedChanges" = "separate";
       "github.gitAuthentication" = false;
       "githubPullRequests.pushBranch" = "always";
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nil";
       "projectManager.git.baseFolders" = [ "~/.nixpkgs" "~/src" ];
       "redhat.telemetry.enabled" = false;
       "telemetry.telemetryLevel" = "off";
