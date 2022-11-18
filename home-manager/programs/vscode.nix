@@ -37,6 +37,7 @@
       "githubPullRequests.pushBranch" = "always";
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
+      "nix.serverSettings.nil.formatting.command" = [ "nixpkgs-fmt" ];
       "projectManager.git.baseFolders" = [ "~/.nixpkgs" "~/src" ];
       "redhat.telemetry.enabled" = false;
       "telemetry.telemetryLevel" = "off";
