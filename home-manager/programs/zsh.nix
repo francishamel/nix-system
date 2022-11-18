@@ -1,6 +1,9 @@
 { ... }:
 
 {
+  # Disable last login message
+  home.file.".hushlogin".text = "";
+
   programs.zsh = {
     dotDir = ".config/zsh";
     enable = true;
