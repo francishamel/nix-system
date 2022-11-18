@@ -44,6 +44,7 @@
       "slack"
       "spotify"
       "todoist"
+      "zoom"
     ];
   };
 
