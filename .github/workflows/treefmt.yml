@@ -1,4 +1,4 @@
-name: "nixpkgs-fmt"
+name: "treefmt"
 on:
   pull_request:
     branches:
@@ -13,8 +13,8 @@ jobs:
         uses: cachix/install-nix-action@v18
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - name: Run nixpkgs-fmt
+      - name: Run treefmt
         uses: workflow/nix-shell-action@v3.0.3
         with:
-          packages: nixpkgs-fmt
-          script: nixpkgs-fmt --check *.nix
+          packages: nixpkgs-fmt, treefmt
+          script: treefmt --fail-on-change
