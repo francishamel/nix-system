@@ -34,7 +34,7 @@
         ./darwin-configuration.nix
         home-manager.darwinModules.home-manager
         {
-          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          home-manager.extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.francis = import ./home-manager/home.nix;
