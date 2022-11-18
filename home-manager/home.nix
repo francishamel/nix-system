@@ -5,10 +5,7 @@
     ./programs
   ];
 
-  home = {
-    packages = with pkgs; [ nixpkgs-fmt ];
-    stateVersion = "22.11";
-  };
+  home.stateVersion = "22.11";
 
   nix.registry.francishamel = {
     from = {

@@ -14,7 +14,7 @@
     };
   };
 
-  outputs = inputs@{ darwin, home-manager, ... }: {
+  outputs = { darwin, home-manager, ... }: {
     darwinConfigurations."MacBook-Pro-Intel" = darwin.lib.darwinSystem {
       system = "x86_64-darwin";
       modules = [

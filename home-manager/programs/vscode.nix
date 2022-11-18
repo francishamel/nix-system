@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    nil
+    nixpkgs-fmt
+  ];
+
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
@@ -30,6 +35,8 @@
       "git.untrackedChanges" = "separate";
       "github.gitAuthentication" = false;
       "githubPullRequests.pushBranch" = "always";
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nil";
       "projectManager.git.baseFolders" = [ "~/.nixpkgs" "~/src" ];
       "redhat.telemetry.enabled" = false;
       "telemetry.telemetryLevel" = "off";
