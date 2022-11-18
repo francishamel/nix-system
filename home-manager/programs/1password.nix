@@ -20,6 +20,12 @@ in
     '';
 
     zsh.initExtra = ''
+      # Enable beta preview
+      export OP_PLUGINS_SNEAK_PREVIEW="true"
+
+      # Source the generated plugins config file for op
+      source ~/.config/op/plugins.sh
+
       SSH_AUTH_SOCK="${sockPath}"
       if command -v op >/dev/null; then
         eval "$(op completion zsh)"; compdef _op op
