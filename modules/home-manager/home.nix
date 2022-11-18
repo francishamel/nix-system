@@ -10,19 +10,6 @@
     stateVersion = "22.11";
   };
 
-  nix.registry.francishamel = {
-    from = {
-      id = "francishamel";
-      type = "indirect";
-    };
-    to = {
-      owner = "francishamel";
-      repo = "nix-templates";
-      type = "github";
-      ref = "main";
-    };
-  };
-
   programs = {
     gh.enable = true;
 

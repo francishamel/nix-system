@@ -47,20 +47,6 @@
   # Make zsh the default shell
   programs.zsh.enable = true;
 
-  # Cleanup nix weekly on Sundays
-  nix.gc = {
-    automatic = true;
-    interval = {
-      Weekday = 0;
-    };
-    options = "--delete-older-than 30d";
-  };
-
-  # Enable nix flakes
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
-
   time.timeZone = "America/Montreal";
 
   # Auto upgrade nix package and the daemon service.
