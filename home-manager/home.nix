@@ -5,7 +5,10 @@
     ./programs
   ];
 
-  home.stateVersion = "22.11";
+  home = {
+    packages = with pkgs; [ treefmt ];
+    stateVersion = "22.11";
+  };
 
   nix.registry.francishamel = {
     from = {
