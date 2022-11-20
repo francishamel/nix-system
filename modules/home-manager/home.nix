@@ -5,10 +5,7 @@
     ./programs
   ];
 
-  home = {
-    packages = with pkgs; [ treefmt ];
-    stateVersion = "22.11";
-  };
+  home.stateVersion = "22.11";
 
   programs = {
     gh.enable = true;

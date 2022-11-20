@@ -1,11 +1,6 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    nil
-    nixpkgs-fmt
-  ];
-
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
