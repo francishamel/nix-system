@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
 
     darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -14,8 +15,10 @@
     };
   };
 
-  outputs = { darwin, home-manager, nixpkgs, ... }@inputs: rec {
-    legacyPackages = nixpkgs.lib.genAttrs [ "x86_64-darwin" ] (system:
+  outputs = { darwin, flake-utils, home-manager, nixpkgs, ... }@inputs: rec {
+    inherit (flake-utils.lib) defaultSystems eachSystemMap system;
+
+    legacyPackages = eachSystemMap defaultSystems (system:
       import inputs.nixpkgs {
         inherit system;
         # NOTE: Using `nixpkgs.config` in your NixOS config won't work
@@ -27,7 +30,7 @@
     );
 
     darwinConfigurations."MacBook-Pro-Intel" = darwin.lib.darwinSystem {
-      system = "x86_64-darwin";
+      system = system.x86_64-darwin;
       pkgs = legacyPackages.x86_64-darwin;
       specialArgs = { inherit inputs; }; # Pass flake inputs to our config
       modules = [
@@ -42,5 +45,19 @@
         }
       ];
     };
+
+    devShells = eachSystemMap defaultSystems (system:
+      let
+        pkgs = legacyPackages.${system};
+      in
+      {
+        default = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            nil
+            nixpkgs-fmt
+            treefmt
+          ];
+        };
+      });
   };
 }
