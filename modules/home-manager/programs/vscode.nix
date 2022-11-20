@@ -4,11 +4,16 @@
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
+      _1Password.op-vscode
       alefragnani.project-manager
+      bierner.markdown-mermaid
+      codezombiech.gitignore
       eamodio.gitlens
+      foam.foam-vscode
       jnoortheen.nix-ide
       pkief.material-icon-theme
       redhat.vscode-yaml
+      yzhang.markdown-all-in-one
     ];
     userSettings = {
       "diffEditor.ignoreTrimWhitespace" = false;
