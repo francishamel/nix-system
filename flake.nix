@@ -35,7 +35,7 @@
       specialArgs = { inherit inputs; }; # Pass flake inputs to our config
       modules = [
         ./modules/darwin
-        ./modules/config.nix
+        ./modules/nix.nix
         home-manager.darwinModules.home-manager
         {
           home-manager.extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
