@@ -11,6 +11,7 @@
       eamodio.gitlens
       foam.foam-vscode
       jnoortheen.nix-ide
+      mkhl.direnv
       pkief.material-icon-theme
       redhat.vscode-yaml
       yzhang.markdown-all-in-one
@@ -22,8 +23,6 @@
       "editor.formatOnSave" = true;
       "editor.minimap.enabled" = false;
       "editor.tabSize" = 2;
-      "elixirLS.dialyzerEnabled" = false;
-      "elixirLS.suggestSpecs" = false;
       "extensions.autoUpdate" = false;
       "files.insertFinalNewline" = true;
       "git.allowForcePush" = true;
@@ -34,7 +33,6 @@
       "git.terminalAuthentication" = false;
       "git.untrackedChanges" = "separate";
       "github.gitAuthentication" = false;
-      "githubPullRequests.pushBranch" = "always";
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
       "nix.serverSettings.nil.formatting.command" = [ "nixpkgs-fmt" ];
