@@ -9,6 +9,7 @@
     ./fzf.nix
     ./git.nix
     ./lsd.nix
+    ./ssh.nix
     ./vscode.nix
     ./zsh.nix
   ];

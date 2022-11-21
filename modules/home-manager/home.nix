@@ -12,8 +12,6 @@
 
     home-manager.enable = true;
 
-    ssh.enable = true;
-
     starship.enable = true;
 
     tmux.enable = true;
