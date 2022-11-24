@@ -4,7 +4,6 @@
   imports = [
     ./1password.nix
     ./alacritty.nix
-    ./bat.nix
     ./direnv.nix
     ./fzf.nix
     ./gh.nix
