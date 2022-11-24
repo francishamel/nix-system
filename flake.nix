@@ -33,7 +33,7 @@
       system = system.x86_64-darwin;
       pkgs = legacyPackages.x86_64-darwin;
       specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-      modules = [
+      modules = import ./modules/darwin/list.nix ++ [
         ./old-modules/darwin
         ./old-modules/nix.nix
         home-manager.darwinModules.home-manager
