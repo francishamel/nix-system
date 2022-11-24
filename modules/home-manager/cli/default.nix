@@ -6,6 +6,7 @@ let
 in
 {
   imports = [
+    ./zsh
   ];
 
   # TODO: is this needed?
