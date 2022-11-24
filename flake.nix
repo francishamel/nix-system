@@ -41,24 +41,26 @@
           home-manager.extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.francis = import ./old-modules/home-manager/home.nix;
+          home-manager.users.francis = import ./configs/home-manager;
         }
       ];
     };
 
-    devShells = eachSystemMap defaultSystems (system:
-      let
-        pkgs = legacyPackages.${system};
-      in
-      {
-        default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            nil
-            nixpkgs-fmt
-            treefmt
-          ];
-        };
-      }
-    );
+    devShells = eachSystemMap
+      defaultSystems
+      (system:
+        let
+          pkgs = legacyPackages.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              nil
+              nixpkgs-fmt
+              treefmt
+            ];
+          };
+        }
+      );
   };
 }
