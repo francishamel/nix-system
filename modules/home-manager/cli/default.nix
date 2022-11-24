@@ -3,6 +3,7 @@
 {
   imports = [
     ./1password
+    ./alacritty
     ./bat
     ./direnv
     ./fzf
