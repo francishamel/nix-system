@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./programs
+    ../../profiles/home-manager
   ];
 
   home.stateVersion = "22.11";
