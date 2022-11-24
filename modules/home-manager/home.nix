@@ -13,7 +13,5 @@
     home-manager.enable = true;
 
     starship.enable = true;
-
-    tmux.enable = true;
   };
 }
