@@ -6,6 +6,7 @@ let
 in
 {
   imports = [
+    ./git
     ./zsh
   ];
 
