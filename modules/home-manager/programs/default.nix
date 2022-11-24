@@ -7,6 +7,7 @@
     ./bat.nix
     ./direnv.nix
     ./fzf.nix
+    ./gh.nix
     ./git.nix
     ./lsd.nix
     ./ssh.nix
