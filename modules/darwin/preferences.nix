@@ -1,4 +1,5 @@
 { ... }:
+
 {
   # Mouse settings
   system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
