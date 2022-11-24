@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 
 {
   modules = {
@@ -14,5 +14,6 @@
       ssh.enable = true;
       zsh.enable = true;
     };
+    editor.vscode.enable = true;
   };
 }
