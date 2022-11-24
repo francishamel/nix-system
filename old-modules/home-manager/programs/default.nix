@@ -13,5 +13,6 @@
     ./ssh.nix
     ./vscode.nix
     ./zsh.nix
+    ../../../profiles/home-manager
   ];
 }
