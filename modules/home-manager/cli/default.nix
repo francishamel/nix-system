@@ -8,6 +8,7 @@ in
   imports = [
     ./bat
     ./git
+    ./lsd
     ./zsh
   ];
 
