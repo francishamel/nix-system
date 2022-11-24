@@ -34,14 +34,14 @@
       pkgs = legacyPackages.x86_64-darwin;
       specialArgs = { inherit inputs; }; # Pass flake inputs to our config
       modules = [
-        ./modules/darwin
-        ./modules/nix.nix
+        ./old-modules/darwin
+        ./old-modules/nix.nix
         home-manager.darwinModules.home-manager
         {
           home-manager.extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.francis = import ./modules/home-manager/home.nix;
+          home-manager.users.francis = import ./old-modules/home-manager/home.nix;
         }
       ];
     };
