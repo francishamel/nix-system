@@ -30,6 +30,7 @@
       "git.branchProtectionPrompt" = "alwaysCommitToNewBranch";
       "git.confirmSync" = false;
       "git.experimental.mergeEditor" = true;
+      "git.pullBeforeCheckout" = true;
       "git.terminalAuthentication" = false;
       "git.untrackedChanges" = "separate";
       "github.gitAuthentication" = false;
