@@ -9,6 +9,7 @@
       gh.enable = true;
       git.enable = true;
       lsd.enable = true;
+      ssh.enable = true;
       zsh.enable = true;
     };
   };

@@ -8,6 +8,7 @@
     ./gh
     ./git
     ./lsd
+    ./ssh
     ./zsh
   ];
 }
