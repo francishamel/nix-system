@@ -5,6 +5,8 @@
     ../../profiles/darwin/users/francis
   ];
 
+  # TODO: refactor this to profiles for common stuff
+
   users.knownUsers = [ "francis" ];
 
   fonts = {
