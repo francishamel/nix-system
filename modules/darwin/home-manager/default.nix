@@ -8,4 +8,9 @@ in
       modules = (import ../../../modules/home-manager/list.nix);
     });
   };
+
+  config = {
+    home-manager.useUserPackages = true;
+    home-manager.useGlobalPkgs = true;
+  };
 }

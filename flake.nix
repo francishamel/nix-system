@@ -18,6 +18,8 @@
   outputs = { darwin, flake-utils, home-manager, nixpkgs, ... }@inputs: rec {
     inherit (flake-utils.lib) defaultSystems eachSystemMap system;
 
+    utilities = import ./utilities { inherit (nixpkgs) lib; };
+
     legacyPackages = eachSystemMap defaultSystems (system:
       import inputs.nixpkgs {
         inherit system;
@@ -32,16 +34,11 @@
     darwinConfigurations."MacBook-Pro-Intel" = darwin.lib.darwinSystem {
       system = system.x86_64-darwin;
       pkgs = legacyPackages.x86_64-darwin;
-      specialArgs = { inherit inputs; }; # Pass flake inputs to our config
       modules = import ./modules/darwin/list.nix ++ [
-        ./old-modules/darwin
-        ./old-modules/nix.nix
-        home-manager.darwinModules.home-manager
+        ./configs/darwin/macbook-pro.nix
+        (home-manager.darwinModules.home-manager)
         {
-          home-manager.extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.francis = import ./configs/home-manager;
+          _module.args = { inherit utilities; };
         }
       ];
     };
