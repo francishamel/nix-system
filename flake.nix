@@ -18,6 +18,8 @@
   outputs = { darwin, flake-utils, home-manager, nixpkgs, ... }@inputs: rec {
     inherit (flake-utils.lib) defaultSystems eachSystemMap system;
 
+    utilities = import ./utilities { inherit (nixpkgs) lib; };
+
     legacyPackages = eachSystemMap defaultSystems (system:
       import inputs.nixpkgs {
         inherit system;
@@ -32,33 +34,30 @@
     darwinConfigurations."MacBook-Pro-Intel" = darwin.lib.darwinSystem {
       system = system.x86_64-darwin;
       pkgs = legacyPackages.x86_64-darwin;
-      specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-      modules = [
-        ./modules/darwin
-        ./modules/nix.nix
-        home-manager.darwinModules.home-manager
+      modules = import ./modules/darwin/list.nix ++ [
+        ./configs/darwin/macbook-pro.nix
+        (home-manager.darwinModules.home-manager)
         {
-          home-manager.extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.francis = import ./modules/home-manager/home.nix;
+          _module.args = { inherit utilities; };
         }
       ];
     };
 
-    devShells = eachSystemMap defaultSystems (system:
-      let
-        pkgs = legacyPackages.${system};
-      in
-      {
-        default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            nil
-            nixpkgs-fmt
-            treefmt
-          ];
-        };
-      }
-    );
+    devShells = eachSystemMap
+      defaultSystems
+      (system:
+        let
+          pkgs = legacyPackages.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              nil
+              nixpkgs-fmt
+              treefmt
+            ];
+          };
+        }
+      );
   };
 }
