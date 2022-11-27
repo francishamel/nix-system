@@ -18,6 +18,7 @@
   outputs = { darwin, flake-utils, home-manager, nixpkgs, self, ... }:
     let
       inherit (flake-utils.lib) defaultSystems eachSystemMap system;
+      inherit (nixpkgs.lib) filterAttrs mapAttrs';
     in
     {
       legacyPackages = eachSystemMap defaultSystems (system:
@@ -34,7 +35,7 @@
           ./configs/darwin/macbook-pro.nix
           (home-manager.darwinModules.home-manager)
           {
-            _module.args = { utilities = import ./utilities { inherit (nixpkgs) lib; }; };
+            _module.args = { utilities = import ./utilities { inherit filterAttrs mapAttrs'; }; };
           }
         ];
       };
