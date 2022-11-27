@@ -7,8 +7,6 @@
 
   # TODO: refactor this to profiles for common stuff
 
-  users.knownUsers = [ "francis" ];
-
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [
@@ -94,10 +92,6 @@
   system.defaults.loginwindow.GuestEnabled = false;
 
   nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-
     gc = {
       automatic = true;
       interval = {
