@@ -1,6 +1,7 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
+  inherit (pkgs) stdenv;
 
   cfg = config.modules.cli.zsh;
 in
@@ -9,8 +10,7 @@ in
 
   config = mkIf cfg.enable {
     # Disable last login message
-    # TODO: only set if Mac OS.
-    home.file.".hushlogin".text = "";
+    home.file.".hushlogin" = mkIf (stdenv.isDarwin) { text = ""; };
 
     programs.zsh = {
       defaultKeymap = "emacs";
