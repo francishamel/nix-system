@@ -23,10 +23,6 @@
       legacyPackages = eachSystemMap defaultSystems (system:
         import nixpkgs {
           inherit system;
-          # NOTE: Using `nixpkgs.config` in your NixOS config won't work
-          # Instead, you should set nixpkgs configs here
-          # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
-
           config.allowUnfree = true;
         }
       );
@@ -43,21 +39,19 @@
         ];
       };
 
-      devShells = eachSystemMap
-        defaultSystems
-        (system:
-          let
-            pkgs = self.legacyPackages.${system};
-          in
-          {
-            default = pkgs.mkShell {
-              buildInputs = with pkgs; [
-                nil
-                nixpkgs-fmt
-                treefmt
-              ];
-            };
-          }
-        );
+      devShells = eachSystemMap defaultSystems (system:
+        let
+          pkgs = self.legacyPackages.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              nil
+              nixpkgs-fmt
+              treefmt
+            ];
+          };
+        }
+      );
     };
 }
