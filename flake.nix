@@ -15,13 +15,13 @@
     };
   };
 
-  outputs = { darwin, flake-utils, home-manager, nixpkgs, ... }@inputs: rec {
+  outputs = { darwin, flake-utils, home-manager, nixpkgs, ... }: rec {
     inherit (flake-utils.lib) defaultSystems eachSystemMap system;
 
     utilities = import ./utilities { inherit (nixpkgs) lib; };
 
     legacyPackages = eachSystemMap defaultSystems (system:
-      import inputs.nixpkgs {
+      import nixpkgs {
         inherit system;
         # NOTE: Using `nixpkgs.config` in your NixOS config won't work
         # Instead, you should set nixpkgs configs here
