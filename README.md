@@ -2,6 +2,10 @@
 
 `nix-system` contains different configs for different nix use cases.
 
+## Installation from scratch
+
+TODO
+
 ## Custom modules
 
 The `modules` folder contains custom modules that extends `darwin`, `home-manager` and `nixos` base modules. They are an opiniated implementation of all the modules I usually use.
