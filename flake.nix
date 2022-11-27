@@ -15,49 +15,49 @@
     };
   };
 
-  outputs = { darwin, flake-utils, home-manager, nixpkgs, ... }: rec {
-    inherit (flake-utils.lib) defaultSystems eachSystemMap system;
+  outputs = { darwin, flake-utils, home-manager, nixpkgs, self, ... }:
+    let
+      inherit (flake-utils.lib) defaultSystems eachSystemMap system;
+    in
+    {
+      legacyPackages = eachSystemMap defaultSystems (system:
+        import nixpkgs {
+          inherit system;
+          # NOTE: Using `nixpkgs.config` in your NixOS config won't work
+          # Instead, you should set nixpkgs configs here
+          # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
 
-    utilities = import ./utilities { inherit (nixpkgs) lib; };
-
-    legacyPackages = eachSystemMap defaultSystems (system:
-      import nixpkgs {
-        inherit system;
-        # NOTE: Using `nixpkgs.config` in your NixOS config won't work
-        # Instead, you should set nixpkgs configs here
-        # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
-
-        config.allowUnfree = true;
-      }
-    );
-
-    darwinConfigurations."MacBook-Pro-Intel" = darwin.lib.darwinSystem {
-      system = system.x86_64-darwin;
-      pkgs = legacyPackages.x86_64-darwin;
-      modules = import ./modules/darwin/list.nix ++ [
-        ./configs/darwin/macbook-pro.nix
-        (home-manager.darwinModules.home-manager)
-        {
-          _module.args = { inherit utilities; };
-        }
-      ];
-    };
-
-    devShells = eachSystemMap
-      defaultSystems
-      (system:
-        let
-          pkgs = legacyPackages.${system};
-        in
-        {
-          default = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              nil
-              nixpkgs-fmt
-              treefmt
-            ];
-          };
+          config.allowUnfree = true;
         }
       );
-  };
+
+      darwinConfigurations."MacBook-Pro-Intel" = darwin.lib.darwinSystem {
+        system = system.x86_64-darwin;
+        pkgs = self.legacyPackages.x86_64-darwin;
+        modules = import ./modules/darwin/list.nix ++ [
+          ./configs/darwin/macbook-pro.nix
+          (home-manager.darwinModules.home-manager)
+          {
+            _module.args = { utilities = import ./utilities { inherit (nixpkgs) lib; }; };
+          }
+        ];
+      };
+
+      devShells = eachSystemMap
+        defaultSystems
+        (system:
+          let
+            pkgs = self.legacyPackages.${system};
+          in
+          {
+            default = pkgs.mkShell {
+              buildInputs = with pkgs; [
+                nil
+                nixpkgs-fmt
+                treefmt
+              ];
+            };
+          }
+        );
+    };
 }
