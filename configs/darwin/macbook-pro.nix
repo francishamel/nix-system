@@ -7,8 +7,6 @@
 
   # TODO: refactor this to profiles for common stuff
 
-  users.knownUsers = [ "francis" ];
-
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [
