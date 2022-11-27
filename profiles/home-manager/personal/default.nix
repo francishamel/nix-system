@@ -9,7 +9,11 @@
       direnv.enable = true;
       fzf.enable = true;
       gh.enable = true;
-      git.enable = true;
+      git = {
+        enable = true;
+        userName = "Francis Hamel";
+        userEmail = "francishamel96@gmail.com";
+      };
       lsd.enable = true;
       ssh.enable = true;
       zsh.enable = true;
