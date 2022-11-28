@@ -10,4 +10,8 @@
       zsh.enable = true;
     };
   };
+
+  programs.zsh.initExtra = ''
+    source /etc/zsh/zshrc.default.inc.zsh
+  '';
 }
