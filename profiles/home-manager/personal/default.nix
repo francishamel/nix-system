@@ -11,8 +11,9 @@
       gh.enable = true;
       git = {
         enable = true;
-        userName = "Francis Hamel";
-        userEmail = "francishamel96@gmail.com";
+        # TODO: find a way to centralize secrets
+        userName = "op://macbook-nix/personal/git/userName";
+        userEmail = "op://macbook-nix/personal/git/userEmail";
       };
       lsd.enable = true;
       ssh.enable = true;
