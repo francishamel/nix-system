@@ -10,7 +10,9 @@ in
 
   config = mkIf cfg.enable {
     # Disable last login message
-    home.file.".hushlogin" = mkIf (stdenv.isDarwin) { text = ""; };
+    home.file = mkIf (stdenv.isDarwin) {
+      ".hushlogin".text = "";
+    };
 
     programs.zsh = {
       defaultKeymap = "emacs";
