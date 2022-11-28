@@ -54,6 +54,7 @@
             buildInputs = with pkgs; [
               nil
               nixpkgs-fmt
+              nodePackages.prettier
               treefmt
             ];
           };
