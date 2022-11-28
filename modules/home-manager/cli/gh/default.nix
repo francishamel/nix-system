@@ -14,7 +14,7 @@ in
       settings = {
         aliases = {
           "prc" = "pr create --web --assignee @me";
-          "prv" = "pr view";
+          "prv" = "pr view --web";
         };
         # TODO: use a param for the editor value
         editor = "code --wait";
