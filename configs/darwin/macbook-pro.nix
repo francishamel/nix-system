@@ -92,6 +92,10 @@
   system.defaults.loginwindow.GuestEnabled = false;
 
   nix = {
+    nix.extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+
     gc = {
       automatic = true;
       interval = {
