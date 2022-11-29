@@ -92,7 +92,7 @@
   system.defaults.loginwindow.GuestEnabled = false;
 
   nix = {
-    nix.extraOptions = ''
+    extraOptions = ''
       experimental-features = nix-command flakes
     '';
 
