@@ -27,12 +27,8 @@ in
       '';
 
       # TODO: only set this if zsh is enabled
-      # TODO: parameterize if we use the beta version
       # TODO: only set SSH_AUTH_SOCK if the option is set to true
       zsh.initExtra = ''
-        # Enable beta preview
-        export OP_PLUGINS_SNEAK_PREVIEW="true"
-
         # Source the generated plugins config file for op
         source ~/.config/op/plugins.sh
 
