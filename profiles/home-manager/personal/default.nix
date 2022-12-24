@@ -1,6 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+  home.packages = with pkgs; [ cachix ];
+
   modules = {
     cli = {
       _1password.enable = true;
