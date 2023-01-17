@@ -16,6 +16,7 @@ in
         bierner.markdown-mermaid
         codezombiech.gitignore
         eamodio.gitlens
+        elixir-lsp.vscode-elixir-ls
         foam.foam-vscode
         jnoortheen.nix-ide
         mkhl.direnv
