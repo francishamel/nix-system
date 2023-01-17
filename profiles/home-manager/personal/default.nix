@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ cachix ];
+  home.packages = with pkgs; [ cachix flyctl ];
 
   modules = {
     cli = {
