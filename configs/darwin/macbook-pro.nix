@@ -61,7 +61,10 @@
       "slack"
       "spotify"
       "todoist"
-      "zoom"
+
+      # Temporary needed software
+      # "microsoft-teams"
+      # "zoom"
     ];
   };
 
