@@ -61,6 +61,7 @@
       "slack"
       "spotify"
       "todoist"
+      "zotero"
 
       # Temporary needed software
       # "microsoft-teams"
