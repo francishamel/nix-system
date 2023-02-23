@@ -56,6 +56,7 @@
       "discord"
       "docker"
       "firefox"
+      "google-drive"
       "obsidian"
       "raycast"
       "slack"
