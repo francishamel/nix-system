@@ -54,5 +54,9 @@ in
         "workbench.iconTheme" = "material-icon-theme";
       };
     };
+
+    programs.zsh.initExtra = ''
+      EDITOR="code --wait"
+    '';
   };
 }
