@@ -11,7 +11,7 @@ in
     programs.vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions; [
-        _1Password.op-vscode
+        pkgs.vscode-extensions."1Password".op-vscode
         alefragnani.project-manager
         bierner.markdown-mermaid
         codezombiech.gitignore
