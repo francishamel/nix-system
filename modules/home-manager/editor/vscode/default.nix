@@ -33,6 +33,7 @@ in
         "editor.minimap.enabled" = false;
         "editor.tabSize" = 2;
         "extensions.autoUpdate" = false;
+        "extensions.autoCheckUpdates" = false;
         "files.insertFinalNewline" = true;
         "git.allowForcePush" = true;
         "git.branchProtection" = [ "main" "master" "trunk" ];
