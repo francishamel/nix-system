@@ -11,7 +11,6 @@ in
 
   config = mkIf cfg.enable {
     programs = {
-      # TODO: Add an option to enable/disable git commit signing through 1 password (+ only enable if git is enabled)
       git.extraConfig = {
         commit.gpgsign = true;
         gpg = {
@@ -21,13 +20,10 @@ in
         user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuLaEvAkPRVZ5v7uVOxM+Te9n/iJom7RSZogNHK+Jd3";
       };
 
-      # TODO: Only set this up if ssh is enabled + make this configurable
       ssh.extraConfig = ''
         IdentityAgent "${sockPath}"
       '';
 
-      # TODO: only set this if zsh is enabled
-      # TODO: only set SSH_AUTH_SOCK if the option is set to true
       zsh.initExtra = ''
         # Source the generated plugins config file for op
         source ~/.config/op/plugins.sh
