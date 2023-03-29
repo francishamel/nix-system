@@ -23,6 +23,7 @@ in
         mkhl.direnv
         pkief.material-icon-theme
       ];
+      mutableExtensionsDir = false;
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
         # TODO: set this based on theme config
