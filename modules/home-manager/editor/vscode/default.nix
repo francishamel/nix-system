@@ -56,6 +56,7 @@ in
       };
     };
 
+    # TODO: use a param for the editor value
     programs.zsh.initExtra = ''
       EDITOR="code --wait"
     '';
