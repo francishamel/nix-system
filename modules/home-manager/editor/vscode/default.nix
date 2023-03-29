@@ -22,6 +22,13 @@ in
         jnoortheen.nix-ide
         mkhl.direnv
         pkief.material-icon-theme
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "dendron";
+          publisher = "dendron";
+          version = "0.119.0";
+          sha256 = "fUL5f5Fw6PMc+92++Wj1UfJqRAVXb/MQ+b7grYs0E6M=";
+        }
       ];
       mutableExtensionsDir = false;
       userSettings = {
