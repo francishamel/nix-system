@@ -36,16 +36,23 @@ in
         "git.branchProtection" = [ "main" "master" "trunk" ];
         "git.branchProtectionPrompt" = "alwaysCommitToNewBranch";
         "git.confirmSync" = false;
-        "git.experimental.mergeEditor" = true;
         "git.pullBeforeCheckout" = true;
         "git.terminalAuthentication" = false;
         "git.untrackedChanges" = "separate";
         "github.gitAuthentication" = false;
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nil";
-        "nix.serverSettings.nil.formatting.command" = [ "nixpkgs-fmt" ];
-        "projectManager.git.baseFolders" = [ "~/.nixpkgs" "~/src" ];
-        "redhat.telemetry.enabled" = false;
+        "nix.serverSettings" = {
+          "nil" = {
+            "formatting" = {
+              "command" = [ "nixpkgs-fmt" ];
+            };
+          };
+        };
+        "projectManager.git.baseFolders" = [
+          "~/.nixpkgs"
+          "~/src"
+        ];
         "telemetry.telemetryLevel" = "off";
         "update.mode" = "none";
         "workbench.colorTheme" = "Solarized Dark";
