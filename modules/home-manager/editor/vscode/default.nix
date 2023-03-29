@@ -10,6 +10,8 @@ in
   config = mkIf cfg.enable {
     programs.vscode = {
       enable = true;
+      enableUpdateCheck = false;
+      enableExtensionUpdateCheck = false;
       extensions = with pkgs.vscode-extensions; [
         pkgs.vscode-extensions."1Password".op-vscode
         alefragnani.project-manager
@@ -20,7 +22,15 @@ in
         jnoortheen.nix-ide
         mkhl.direnv
         pkief.material-icon-theme
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "dendron";
+          publisher = "dendron";
+          version = "0.119.0";
+          sha256 = "fUL5f5Fw6PMc+92++Wj1UfJqRAVXb/MQ+b7grYs0E6M=";
+        }
       ];
+      mutableExtensionsDir = false;
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
         # TODO: set this based on theme config
@@ -29,8 +39,6 @@ in
         "editor.formatOnSave" = true;
         "editor.minimap.enabled" = false;
         "editor.tabSize" = 2;
-        "extensions.autoUpdate" = false;
-        "extensions.autoCheckUpdates" = false;
         "files.insertFinalNewline" = true;
         "git.allowForcePush" = true;
         "git.branchProtection" = [ "main" "master" "trunk" ];
@@ -54,9 +62,9 @@ in
           "~/src"
         ];
         "telemetry.telemetryLevel" = "off";
-        "update.mode" = "none";
         "workbench.colorTheme" = "Solarized Dark";
         "workbench.iconTheme" = "material-icon-theme";
+        "workbench.startupEditor" = "none";
       };
     };
 
