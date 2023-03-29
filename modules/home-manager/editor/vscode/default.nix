@@ -10,6 +10,8 @@ in
   config = mkIf cfg.enable {
     programs.vscode = {
       enable = true;
+      enableUpdateCheck = false;
+      enableExtensionUpdateCheck = false;
       extensions = with pkgs.vscode-extensions; [
         pkgs.vscode-extensions."1Password".op-vscode
         alefragnani.project-manager
@@ -29,8 +31,6 @@ in
         "editor.formatOnSave" = true;
         "editor.minimap.enabled" = false;
         "editor.tabSize" = 2;
-        "extensions.autoUpdate" = false;
-        "extensions.autoCheckUpdates" = false;
         "files.insertFinalNewline" = true;
         "git.allowForcePush" = true;
         "git.branchProtection" = [ "main" "master" "trunk" ];
@@ -54,7 +54,6 @@ in
           "~/src"
         ];
         "telemetry.telemetryLevel" = "off";
-        "update.mode" = "none";
         "workbench.colorTheme" = "Solarized Dark";
         "workbench.iconTheme" = "material-icon-theme";
       };
