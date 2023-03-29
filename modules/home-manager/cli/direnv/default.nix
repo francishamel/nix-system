@@ -10,8 +10,6 @@ in
   config = mkIf cfg.enable {
     programs.direnv = {
       enable = true;
-      # TODO: set this using a param
-      enableZshIntegration = true;
       nix-direnv.enable = true;
     };
   };

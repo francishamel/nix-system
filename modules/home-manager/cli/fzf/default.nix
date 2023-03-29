@@ -14,10 +14,6 @@ in
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
     '';
 
-    programs.fzf = {
-      enable = true;
-      # TODO: only set this if zsh is enabled
-      enableZshIntegration = true;
-    };
+    programs.fzf.enable = true;
   };
 }
