@@ -11,7 +11,6 @@ in
     programs = {
       lsd.enable = true;
 
-      # TODO: only set this if zsh is enabled
       zsh.shellAliases = {
         "ll" = "${pkgs.lsd}/bin/lsd -la";
         "ls" = "${pkgs.lsd}/bin/lsd";

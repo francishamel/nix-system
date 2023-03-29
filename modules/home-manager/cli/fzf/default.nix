@@ -10,7 +10,6 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [ zsh-fzf-tab ];
 
-    # TODO: only set this if zsh is enabled
     programs.zsh.initExtra = ''
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
     '';

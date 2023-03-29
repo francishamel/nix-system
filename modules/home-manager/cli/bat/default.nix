@@ -15,7 +15,6 @@ in
         enable = true;
       };
 
-      # TODO: only set this if zsh is enabled
       zsh.shellAliases."cat" = "${pkgs.bat}/bin/bat";
     };
   };
