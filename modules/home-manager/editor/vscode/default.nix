@@ -18,6 +18,7 @@ in
         eamodio.gitlens
         elixir-lsp.vscode-elixir-ls
         foam.foam-vscode
+        gruntfuggly.todo-tree
         jnoortheen.nix-ide
         mkhl.direnv
         pkief.material-icon-theme
