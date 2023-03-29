@@ -57,6 +57,7 @@ in
         "telemetry.telemetryLevel" = "off";
         "workbench.colorTheme" = "Solarized Dark";
         "workbench.iconTheme" = "material-icon-theme";
+        "workbench.startupEditor" = "none";
       };
     };
 
