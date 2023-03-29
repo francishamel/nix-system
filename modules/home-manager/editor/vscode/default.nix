@@ -13,17 +13,13 @@ in
       extensions = with pkgs.vscode-extensions; [
         pkgs.vscode-extensions."1Password".op-vscode
         alefragnani.project-manager
-        bierner.markdown-mermaid
         codezombiech.gitignore
         eamodio.gitlens
         elixir-lsp.vscode-elixir-ls
-        foam.foam-vscode
         gruntfuggly.todo-tree
         jnoortheen.nix-ide
         mkhl.direnv
         pkief.material-icon-theme
-        redhat.vscode-yaml
-        yzhang.markdown-all-in-one
       ];
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
