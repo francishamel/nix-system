@@ -5,6 +5,7 @@
     cachix
     dive
     flyctl
+    yubikey-manager
   ];
 
   modules = {
