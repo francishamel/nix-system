@@ -5,8 +5,6 @@
     ../../profiles/darwin/users/francis
   ];
 
-  # TODO: refactor this to profiles for common stuff
-
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [

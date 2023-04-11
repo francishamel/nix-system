@@ -29,7 +29,6 @@ in
       aliases = { fp = "fetch --prune"; };
       enable = true;
       extraConfig = {
-        # TODO: use a param for the editor value
         core.editor = "code --wait";
         init.defaultBranch = "main";
         merge.conflictstyle = "diff3";
