@@ -10,7 +10,6 @@ in
   config = mkIf cfg.enable {
     programs = {
       bat = {
-        # TODO: use global theme
         config.theme = "Solarized (dark)";
         enable = true;
       };

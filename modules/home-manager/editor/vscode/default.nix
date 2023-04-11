@@ -33,7 +33,6 @@ in
       mutableExtensionsDir = false;
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
-        # TODO: set this based on theme config
         "editor.fontFamily" = "'FiraCode Nerd Font'";
         "editor.fontLigatures" = true;
         "editor.formatOnSave" = true;
@@ -68,7 +67,6 @@ in
       };
     };
 
-    # TODO: use a param for the editor value
     programs.zsh.initExtra = ''
       EDITOR="code --wait"
     '';

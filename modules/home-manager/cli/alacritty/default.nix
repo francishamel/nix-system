@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
 
@@ -11,8 +11,6 @@ in
     programs.alacritty = {
       enable = true;
       settings = {
-        # TODO: set this based on global theme
-        # TODO: extract this to a themes folder + add more themes maybe
         # Solarized dark color scheme
         colors = {
           primary = {
@@ -47,7 +45,6 @@ in
 
         font = {
           normal = {
-            # TODO: set this based on theme config
             family = "FiraCode Nerd Font";
             style = "Retina";
           };
