@@ -24,18 +24,20 @@ in
         IdentityAgent "${sockPath}"
       '';
 
-      zsh.initExtra = ''
-        # Source the generated plugins config file for op
-        source ~/.config/op/plugins.sh
+      zsh = {
+        initExtra = ''
+          SSH_AUTH_SOCK="${sockPath}"
+          if command -v op >/dev/null; then
+            eval "$(op completion zsh)"; compdef _op op
+          fi
 
-        SSH_AUTH_SOCK="${sockPath}"
-        if command -v op >/dev/null; then
-          eval "$(op completion zsh)"; compdef _op op
-        fi
-
-        # This is needed for autocompletion to work with op plugin
-        setopt completealiases
-      '';
+          # This is needed for autocompletion to work with op plugin
+          setopt completealiases
+        '';
+        shellAliases = {
+          gh = "op plugin run -- gh";
+        };
+      };
     };
   };
 }
