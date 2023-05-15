@@ -31,6 +31,7 @@ in
         }
       ];
       mutableExtensionsDir = false;
+      package = pkgs.vscodium;
       userSettings = {
         "diffEditor.ignoreTrimWhitespace" = false;
         "editor.fontFamily" = "'FiraCode Nerd Font'";
@@ -67,8 +68,13 @@ in
       };
     };
 
-    programs.zsh.initExtra = ''
-      EDITOR="code --wait"
-    '';
+    programs.zsh = {
+      initExtra = ''
+        EDITOR="code --wait"
+      '';
+      shellAliases = {
+        code = "codium";
+      };
+    };
   };
 }
