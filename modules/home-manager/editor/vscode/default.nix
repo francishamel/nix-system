@@ -57,10 +57,7 @@ in
             };
           };
         };
-        "projectManager.git.baseFolders" = [
-          "~/.nixpkgs"
-          "~/src"
-        ];
+        "projectManager.git.baseFolders" = [ "~/src" ];
         "telemetry.telemetryLevel" = "off";
         "workbench.colorTheme" = "Solarized Dark";
         "workbench.iconTheme" = "material-icon-theme";
