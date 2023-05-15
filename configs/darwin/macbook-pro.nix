@@ -118,6 +118,8 @@
         ref = "main";
       };
     };
+
+    settings.trusted-users = [ "francis" ];
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
