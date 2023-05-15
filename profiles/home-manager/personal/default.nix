@@ -1,13 +1,16 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    cachix
-    dive
-    d2
-    flyctl
-    yubikey-manager
-  ];
+  home = {
+    packages = with pkgs; [
+      cachix
+      dive
+      d2
+      flyctl
+      yubikey-manager
+    ];
+    stateVersion = "22.11";
+  };
 
   modules = {
     cli = {
@@ -29,5 +32,8 @@
     editor.vscode.enable = true;
   };
 
-  programs.starship.enable = true;
+  programs = {
+    home-manager.enable = true;
+    starship.enable = true;
+  };
 }
