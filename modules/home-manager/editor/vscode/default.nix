@@ -15,6 +15,7 @@ in
       extensions = with pkgs.vscode-extensions; [
         pkgs.vscode-extensions."1Password".op-vscode
         alefragnani.project-manager
+        bradlc.vscode-tailwindcss
         codezombiech.gitignore
         eamodio.gitlens
         elixir-lsp.vscode-elixir-ls
