@@ -1,6 +1,6 @@
 { config, lib, pkgs, utilities, ... }:
 let
-  inherit (lib) mapAttrs mkOption nameValuePair types;
+  inherit (lib) mapAttrs mkOption nameValuePair types mapAttrsToList;
   inherit (utilities) mapFilterAttrs;
 
   cfg = config.modules.user-manager;
@@ -49,7 +49,10 @@ in
         })
         cfg.users;
 
-    # TODO: find way to add users to users.knownUsers
+    users.knownUsers =
+      mapAttrsToList
+        (username: { ... }: username)
+        cfg.users;
 
     # Derive a home-manager user definition for every user manager user with
     # a `home` attribute defined.
