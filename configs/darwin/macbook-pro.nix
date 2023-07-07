@@ -1,9 +1,12 @@
 { pkgs, ... }:
-
+let
+  user = "francis";
+in
 {
-  imports = [
-    ../../profiles/darwin/users/francis
-  ];
+  modules.user-manager.users."${user}" = {
+    home = ../home-manager/personal.nix;
+    uid = 501;
+  };
 
   fonts = {
     fontDir.enable = true;
