@@ -1,12 +1,21 @@
 { pkgs, ... }:
-let
-  user = "francis";
-in
+
 {
-  modules.user-manager.users."${user}" = {
-    home = ../home-manager/personal.nix;
+  users.users.francis = {
     uid = 501;
+    createHome = true;
+    home = "/Users/francis";
+    shell = pkgs.zsh;
+    isHidden = false;
   };
+
+  users.knownUsers = [ "francis" ];
+
+  home-manager.users.francis = import ./home.nix;
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+
+  imports = [ ./nix.nix ];
 
   fonts = {
     fontDir.enable = true;
@@ -94,35 +103,6 @@ in
   system.defaults.".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
 
   system.defaults.loginwindow.GuestEnabled = false;
-
-  nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-
-    gc = {
-      automatic = true;
-      interval = {
-        Weekday = 0;
-      };
-      options = "--delete-older-than 30d";
-    };
-
-    registry.francishamel = {
-      from = {
-        id = "francishamel";
-        type = "indirect";
-      };
-      to = {
-        owner = "francishamel";
-        repo = "nix-templates";
-        type = "github";
-        ref = "main";
-      };
-    };
-
-    settings.trusted-users = [ "francis" ];
-  };
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
