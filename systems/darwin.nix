@@ -1,12 +1,15 @@
 { pkgs, ... }:
-let
-  user = "francis";
-in
+
 {
-  modules.user-manager.users."${user}" = {
-    home = ../home-manager/personal.nix;
+  users.users.francis = {
     uid = 501;
+    createHome = true;
+    home = "/Users/francis";
+    shell = pkgs.zsh;
+    isHidden = false;
   };
+
+  users.knownUsers = [ "francis" ];
 
   fonts = {
     fontDir.enable = true;
@@ -121,10 +124,7 @@ in
       };
     };
 
+    # TODO: replace by myself
     settings.trusted-users = [ "francis" ];
   };
-
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 4;
 }
