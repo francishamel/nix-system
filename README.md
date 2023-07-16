@@ -4,8 +4,6 @@
 
 ## Installation from scratch
 
-TODO
-
 ## Inspiration
 
 - The modules organization is highly inspired from [lukebfox](https://github.com/lukebfox)'s [`nix-configs`](https://github.com/lukebfox/nix-configs) repo.

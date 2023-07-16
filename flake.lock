@@ -114,7 +114,28 @@
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixos-flake": "nixos-flake",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "treefmt-nix": "treefmt-nix"
+      }
+    },
+    "treefmt-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1689243103,
+        "narHash": "sha256-IfBt2AD8qCwZs+m6BlOGEitBIkVJ0iMscMueb6QYUk4=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "f1dca68b908f3dd656b923b9fb62f7d755133662",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
       }
     }
   },
