@@ -19,7 +19,7 @@
       imports = [
         inputs.nixos-flake.flakeModule
         ./devshell/flake-module.nix
-        ./home-manager
+        ./home-manager/flake-module.nix
       ];
 
       flake = {
