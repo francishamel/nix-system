@@ -6,27 +6,28 @@
       common = {
         home.stateVersion = "22.11";
         imports = [
-          ./alacritty.nix
-          ./bat.nix
-          ./direnv.nix
-          ./fzf.nix
-          ./gh.nix
-          ./git.nix
-          ./lsd.nix
-          ./ssh.nix
-          ./terminal.nix
-          ./vscode.nix
+          ./modules/alacritty.nix
+          ./modules/bat.nix
+          ./modules/direnv.nix
+          ./modules/fzf.nix
+          ./modules/gh.nix
+          ./modules/git.nix
+          ./modules/lsd.nix
+          ./modules/ssh.nix
+          ./modules/starship.nix
+          ./modules/terminal.nix
+          ./modules/vscode.nix
         ];
       };
       common-darwin.imports = [
         self.homeModules.common
-        ./1password/darwin.nix
-        ./zsh/darwin.nix
+        ./modules/1password/darwin.nix
+        ./modules/zsh/darwin.nix
       ];
       common-linux.imports = [
         self.homeModules.common
-        ./1password/linux.nix
-        ./zsh/linux.nix
+        ./modules/1password/linux.nix
+        ./modules/zsh/linux.nix
       ];
     };
   };
