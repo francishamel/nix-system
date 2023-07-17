@@ -14,6 +14,7 @@
           ./git.nix
           ./lsd.nix
           ./ssh.nix
+          ./starship.nix
           ./terminal.nix
           ./vscode.nix
         ];
