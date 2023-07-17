@@ -17,8 +17,8 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-darwin" "x86_64-linux" ];
       imports = [
-        inputs.treefmt-nix.flakeModule
         inputs.nixos-flake.flakeModule
+        ./devshell/flake-module.nix
         ./home
       ];
 
@@ -41,26 +41,8 @@
         };
       };
 
-      perSystem = { self', pkgs, config, ... }: {
+      perSystem = { self', ... }: {
         packages.default = self'.packages.activate; # Enable running nix run .# to switch derivation
-
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            nil
-            nixpkgs-fmt
-            config.treefmt.build.wrapper
-          ];
-        };
-
-        treefmt = {
-          flakeFormatter = true;
-          projectRootFile = "flake.nix";
-          programs = {
-            deadnix.enable = true;
-            nixpkgs-fmt.enable = true;
-            prettier.enable = true;
-          };
-        };
       };
     };
 }
