@@ -8,7 +8,4 @@
     flyctl
     yubikey-manager
   ];
-  programs = {
-    home-manager.enable = true;
-  };
 }
