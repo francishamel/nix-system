@@ -6,7 +6,6 @@
       common = {
         home.stateVersion = "22.11";
         imports = [
-          ./1password.nix
           ./alacritty.nix
           ./bat.nix
           ./direnv.nix
@@ -21,10 +20,12 @@
       };
       common-darwin.imports = [
         self.homeModules.common
+        ./1password/darwin.nix
         ./zsh/darwin.nix
       ];
       common-linux.imports = [
         self.homeModules.common
+        ./1password/linux.nix
         ./zsh/linux.nix
       ];
     };
