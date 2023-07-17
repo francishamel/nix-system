@@ -6,6 +6,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-flake.url = "github:srid/nixos-flake";
   };
@@ -14,6 +17,7 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-darwin" "x86_64-linux" ];
       imports = [
+        inputs.treefmt-nix.flakeModule
         inputs.nixos-flake.flakeModule
         ./home
       ];
@@ -26,7 +30,7 @@
               ./systems/darwin.nix
               self.darwinModules.home-manager
               {
-                home-manager.users.francis = { pkgs, ... }: {
+                home-manager.users.francis = { ... }: {
                   imports = [
                     self.homeModules.common-darwin
                   ];
@@ -37,15 +41,25 @@
         };
       };
 
-      perSystem = { self', system, pkgs, lib, config, inputs', ... }: {
+      perSystem = { self', pkgs, config, ... }: {
         packages.default = self'.packages.activate; # Enable running nix run .# to switch derivation
+
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             nil
             nixpkgs-fmt
-            nodePackages.prettier
-            treefmt
+            config.treefmt.build.wrapper
           ];
+        };
+
+        treefmt = {
+          flakeFormatter = true;
+          projectRootFile = "flake.nix";
+          programs = {
+            deadnix.enable = true;
+            nixpkgs-fmt.enable = true;
+            prettier.enable = true;
+          };
         };
       };
     };
