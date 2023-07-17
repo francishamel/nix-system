@@ -27,7 +27,7 @@
         darwinConfigurations = {
           "MacBook-Pro-Intel" = self.nixos-flake.lib.mkIntelMacosSystem {
             imports = [
-              ./systems/darwin.nix
+              ./systems/macbook-intel-pro
               self.darwinModules.home-manager
               {
                 home-manager.users.francis = { ... }: {
