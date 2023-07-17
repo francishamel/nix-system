@@ -5,7 +5,7 @@
 
   perSystem = { pkgs, config, ... }: {
     devShells.default = pkgs.mkShell {
-      buildInputs = with pkgs; [
+      nativeBuildInputs = with pkgs; [
         nil
         nixpkgs-fmt
         config.treefmt.build.wrapper
