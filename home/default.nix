@@ -17,11 +17,16 @@
           ./ssh.nix
           ./terminal.nix
           ./vscode.nix
-          ./zsh.nix
         ];
       };
-      common-darwin.imports = [ self.homeModules.common ];
-      common-linux.imports = [ self.homeModules.common ];
+      common-darwin.imports = [
+        self.homeModules.common
+        ./zsh/darwin.nix
+      ];
+      common-linux.imports = [
+        self.homeModules.common
+        ./zsh/linux.nix
+      ];
     };
   };
 }
