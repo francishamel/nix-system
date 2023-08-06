@@ -11,6 +11,9 @@
     ./modules/users.nix
   ];
 
+  # TODO: move this somewhere central
+  nixpkgs.config.allowUnfree = true;
+
   # Make zsh the default shell
   programs.zsh.enable = true;
 
