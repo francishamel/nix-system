@@ -17,6 +17,7 @@
       "raycast"
       "slack"
       "spotify"
+      "todoist"
 
       # Temporary needed software
       # "balenaetcher" # For burning img/iso on sd cards/usb drive
