@@ -25,7 +25,8 @@
       flake = {
         # Configurations for macOS machines
         darwinConfigurations = {
-          "MacBook-Pro-Intel" = self.nixos-flake.lib.mkIntelMacosSystem {
+          "MacBook-Pro-Intel" = self.nixos-flake.lib.mkMacosSystem {
+            nixpkgs.hostPlatform = "x86_64-darwin";
             imports = [
               ./systems/macbook-intel-pro
               self.darwinModules.home-manager
