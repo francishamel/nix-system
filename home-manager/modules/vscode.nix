@@ -15,6 +15,7 @@
       gruntfuggly.todo-tree
       jnoortheen.nix-ide
       mkhl.direnv
+      phoenixframework.phoenix
       pkief.material-icon-theme
     ];
     mutableExtensionsDir = false;
@@ -26,6 +27,9 @@
       "editor.formatOnSave" = true;
       "editor.minimap.enabled" = false;
       "editor.tabSize" = 2;
+      "emmet.includeLanguages" = {
+        "phoenix-heex" = "html";
+      };
       "files.insertFinalNewline" = true;
       "git.allowForcePush" = true;
       "git.branchProtection" = [ "main" "master" "trunk" ];
@@ -45,6 +49,10 @@
         };
       };
       "projectManager.git.baseFolders" = [ "~/src" ];
+      "tailwindCSS.includeLanguages" = {
+        "elixir" = "html";
+        "phoenix-heex" = "html";
+      };
       "telemetry.telemetryLevel" = "off";
       "workbench.colorTheme" = "Solarized Dark";
       "workbench.iconTheme" = "material-icon-theme";
