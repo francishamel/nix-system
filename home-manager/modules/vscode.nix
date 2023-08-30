@@ -8,6 +8,7 @@
     extensions = with pkgs.vscode-extensions; [
       pkgs.vscode-extensions."1Password".op-vscode
       alefragnani.project-manager
+      arcticicestudio.nord-visual-studio-code
       bradlc.vscode-tailwindcss
       codezombiech.gitignore
       eamodio.gitlens
@@ -54,7 +55,7 @@
         "phoenix-heex" = "html";
       };
       "telemetry.telemetryLevel" = "off";
-      "workbench.colorTheme" = "Solarized Dark";
+      "workbench.colorTheme" = "Nord";
       "workbench.iconTheme" = "material-icon-theme";
       "workbench.startupEditor" = "none";
     };
