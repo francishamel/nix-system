@@ -3,8 +3,8 @@
 {
   programs = {
     bat = {
-      config.theme = "Solarized (dark)";
       enable = true;
+      config.theme = "Nord";
     };
 
     zsh.shellAliases."cat" = "${pkgs.bat}/bin/bat";
