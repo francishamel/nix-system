@@ -13,11 +13,13 @@
       codezombiech.gitignore
       eamodio.gitlens
       elixir-lsp.vscode-elixir-ls
+      gleam.gleam
       gruntfuggly.todo-tree
       jnoortheen.nix-ide
       mkhl.direnv
       phoenixframework.phoenix
       pkief.material-icon-theme
+      tamasfe.even-better-toml
     ];
     mutableExtensionsDir = false;
     package = pkgs.vscodium;
