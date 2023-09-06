@@ -2,10 +2,7 @@
 
 {
   programs = {
-    bat = {
-      enable = true;
-      config.theme = "Nord";
-    };
+    bat.enable = true;
 
     zsh.shellAliases."cat" = "${pkgs.bat}/bin/bat";
   };

@@ -1,8 +1,10 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     nix-darwin.url = "github:lnl7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -10,7 +12,10 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
+
     nixos-flake.url = "github:srid/nixos-flake";
+
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = inputs@{ self, ... }:
@@ -33,6 +38,7 @@
               {
                 home-manager.users.francis = { ... }: {
                   imports = [
+                    inputs.stylix.homeManagerModules.stylix
                     self.homeModules.common-darwin
                   ];
                 };
