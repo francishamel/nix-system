@@ -47,9 +47,5 @@
           };
         };
       };
-
-      perSystem = { self', ... }: {
-        packages.default = self'.packages.activate; # Enable running nix run .# to switch derivation
-      };
     };
 }
