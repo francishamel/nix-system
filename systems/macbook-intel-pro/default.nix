@@ -43,19 +43,6 @@
       options = "--delete-older-than 30d";
     };
 
-    registry.francishamel = {
-      from = {
-        id = "francishamel";
-        type = "indirect";
-      };
-      to = {
-        owner = "francishamel";
-        repo = "nix-templates";
-        type = "github";
-        ref = "main";
-      };
-    };
-
     # TODO: replace by myself
     settings.trusted-users = [ "francis" ];
   };
