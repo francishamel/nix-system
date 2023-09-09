@@ -38,6 +38,7 @@
               {
                 home-manager.users.francis = { ... }: {
                   imports = [
+                    self.homeModules.common
                     self.homeModules.darwin
                   ];
                   home.stateVersion = "22.11";

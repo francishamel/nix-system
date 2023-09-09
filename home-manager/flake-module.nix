@@ -1,4 +1,4 @@
-{ self, ... }:
+{ ... }:
 
 {
   flake = {
@@ -20,12 +20,10 @@
         ];
       };
       darwin.imports = [
-        self.homeModules.common
         ./modules/1password/darwin.nix
         ./modules/zsh/darwin.nix
       ];
       linux.imports = [
-        self.homeModules.common
         ./modules/1password/linux.nix
         ./modules/zsh/linux.nix
       ];
