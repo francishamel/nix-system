@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ flake, pkgs, ... }:
 
 {
+  imports = [ flake.inputs.stylix.homeManagerModules.stylix ];
+
   stylix = {
     autoEnable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
