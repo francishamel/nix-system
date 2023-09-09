@@ -41,6 +41,7 @@
                     inputs.stylix.homeManagerModules.stylix
                     self.homeModules.darwin
                   ];
+                  home.stateVersion = "22.11";
                 };
               }
             ];

@@ -4,7 +4,6 @@
   flake = {
     homeModules = {
       common = {
-        home.stateVersion = "22.11";
         imports = [
           ./modules/alacritty.nix
           ./modules/bat.nix
