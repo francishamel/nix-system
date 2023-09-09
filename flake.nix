@@ -39,7 +39,7 @@
                 home-manager.users.francis = { ... }: {
                   imports = [
                     inputs.stylix.homeManagerModules.stylix
-                    self.homeModules.common-darwin
+                    self.homeModules.darwin
                   ];
                 };
               }
