@@ -11,7 +11,6 @@
       "1password"
       "1password-cli"
       "discord"
-      "docker"
       "firefox"
       "obsidian"
       "raycast"

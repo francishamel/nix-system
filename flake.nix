@@ -25,6 +25,7 @@
         inputs.nixos-flake.flakeModule
         ./devshell/flake-module.nix
         ./home-manager/flake-module.nix
+        ./nixos/flake-module.nix
       ];
 
       flake = {
@@ -33,23 +34,40 @@
           "MacBook-Pro-Intel" = self.nixos-flake.lib.mkMacosSystem {
             nixpkgs.hostPlatform = "x86_64-darwin";
             imports = [
-              ./systems/macbook-intel-pro
+              self.nixosModules.common
+              self.nixosModules.darwin
               self.darwinModules.home-manager
               {
-                home-manager.users.francis = { ... }: {
+                networking.hostName = "MacBook-Pro-Intel";
+                # TODO: parameterize this
+                home-manager.users.francis = {
                   imports = [
-                    inputs.stylix.homeManagerModules.stylix
-                    self.homeModules.common-darwin
+                    self.homeModules.common
+                    self.homeModules.darwin
+                  ];
+                };
+              }
+            ];
+          };
+          "talimachine" = self.nixos-flake.lib.mkMacosSystem {
+            nixpkgs.hostPlatform = "aarch64-darwin";
+            imports = [
+              self.nixosModules.common
+              self.nixosModules.darwin
+              self.darwinModules.home-manager
+              {
+                networking.hostName = "talimachine";
+                # TODO: parameterize this
+                home-manager.users.francis = {
+                  imports = [
+                    self.homeModules.common
+                    self.homeModules.darwin
                   ];
                 };
               }
             ];
           };
         };
-      };
-
-      perSystem = { self', ... }: {
-        packages.default = self'.packages.activate; # Enable running nix run .# to switch derivation
       };
     };
 }
