@@ -25,6 +25,7 @@
         inputs.nixos-flake.flakeModule
         ./devshell/flake-module.nix
         ./home-manager/flake-module.nix
+        ./nixos/flake-module.nix
       ];
 
       flake = {
@@ -33,9 +34,11 @@
           "MacBook-Pro-Intel" = self.nixos-flake.lib.mkMacosSystem {
             nixpkgs.hostPlatform = "x86_64-darwin";
             imports = [
-              ./systems/macbook-intel-pro
+              self.nixosModules.common
+              self.nixosModules.darwin
               self.darwinModules.home-manager
               {
+                networking.hostName = "MacBook-Pro-Intel";
                 home-manager.users.francis = { ... }: {
                   imports = [
                     self.homeModules.common

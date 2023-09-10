@@ -10,7 +10,5 @@
     ];
 
     knownNetworkServices = [ "Wi-Fi" ];
-
-    hostName = "MacBook-Pro-Intel";
   };
 }
