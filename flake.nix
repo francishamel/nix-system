@@ -39,12 +39,30 @@
               self.darwinModules.home-manager
               {
                 networking.hostName = "MacBook-Pro-Intel";
-                home-manager.users.francis = { ... }: {
+                # TODO: parameterize this
+                home-manager.users.francis = {
                   imports = [
                     self.homeModules.common
                     self.homeModules.darwin
                   ];
-                  home.stateVersion = "22.11";
+                };
+              }
+            ];
+          };
+          "talimachine" = self.nixos-flake.lib.mkMacosSystem {
+            nixpkgs.hostPlatform = "aarch64-darwin";
+            imports = [
+              self.nixosModules.common
+              self.nixosModules.darwin
+              self.darwinModules.home-manager
+              {
+                networking.hostName = "talimachine";
+                # TODO: parameterize this
+                home-manager.users.francis = {
+                  imports = [
+                    self.homeModules.common
+                    self.homeModules.darwin
+                  ];
                 };
               }
             ];

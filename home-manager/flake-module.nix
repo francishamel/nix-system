@@ -18,6 +18,7 @@
           ./modules/terminal.nix
           ./modules/vscode.nix
         ];
+        home.stateVersion = "22.11";
       };
       darwin.imports = [
         ./modules/1password/darwin.nix
