@@ -32,6 +32,9 @@
         ./darwin/networking.nix
       ];
 
+      # Needed for correct $PATH
+      programs.zsh.enable = true;
+
       security.pam.enableSudoTouchIdAuth = true;
 
       services.nix-daemon.enable = true;
