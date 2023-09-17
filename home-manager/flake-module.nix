@@ -17,6 +17,7 @@
           ./modules/stylix.nix
           ./modules/terminal.nix
           ./modules/vscode.nix
+          ./modules/zellij.nix
         ];
         home.stateVersion = "22.11";
       };
