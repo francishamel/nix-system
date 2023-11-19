@@ -36,7 +36,7 @@
             imports = [
               self.nixosModules.common
               self.nixosModules.darwin
-              self.darwinModules.home-manager
+              self.darwinModules_.home-manager
               {
                 networking.hostName = "MacBook-Pro-Intel";
                 # TODO: parameterize this
@@ -54,7 +54,7 @@
             imports = [
               self.nixosModules.common
               self.nixosModules.darwin
-              self.darwinModules.home-manager
+              self.darwinModules_.home-manager
               {
                 networking.hostName = "talimachine";
                 # TODO: parameterize this
