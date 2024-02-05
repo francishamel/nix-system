@@ -20,7 +20,7 @@
 
   outputs = inputs@{ self, ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-darwin" "x86_64-linux" ];
+      systems = [ "x86_64-darwin" "aarch64-darwin" "x86_64-linux" ];
       imports = [
         inputs.nixos-flake.flakeModule
         ./devshell/flake-module.nix
