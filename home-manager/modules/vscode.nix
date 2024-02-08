@@ -6,8 +6,6 @@
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     extensions = with pkgs.vscode-extensions; [
-      pkgs.vscode-extensions."1Password".op-vscode
-      alefragnani.project-manager
       arcticicestudio.nord-visual-studio-code
       bradlc.vscode-tailwindcss
       codezombiech.gitignore
@@ -51,7 +49,6 @@
           };
         };
       };
-      "projectManager.git.baseFolders" = [ "~/src" ];
       "tailwindCSS.includeLanguages" = {
         "elixir" = "html";
         "phoenix-heex" = "html";
