@@ -18,6 +18,19 @@
       phoenixframework.phoenix
       pkief.material-icon-theme
       tamasfe.even-better-toml
+    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "ruby-lsp";
+        publisher = "Shopify";
+        version = "0.6.7";
+        sha256 = "sha256-zVhQBpTPGR8vKGQY+MfDmlSR18vfESMOrXhGF/bo9Kc=";
+      }
+      {
+        name = "vscode-rdbg";
+        publisher = "KoichiSasada";
+        version = "0.2.2";
+        sha256 = "sha256-iqUxaMIeqMAyh5EyOiOxraGZZpZUegschMoVjtWz67c=";
+      }
     ];
     mutableExtensionsDir = false;
     package = pkgs.vscodium;
