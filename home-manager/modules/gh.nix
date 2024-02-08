@@ -10,7 +10,7 @@
         "prv" = "pr view --web";
         "rc" = "repo clone $1 ${config.home.homeDirectory}/src/$1";
       };
-      editor = "code --wait";
+      editor = "codium --wait";
       git_protocol = "ssh";
     };
   };

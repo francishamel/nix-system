@@ -10,7 +10,7 @@
     };
     enable = true;
     extraConfig = {
-      core.editor = "code --wait";
+      core.editor = "codium --wait";
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
       pull.rebase = true;

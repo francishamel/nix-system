@@ -65,10 +65,7 @@
 
   programs.zsh = {
     initExtra = ''
-      EDITOR="code --wait"
+      EDITOR="codium --wait"
     '';
-    shellAliases = {
-      code = "codium";
-    };
   };
 }
