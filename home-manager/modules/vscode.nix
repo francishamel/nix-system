@@ -41,7 +41,10 @@
       "editor.formatOnSave" = true;
       "editor.minimap.enabled" = false;
       "editor.tabSize" = 2;
+      "elixirLS.dialyzerEnabled" = false;
+      "elixirLS.suggestSpecs" = false;
       "emmet.includeLanguages" = {
+        "elixir" = "html";
         "phoenix-heex" = "html";
       };
       "files.insertFinalNewline" = true;
