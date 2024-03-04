@@ -12,6 +12,7 @@
       "1password-cli"
       "arc"
       "dash"
+      "datagrip"
       "discord"
       "firefox"
       "google-chrome"
