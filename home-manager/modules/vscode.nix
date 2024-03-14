@@ -47,6 +47,7 @@
       "emmet.includeLanguages" = {
         "elixir" = "html";
         "phoenix-heex" = "html";
+        "erb" = "html";
       };
       "files.insertFinalNewline" = true;
       "git.allowForcePush" = true;
