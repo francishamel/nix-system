@@ -9,7 +9,6 @@
           ./modules/bat.nix
           ./modules/direnv.nix
           ./modules/fzf.nix
-          ./modules/gh.nix
           ./modules/git.nix
           ./modules/lsd.nix
           ./modules/ssh.nix
