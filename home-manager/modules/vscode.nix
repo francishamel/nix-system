@@ -5,19 +5,20 @@
     enable = true;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
-    extensions = with pkgs.vscode-extensions; [
-      arcticicestudio.nord-visual-studio-code
-      bradlc.vscode-tailwindcss
-      codezombiech.gitignore
-      eamodio.gitlens
-      elixir-lsp.vscode-elixir-ls
-      gleam.gleam
-      gruntfuggly.todo-tree
-      jnoortheen.nix-ide
-      mkhl.direnv
-      phoenixframework.phoenix
-      pkief.material-icon-theme
-      tamasfe.even-better-toml
+    extensions = [
+      pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
+      pkgs.vscode-extensions.bradlc.vscode-tailwindcss
+      pkgs.vscode-extensions.codezombiech.gitignore
+      pkgs.vscode-extensions.eamodio.gitlens
+      pkgs.vscode-extensions.elixir-lsp.vscode-elixir-ls
+      pkgs.vscode-extensions.gleam.gleam
+      pkgs.vscode-extensions.gruntfuggly.todo-tree
+      pkgs.vscode-extensions.jnoortheen.nix-ide
+      pkgs.vscode-extensions.mkhl.direnv
+      pkgs.vscode-extensions.ms-python.python
+      pkgs.vscode-extensions.phoenixframework.phoenix
+      pkgs.vscode-extensions.pkief.material-icon-theme
+      pkgs.vscode-extensions.tamasfe.even-better-toml
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "ruby-lsp";

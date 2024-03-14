@@ -1,11 +1,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    cachix
-    d2
-    flyctl
-    upterm
-    yubikey-manager
+  home.packages = [
+    pkgs.cachix
+    pkgs.d2
+    pkgs.flyctl
+    pkgs.upterm
+    pkgs.yubikey-manager
   ];
 }
