@@ -19,6 +19,7 @@
         autoStash = true;
         autosquash = true;
       };
+      rerere.enabled = true;
     };
   };
 
