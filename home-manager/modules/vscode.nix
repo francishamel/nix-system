@@ -19,20 +19,7 @@
       pkgs.vscode-extensions.phoenixframework.phoenix
       pkgs.vscode-extensions.pkief.material-icon-theme
       pkgs.vscode-extensions.tamasfe.even-better-toml
-    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "ruby-lsp";
-        publisher = "Shopify";
-        version = "0.6.7";
-        sha256 = "sha256-zVhQBpTPGR8vKGQY+MfDmlSR18vfESMOrXhGF/bo9Kc=";
-      }
-      {
-        name = "vscode-rdbg";
-        publisher = "KoichiSasada";
-        version = "0.2.2";
-        sha256 = "sha256-iqUxaMIeqMAyh5EyOiOxraGZZpZUegschMoVjtWz67c=";
-      }
-    ];
+    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ ];
     mutableExtensionsDir = false;
     package = pkgs.vscodium;
     userSettings = {
@@ -58,6 +45,9 @@
       "git.terminalAuthentication" = false;
       "git.untrackedChanges" = "separate";
       "github.gitAuthentication" = false;
+      "gitlens.plusFeatures.enabled" = false;
+      "gitlens.showWelcomeOnInstall" = false;
+      "gitlens.showWhatsNewAfterUpgrades" = false;
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
       "nix.serverSettings" = {
