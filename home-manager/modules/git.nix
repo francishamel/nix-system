@@ -8,6 +8,7 @@
       cf = "commit --fixup";
       fp = "fetch --prune";
       pfwl = "push --force-with-lease";
+      ri = "rebase --interactive";
     };
     enable = true;
     extraConfig = {
