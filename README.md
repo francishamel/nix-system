@@ -10,4 +10,4 @@
 2. Clone this repo
 3. Change the config's hostname to the computer's hostname
 4. Change the config's user to current user
-5. Run `nix run --extra-experimental-features 'nix-command flakes' .#`
+5. Run `nix run --extra-experimental-features 'nix-command flakes' .#activate`
