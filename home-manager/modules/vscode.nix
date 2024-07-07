@@ -21,7 +21,6 @@
       pkgs.vscode-extensions.tamasfe.even-better-toml
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ ];
     mutableExtensionsDir = false;
-    package = pkgs.vscodium;
     userSettings = {
       "diffEditor.ignoreTrimWhitespace" = false;
       "editor.fontFamily" = "'FiraCode Nerd Font'";
@@ -70,7 +69,7 @@
 
   programs.zsh = {
     initExtra = ''
-      EDITOR="codium --wait"
+      EDITOR="${pkgs.vscode}/bin/code --wait"
     '';
   };
 }
