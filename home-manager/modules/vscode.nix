@@ -61,6 +61,7 @@
         "phoenix-heex" = "html";
       };
       "telemetry.telemetryLevel" = "off";
+      "terminal.integrated.macOptionIsMeta" = true;
       "workbench.colorTheme" = "Nord";
       "workbench.iconTheme" = "material-icon-theme";
       "workbench.startupEditor" = "none";
