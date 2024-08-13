@@ -10,12 +10,14 @@
           ./modules/direnv.nix
           ./modules/fzf.nix
           ./modules/git.nix
+          ./modules/helix.nix
           ./modules/lsd.nix
           ./modules/ssh.nix
           ./modules/starship.nix
           ./modules/stylix.nix
           ./modules/terminal.nix
           ./modules/vscode.nix
+          ./modules/zellij.nix
         ];
         home.stateVersion = "22.11";
       };
