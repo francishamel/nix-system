@@ -6,6 +6,5 @@
     pkgs.d2
     pkgs.devenv
     pkgs.flyctl
-    pkgs.yubikey-manager
   ];
 }

@@ -21,6 +21,7 @@
       "slack"
       "spotify"
       "todoist"
+      "yubico-yubikey-manager"
     ];
   };
 }
