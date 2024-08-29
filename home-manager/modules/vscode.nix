@@ -23,6 +23,7 @@
     mutableExtensionsDir = false;
     userSettings = {
       "diffEditor.ignoreTrimWhitespace" = false;
+      "editor.accessibilitySupport" = "off";
       "editor.fontFamily" = "'FiraCode Nerd Font'";
       "editor.fontLigatures" = true;
       "editor.formatOnSave" = true;
@@ -56,6 +57,7 @@
           };
         };
       };
+      "scm.showHistoryGraph" = false;
       "tailwindCSS.includeLanguages" = {
         "elixir" = "html";
         "phoenix-heex" = "html";
