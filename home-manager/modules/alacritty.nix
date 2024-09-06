@@ -2,7 +2,7 @@
 
 {
   programs.alacritty = {
-    enable = true;
+    enable = false;
     settings = {
       window = {
         dynamic_title = false;
