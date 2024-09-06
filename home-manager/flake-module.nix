@@ -18,6 +18,7 @@
           ./modules/terminal.nix
           ./modules/vscode.nix
           ./modules/wezterm.nix
+          ./modules/yazi.nix
           ./modules/zellij.nix
         ];
         home.stateVersion = "22.11";
