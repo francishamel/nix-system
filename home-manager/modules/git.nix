@@ -5,7 +5,8 @@
     userName = "Francis Hamel";
     userEmail = "36383308+francishamel@users.noreply.github.com";
     aliases = {
-      ca = "commit --amend";
+      ca = "commit --amend --no-edit";
+      cae = "commit --amend";
       cf = "commit --fixup";
       fp = "fetch --prune";
       pfwl = "push --force-with-lease";
