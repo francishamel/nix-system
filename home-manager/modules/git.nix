@@ -31,6 +31,9 @@
     gitCredentialHelper.enable = false;
     settings = {
       aliases = {
+        "ic" = "issue create --web";
+        "id" = "issue develop --checkout $1";
+        "il" = "issue list";
         "prc" = "pr create --web --assignee @me";
         "prv" = "pr view --web";
         "rc" = "repo clone $1 ${config.home.homeDirectory}/src/$1";
