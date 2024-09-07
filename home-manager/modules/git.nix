@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   programs.git = {
@@ -14,7 +14,6 @@
     };
     enable = true;
     extraConfig = {
-      core.editor = "${pkgs.vscode}/bin/code --wait";
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
       pull.rebase = true;
@@ -38,7 +37,6 @@
         "prv" = "pr view --web";
         "rc" = "repo clone $1 ${config.home.homeDirectory}/src/$1";
       };
-      editor = "${pkgs.vscode}/bin/code --wait";
       git_protocol = "ssh";
     };
   };
