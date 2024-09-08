@@ -1,11 +1,12 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   programs.git = {
     userName = "Francis Hamel";
     userEmail = "36383308+francishamel@users.noreply.github.com";
     aliases = {
-      ca = "commit --amend";
+      ca = "commit --amend --no-edit";
+      cae = "commit --amend";
       cf = "commit --fixup";
       fp = "fetch --prune";
       pfwl = "push --force-with-lease";
@@ -13,7 +14,6 @@
     };
     enable = true;
     extraConfig = {
-      core.editor = "${pkgs.vscode}/bin/code --wait";
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
       pull.rebase = true;
@@ -30,11 +30,13 @@
     gitCredentialHelper.enable = false;
     settings = {
       aliases = {
+        "ic" = "issue create --web";
+        "id" = "issue develop $1 --checkout";
+        "il" = "issue list";
         "prc" = "pr create --web --assignee @me";
         "prv" = "pr view --web";
         "rc" = "repo clone $1 ${config.home.homeDirectory}/src/$1";
       };
-      editor = "${pkgs.vscode}/bin/code --wait";
       git_protocol = "ssh";
     };
   };

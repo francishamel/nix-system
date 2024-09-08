@@ -69,10 +69,4 @@
       "workbench.startupEditor" = "none";
     };
   };
-
-  programs.zsh = {
-    initExtra = ''
-      EDITOR="${pkgs.vscode}/bin/code --wait"
-    '';
-  };
 }
