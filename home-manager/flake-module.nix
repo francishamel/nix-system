@@ -23,9 +23,13 @@
         ];
         home.stateVersion = "22.11";
       };
-      darwin.imports = [
+      darwin-x86-64.imports = [
         ./modules/1password/darwin.nix
-        ./modules/zsh/darwin.nix
+        ./modules/zsh/darwin-x86-64.nix
+      ];
+      darwin-aarch64.imports = [
+        ./modules/1password/darwin.nix
+        ./modules/zsh/darwin-aarch64.nix
       ];
       linux.imports = [
         ./modules/1password/linux.nix
