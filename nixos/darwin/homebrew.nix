@@ -1,10 +1,15 @@
 { ... }:
 
+let
+  # Change to true when you want to upgrade homebrew packages
+  upgrade = false;
+in
 {
   homebrew = {
     onActivation = {
-      autoUpdate = false;
+      autoUpdate = upgrade;
       cleanup = "zap";
+      upgrade = upgrade;
     };
     enable = true;
     casks = [
