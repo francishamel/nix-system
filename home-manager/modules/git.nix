@@ -31,7 +31,7 @@
     settings = {
       aliases = {
         "ic" = "issue create --web";
-        "id" = "issue develop --checkout $1";
+        "id" = "issue develop $1 --checkout";
         "il" = "issue list";
         "prc" = "pr create --web --assignee @me";
         "prv" = "pr view --web";
