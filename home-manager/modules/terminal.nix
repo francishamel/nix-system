@@ -6,5 +6,6 @@
     pkgs.d2
     pkgs.devenv
     pkgs.flyctl
+    pkgs.just
   ];
 }
