@@ -14,7 +14,6 @@
       "dash"
       "datagrip"
       "discord"
-      "firefox"
       "google-chrome"
       "obsidian"
       "raycast"
