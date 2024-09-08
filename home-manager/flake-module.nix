@@ -14,7 +14,6 @@
           ./modules/helix.nix
           ./modules/ssh.nix
           ./modules/starship.nix
-          ./modules/stylix.nix
           ./modules/terminal.nix
           ./modules/vscode.nix
           ./modules/wezterm.nix

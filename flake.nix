@@ -14,8 +14,6 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     nixos-flake.url = "github:srid/nixos-flake";
-
-    stylix.url = "github:danth/stylix";
   };
 
   outputs = inputs@{ self, ... }:
