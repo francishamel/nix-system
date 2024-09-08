@@ -55,6 +55,7 @@ in
           end = "no_op";
         };
       };
+      theme = "nord";
     };
   };
 }
