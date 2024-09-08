@@ -41,7 +41,7 @@
                 home-manager.users.francis = {
                   imports = [
                     self.homeModules.common
-                    self.homeModules.darwin
+                    self.homeModules.darwin-x86-64
                   ];
                 };
               }
@@ -59,7 +59,7 @@
                 home-manager.users.francis = {
                   imports = [
                     self.homeModules.common
-                    self.homeModules.darwin
+                    self.homeModules.darwin-aarch64
                   ];
                 };
               }
