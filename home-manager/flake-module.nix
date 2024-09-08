@@ -11,6 +11,7 @@
           ./modules/eza.nix
           ./modules/fzf.nix
           ./modules/git.nix
+          ./modules/gui.nix
           ./modules/helix.nix
           ./modules/ssh.nix
           ./modules/starship.nix
