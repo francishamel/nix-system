@@ -8,10 +8,10 @@
           ./modules/alacritty.nix
           ./modules/bat.nix
           ./modules/direnv.nix
+          ./modules/eza.nix
           ./modules/fzf.nix
           ./modules/git.nix
           ./modules/helix.nix
-          ./modules/lsd.nix
           ./modules/ssh.nix
           ./modules/starship.nix
           ./modules/stylix.nix
