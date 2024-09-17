@@ -13,6 +13,7 @@
           ./modules/git.nix
           ./modules/gui.nix
           ./modules/helix.nix
+          ./modules/ripgrep.nix
           ./modules/ssh.nix
           ./modules/starship.nix
           ./modules/terminal.nix
