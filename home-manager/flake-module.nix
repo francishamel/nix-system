@@ -21,6 +21,7 @@
           ./modules/wezterm.nix
           ./modules/yazi.nix
           ./modules/zellij.nix
+          ./modules/zoxide.nix
         ];
         home.stateVersion = "22.11";
       };
