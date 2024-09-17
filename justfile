@@ -7,3 +7,6 @@ activate:
 
 update:
   @nix run .#update
+
+format:
+  @nix fmt
