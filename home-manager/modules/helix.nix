@@ -19,6 +19,14 @@ in
   programs.helix = {
     enable = true;
     defaultEditor = true;
+    extraPackages = [
+      pkgs.elixir-ls
+      pkgs.gleam
+      pkgs.lua-language-server
+      pkgs.python312Packages.python-lsp-server
+      pkgs.taplo
+      pkgs.yaml-language-server
+    ];
     languages = {
       language = [
         {
