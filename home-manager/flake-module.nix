@@ -13,6 +13,7 @@
           ./modules/git.nix
           ./modules/gui.nix
           ./modules/helix.nix
+          ./modules/ripgrep.nix
           ./modules/ssh.nix
           ./modules/starship.nix
           ./modules/terminal.nix
@@ -20,6 +21,7 @@
           ./modules/wezterm.nix
           ./modules/yazi.nix
           ./modules/zellij.nix
+          ./modules/zoxide.nix
         ];
         home.stateVersion = "22.11";
       };

@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   programs = {
@@ -43,5 +43,7 @@
     };
 
     lazygit.enable = true;
+
+    zsh.shellAliases.lg = "${pkgs.lazygit}/bin/lazygit";
   };
 }
