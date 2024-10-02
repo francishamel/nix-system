@@ -7,6 +7,7 @@ end)
 
 local config = wezterm.config_builder()
 
+config.audible_bell = "Disabled"
 config.color_scheme = "nord"
 config.enable_tab_bar = false
 config.font = wezterm.font("FiraCode Nerd Font")
