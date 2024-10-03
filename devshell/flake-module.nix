@@ -22,6 +22,13 @@
         stylua.enable = true;
         taplo.enable = true;
       };
+      settings.global.excludes = [
+        ".envrc"
+        ".gitignore"
+        "flake.lock"
+        "justfile"
+        "**/.gitkeep"
+      ];
     };
   };
 }
