@@ -2,7 +2,7 @@
 
 {
   programs.vscode = {
-    enable = true;
+    enable = false;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     extensions = [
