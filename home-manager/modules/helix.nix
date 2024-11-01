@@ -25,6 +25,7 @@ in
       pkgs.lua-language-server
       pkgs.python312Packages.python-lsp-server
       pkgs.taplo
+      pkgs.typescript-language-server
       pkgs.yaml-language-server
     ];
     languages = {
