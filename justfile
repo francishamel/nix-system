@@ -9,8 +9,11 @@ alias u := update
 activate:
   @nix run .#activate
 
+# update:
+#   @nix run .#update
+
 update:
-  @nix run .#update
+  @nix flake update nixpkgs home-manager treefmt-nix flake-parts
 
 format:
   @nix fmt
