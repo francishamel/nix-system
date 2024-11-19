@@ -36,6 +36,7 @@
           "id" = "issue develop $1 --checkout";
           "il" = "issue list";
           "prc" = "pr create --web --assignee @me";
+          "prd" = "pr create --draft --assignee @me";
           "prv" = "pr view --web";
           "rc" = "repo clone $1 ${config.home.homeDirectory}/src/$1";
         };
