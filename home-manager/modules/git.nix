@@ -12,6 +12,7 @@
         fp = "fetch --prune";
         pfwl = "push --force-with-lease";
         ri = "rebase --interactive";
+        "print-branch" = "rev-parse --abbrev-ref HEAD";
       };
       enable = true;
       extraConfig = {
@@ -35,6 +36,7 @@
           "id" = "issue develop $1 --checkout";
           "il" = "issue list";
           "prc" = "pr create --web --assignee @me";
+          "prd" = "pr create --draft --assignee @me";
           "prv" = "pr view --web";
           "rc" = "repo clone $1 ${config.home.homeDirectory}/src/$1";
         };
