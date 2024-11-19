@@ -16,7 +16,6 @@ in
       "1password"
       "1password-cli"
       "arc"
-      "dash"
       "datagrip"
       "google-chrome"
       "obsidian"
