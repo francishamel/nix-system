@@ -12,6 +12,7 @@
         fp = "fetch --prune";
         pfwl = "push --force-with-lease";
         ri = "rebase --interactive";
+        "print-branch" = "rev-parse --abbrev-ref HEAD";
       };
       enable = true;
       extraConfig = {
