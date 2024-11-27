@@ -25,6 +25,15 @@
         };
         rerere.enabled = true;
       };
+      delta = {
+        enable = true;
+        options = {
+          line-numbers = true;
+          navigate = true;
+          side-by-side = true;
+          theme = "Nord";
+        };
+      };
     };
 
     gh = {
