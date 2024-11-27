@@ -17,13 +17,22 @@
       enable = true;
       extraConfig = {
         init.defaultBranch = "main";
-        merge.conflictstyle = "diff3";
+        merge.conflictstyle = "zdiff3";
         pull.rebase = true;
         rebase = {
           autoStash = true;
           autosquash = true;
         };
         rerere.enabled = true;
+      };
+      delta = {
+        enable = true;
+        options = {
+          line-numbers = true;
+          navigate = true;
+          side-by-side = true;
+          theme = "Nord";
+        };
       };
     };
 
@@ -44,7 +53,13 @@
       };
     };
 
-    lazygit.enable = true;
+    lazygit = {
+      enable = true;
+      settings = {
+        git.paging.pager = "${config.programs.git.delta.package}/bin/delta --dark --paging=never";
+        gui.nerdFontsVersion = "3";
+      };
+    };
 
     zsh.shellAliases.lg = "${pkgs.lazygit}/bin/lazygit";
   };
