@@ -53,7 +53,13 @@
       };
     };
 
-    lazygit.enable = true;
+    lazygit = {
+      enable = true;
+      settings = {
+        git.paging.pager = "${config.programs.git.delta.package}/bin/delta --dark --paging=never";
+        gui.nerdFontsVersion = "3";
+      };
+    };
 
     zsh.shellAliases.lg = "${pkgs.lazygit}/bin/lazygit";
   };
