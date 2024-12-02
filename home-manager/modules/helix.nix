@@ -51,7 +51,7 @@ in
       };
       keys = {
         normal = {
-          "C-y" = lib.mkIf config.programs.yazi.enable ":sh ${pkgs.zellij}/bin/zellij run -f -n yazi-picker -x 10% -y 10% --width 80% --height 80% -- ${yaziPicker}/bin/yazi-picker";
+          "C-y" = lib.mkIf (config.programs.yazi.enable && config.programs.zellij.enable) ":sh ${pkgs.zellij}/bin/zellij run -f -n yazi-picker -x 10% -y 10% --width 80% --height 80% -- ${yaziPicker}/bin/yazi-picker";
         };
         insert = {
           up = "no_op";
