@@ -56,7 +56,10 @@
     lazygit = {
       enable = true;
       settings = {
-        git.paging.pager = "${config.programs.git.delta.package}/bin/delta --dark --paging=never";
+        git = {
+          paging.pager = "${config.programs.git.delta.package}/bin/delta --dark --paging=never";
+          overrideGpg = true;
+        };
         gui.nerdFontsVersion = "3";
       };
     };
