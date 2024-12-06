@@ -1,4 +1,4 @@
-name: "treefmt"
+name: "nix flake check"
 on:
   pull_request:
     branches:
@@ -14,5 +14,5 @@ jobs:
         with:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-      - name: Run treefmt
-        run: nix develop --command treefmt --fail-on-change
+      - name: Run nix flake check
+        run: nix flake check

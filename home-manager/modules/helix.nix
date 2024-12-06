@@ -23,6 +23,7 @@ in
       pkgs.elixir-ls
       pkgs.gleam
       pkgs.lua-language-server
+      pkgs.nil
       pkgs.python312Packages.python-lsp-server
       pkgs.taplo
       pkgs.typescript-language-server
