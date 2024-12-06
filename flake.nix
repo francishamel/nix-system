@@ -21,10 +21,31 @@
       systems = [ "x86_64-darwin" "aarch64-darwin" "x86_64-linux" ];
       imports = [
         inputs.nixos-flake.flakeModule
-        ./devshell/flake-module.nix
+        inputs.treefmt-nix.flakeModule
         ./home-manager/flake-module.nix
         ./nixos/flake-module.nix
       ];
+
+      perSystem = { ... }: {
+        treefmt = {
+          flakeFormatter = true;
+          projectRootFile = "flake.nix";
+          programs = {
+            deadnix.enable = true;
+            nixpkgs-fmt.enable = true;
+            prettier.enable = true;
+            stylua.enable = true;
+            taplo.enable = true;
+          };
+          settings.global.excludes = [
+            ".envrc"
+            ".gitignore"
+            "flake.lock"
+            "justfile"
+            "**/.gitkeep"
+          ];
+        };
+      };
 
       flake = {
         # Configurations for macOS machines
