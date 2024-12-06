@@ -24,17 +24,20 @@ in
       pkgs.gleam
       pkgs.lua-language-server
       pkgs.nil
+      pkgs.nixd
       pkgs.python312Packages.python-lsp-server
       pkgs.taplo
       pkgs.typescript-language-server
       pkgs.yaml-language-server
     ];
     languages = {
+      language-server.nixd.command = "${pkgs.nixd}/bin/nixd";
       language = [
         {
           name = "nix";
           auto-format = true;
           formatter.command = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
+          language-servers = [ "nixd" "nil" ];
         }
       ];
     };
