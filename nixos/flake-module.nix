@@ -13,9 +13,6 @@
           };
           options = "--delete-older-than 30d";
         };
-
-        # TODO: parameterize the user name
-        settings.trusted-users = [ "francis" ];
       };
 
       nixpkgs.config.allowUnfree = true;
