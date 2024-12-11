@@ -14,8 +14,6 @@ config.audible_bell = "Disabled"
 
 config.color_scheme = "nord"
 
-config.hide_tab_bar_if_only_one_tab = true
-
 config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 14.0
 
@@ -23,6 +21,10 @@ config.front_end = "WebGpu"
 
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE"
+
+-- TODO: enable this config option when available outside of nightly build
+-- config.show_close_tab_button_in_tabs = false
+config.show_new_tab_button_in_tab_bar = false
 
 config.disable_default_key_bindings = true
 
@@ -55,6 +57,10 @@ config.keys = {
 
 	{ key = "c", mods = "CMD", action = act.CopyTo("Clipboard") },
 	{ key = "v", mods = "CMD", action = act.PasteFrom("Clipboard") },
+
+	{ key = "=", mods = "CMD", action = act.IncreaseFontSize },
+	{ key = "-", mods = "CMD", action = act.DecreaseFontSize },
+	{ key = "0", mods = "CMD", action = act.ResetFontSize },
 }
 
 return config
