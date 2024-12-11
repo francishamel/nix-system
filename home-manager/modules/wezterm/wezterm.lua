@@ -55,6 +55,10 @@ config.keys = {
 
 	{ key = "c", mods = "CMD", action = act.CopyTo("Clipboard") },
 	{ key = "v", mods = "CMD", action = act.PasteFrom("Clipboard") },
+
+	{ key = "=", mods = "CMD", action = act.IncreaseFontSize },
+	{ key = "-", mods = "CMD", action = act.DecreaseFontSize },
+	{ key = "0", mods = "CMD", action = act.ResetFontSize },
 }
 
 return config
