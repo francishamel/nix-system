@@ -23,7 +23,6 @@
       imports = [
         ./darwin/dock.nix
         ./darwin/finder.nix
-        ./darwin/fonts.nix
         ./darwin/homebrew.nix
         ./darwin/mouse.nix
         ./darwin/networking.nix
