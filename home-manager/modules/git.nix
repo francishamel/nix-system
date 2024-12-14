@@ -16,12 +16,18 @@
       };
       enable = true;
       extraConfig = {
+        fetch.prune = true;
         init.defaultBranch = "main";
         merge.conflictstyle = "zdiff3";
         pull.rebase = true;
+        push = {
+          autoSetupRemote = true;
+          useForceIfIncludes = true;
+        };
         rebase = {
           autoStash = true;
           autosquash = true;
+          updateRefs = true;
         };
         rerere.enabled = true;
       };
