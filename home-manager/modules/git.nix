@@ -23,6 +23,7 @@
         rebase = {
           autoStash = true;
           autosquash = true;
+          updateRefs = true;
         };
         rerere.enabled = true;
       };
