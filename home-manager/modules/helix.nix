@@ -43,6 +43,8 @@ in
     };
     settings = {
       editor = {
+        bufferline = "always";
+        color-modes = true;
         cursor-shape = {
           insert = "bar";
           normal = "block";
@@ -52,6 +54,13 @@ in
         middle-click-paste = false;
         mouse = false;
         rulers = [ 120 ];
+        statusline = {
+          mode = {
+            normal = "NORMAL";
+            insert = "INSERT";
+            select = "SELECT";
+          };
+        };
       };
       keys = {
         normal = {
@@ -64,6 +73,8 @@ in
           home = "no_op";
           end = "no_op";
           "C-y" = lib.mkIf (config.programs.yazi.enable && config.programs.zellij.enable) ":sh ${pkgs.zellij}/bin/zellij run -f -n yazi-picker -x 10% -y 10% --width 80% --height 80% -- ${yaziPicker}/bin/yazi-picker";
+          "C-j" = [ "extend_to_line_bounds" "delete_selection" "paste_after" ];
+          "C-k" = [ "extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before" ];
         };
         insert = {
           up = "no_op";
