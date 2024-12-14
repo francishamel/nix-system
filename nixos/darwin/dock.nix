@@ -10,5 +10,11 @@
     mru-spaces = false;
     show-process-indicators = false;
     static-only = true;
+
+    # Disable all hot corners
+    wvous-tl-corner = 1;
+    wvous-tr-corner = 1;
+    wvous-bl-corner = 1;
+    wvous-br-corner = 1;
   };
 }
