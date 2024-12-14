@@ -16,6 +16,7 @@
       };
       enable = true;
       extraConfig = {
+        fetch.prune = true;
         init.defaultBranch = "main";
         merge.conflictstyle = "zdiff3";
         pull.rebase = true;
