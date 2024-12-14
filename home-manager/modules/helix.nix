@@ -43,6 +43,8 @@ in
     };
     settings = {
       editor = {
+        bufferline = "always";
+        color-modes = true;
         cursor-shape = {
           insert = "bar";
           normal = "block";
@@ -52,6 +54,13 @@ in
         middle-click-paste = false;
         mouse = false;
         rulers = [ 120 ];
+        statusline = {
+          mode = {
+            normal = "NORMAL";
+            insert = "INSERT";
+            select = "SELECT";
+          };
+        };
       };
       keys = {
         normal = {
