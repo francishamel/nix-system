@@ -16,7 +16,7 @@
     nixos-flake.url = "github:srid/nixos-flake";
   };
 
-  outputs = inputs@{ self, ... }:
+  outputs = inputs@{ ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "aarch64-darwin" "x86_64-linux" ];
       imports = [
@@ -24,6 +24,7 @@
         inputs.treefmt-nix.flakeModule
         ./home-manager/flake-module.nix
         ./nixos/flake-module.nix
+        ./hosts/flake-module.nix
       ];
 
       perSystem = { ... }: {
@@ -43,27 +44,6 @@
             "flake.lock"
             "justfile"
             "**/.gitkeep"
-          ];
-        };
-      };
-
-      flake = {
-        darwinConfigurations."talimachine" = self.nixos-flake.lib.mkMacosSystem {
-          nixpkgs.hostPlatform = "aarch64-darwin";
-          imports = [
-            self.nixosModules.common
-            self.nixosModules.darwin
-            self.darwinModules_.home-manager
-            {
-              networking.hostName = "talimachine";
-              # TODO: parameterize this
-              home-manager.users.francis = {
-                imports = [
-                  self.homeModules.common
-                  self.homeModules.darwin-aarch64
-                ];
-              };
-            }
           ];
         };
       };
