@@ -3,13 +3,14 @@
 {
   flake = {
     darwinConfigurations = {
-      "talimachine" = self.nixos-flake.lib.mkMacosSystem {
-        nixpkgs.hostPlatform = "aarch64-darwin";
-        imports = [
+      "talimachine" = inputs.nix-darwin.lib.darwinSystem {
+        modules = [
           self.nixosModules.common
           self.nixosModules.darwin
           inputs.home-manager.darwinModules.home-manager
           {
+            nixpkgs.hostPlatform = "aarch64-darwin";
+
             networking.hostName = "talimachine";
 
             # These 2 lines are needed to ensure we reuse the nixpkgs config

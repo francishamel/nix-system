@@ -12,15 +12,12 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-
-    nixos-flake.url = "github:srid/nixos-flake";
   };
 
   outputs = inputs@{ ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "aarch64-darwin" "x86_64-linux" ];
       imports = [
-        inputs.nixos-flake.flakeModule
         inputs.treefmt-nix.flakeModule
         ./home-manager/flake-module.nix
         ./modules/flake-module.nix
