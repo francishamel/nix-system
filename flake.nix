@@ -23,7 +23,7 @@
         inputs.nixos-flake.flakeModule
         inputs.treefmt-nix.flakeModule
         ./home-manager/flake-module.nix
-        ./nixos/flake-module.nix
+        ./modules/flake-module.nix
         ./hosts/flake-module.nix
       ];
 
