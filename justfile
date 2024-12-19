@@ -2,15 +2,12 @@
 default:
   @just --list
 
-alias a := activate
+alias dr := darwin-rebuild
 alias f := format
 alias u := update
 
-activate:
-  @nix run .#activate
-
-# update:
-#   @nix run .#update
+darwin-rebuild:
+  @darwin-rebuild switch --flake .#
 
 update:
   @nix flake update nixpkgs home-manager treefmt-nix flake-parts

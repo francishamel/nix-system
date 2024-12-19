@@ -12,18 +12,16 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-
-    nixos-flake.url = "github:srid/nixos-flake";
   };
 
-  outputs = inputs@{ self, ... }:
+  outputs = inputs@{ ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-darwin" "aarch64-darwin" "x86_64-linux" ];
+      systems = [ "aarch64-darwin" "x86_64-linux" ];
       imports = [
-        inputs.nixos-flake.flakeModule
         inputs.treefmt-nix.flakeModule
         ./home-manager/flake-module.nix
-        ./nixos/flake-module.nix
+        ./modules/flake-module.nix
+        ./hosts/flake-module.nix
       ];
 
       perSystem = { ... }: {
@@ -44,48 +42,6 @@
             "justfile"
             "**/.gitkeep"
           ];
-        };
-      };
-
-      flake = {
-        # Configurations for macOS machines
-        darwinConfigurations = {
-          "MacBook-Pro-Intel" = self.nixos-flake.lib.mkMacosSystem {
-            nixpkgs.hostPlatform = "x86_64-darwin";
-            imports = [
-              self.nixosModules.common
-              self.nixosModules.darwin
-              self.darwinModules_.home-manager
-              {
-                networking.hostName = "MacBook-Pro-Intel";
-                # TODO: parameterize this
-                home-manager.users.francis = {
-                  imports = [
-                    self.homeModules.common
-                    self.homeModules.darwin-x86-64
-                  ];
-                };
-              }
-            ];
-          };
-          "talimachine" = self.nixos-flake.lib.mkMacosSystem {
-            nixpkgs.hostPlatform = "aarch64-darwin";
-            imports = [
-              self.nixosModules.common
-              self.nixosModules.darwin
-              self.darwinModules_.home-manager
-              {
-                networking.hostName = "talimachine";
-                # TODO: parameterize this
-                home-manager.users.francis = {
-                  imports = [
-                    self.homeModules.common
-                    self.homeModules.darwin-aarch64
-                  ];
-                };
-              }
-            ];
-          };
         };
       };
     };
