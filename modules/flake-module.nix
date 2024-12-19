@@ -105,7 +105,7 @@
         knownNetworkServices = [ "Wi-Fi" ];
       };
 
-      system.stateVersion = 4;
+      system.stateVersion = 5;
     };
   };
 }
