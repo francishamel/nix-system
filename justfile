@@ -10,7 +10,7 @@ darwin-rebuild:
   @darwin-rebuild switch --flake .#
 
 update:
-  @nix flake update nixpkgs home-manager treefmt-nix flake-parts
+  @nix flake update nixpkgs nix-darwin home-manager treefmt-nix flake-parts
 
 format:
   @nix fmt
