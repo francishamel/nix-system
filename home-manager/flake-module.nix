@@ -9,6 +9,7 @@
           ./modules/bat.nix
           ./modules/direnv.nix
           ./modules/eza.nix
+          ./modules/fd.nix
           ./modules/fonts.nix
           ./modules/fzf.nix
           ./modules/git.nix
