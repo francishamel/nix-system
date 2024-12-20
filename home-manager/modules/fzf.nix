@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
+let
+  fd = "${config.programs.fd.package}/bin/fd";
+  fileCommand = "${fd} --type=file";
+in
 {
   home.packages = [ pkgs.zsh-fzf-tab ];
 
@@ -21,6 +25,17 @@
         "prompt" = "#81A1C1";
         "hl+" = "#81A1C1";
       };
+      defaultCommand = fileCommand;
+      defaultOptions = [
+        "--height=40%"
+        "--layout=reverse"
+        "--info=inline"
+        "--border"
+        "--margin=1"
+        "--padding=1"
+      ];
+      fileWidgetCommand = fileCommand;
+      changeDirWidgetCommand = "${fd} --type=directory";
     };
     zsh.initExtra = ''
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
