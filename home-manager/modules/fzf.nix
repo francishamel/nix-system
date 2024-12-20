@@ -6,6 +6,7 @@
   programs = {
     fzf = {
       enable = true;
+      enableZshIntegration = true;
       colors = {
         "bg+" = "#3B4252";
         "bg" = "#2E3440";
