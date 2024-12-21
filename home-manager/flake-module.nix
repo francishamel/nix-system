@@ -15,6 +15,7 @@
           ./modules/git.nix
           ./modules/gui.nix
           ./modules/helix.nix
+          ./modules/jq.nix
           ./modules/pet.nix
           ./modules/ripgrep.nix
           ./modules/ssh.nix
