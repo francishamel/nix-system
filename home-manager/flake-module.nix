@@ -9,11 +9,13 @@
           ./modules/bat.nix
           ./modules/direnv.nix
           ./modules/eza.nix
+          ./modules/fd.nix
           ./modules/fonts.nix
           ./modules/fzf.nix
           ./modules/git.nix
           ./modules/gui.nix
           ./modules/helix.nix
+          ./modules/jq.nix
           ./modules/pet.nix
           ./modules/ripgrep.nix
           ./modules/ssh.nix
