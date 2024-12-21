@@ -39,6 +39,7 @@ in
     };
     zsh.initExtra = ''
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+      zstyle ':fzf-tab:*' fzf-flags --height=40%
     '';
   };
 }
