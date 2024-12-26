@@ -7,6 +7,5 @@
     pkgs.devenv
     pkgs.flyctl
     pkgs.just
-    pkgs.sad
   ];
 }
