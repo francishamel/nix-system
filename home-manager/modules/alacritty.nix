@@ -4,6 +4,37 @@
   programs.alacritty = {
     enable = false;
     settings = {
+      # Nord theme taken from: https://github.com/alacritty/alacritty-theme/blob/95a7d695605863ede5b7430eb80d9e80f5f504bc/themes/nord.toml
+      colors = {
+        primary = {
+          background = "#2E3440";
+          foreground = "#D8DEE9";
+        };
+        normal = {
+          black = "#3B4252";
+          red = "#BF616A";
+          green = "#A3BE8C";
+          yellow = "#EBCB8B";
+          blue = "#81A1C1";
+          magenta = "#B48EAD";
+          cyan = "#88C0D0";
+          white = "#E5E9F0";
+        };
+        bright = {
+          black = "#4C566A";
+          red = "#BF616A";
+          green = "#A3BE8C";
+          yellow = "#EBCB8B";
+          blue = "#81A1C1";
+          magenta = "#B48EAD";
+          cyan = "#8FBCBB";
+          white = "#ECEFF4";
+        };
+      };
+      font.normal = {
+        family = "FiraCode Nerd Font";
+        style = "Regular";
+      };
       window = {
         dynamic_title = false;
         option_as_alt = "Both";

@@ -37,7 +37,7 @@
         ./modules/1password/darwin.nix
         ./modules/zsh/darwin-aarch64.nix
       ];
-      linux.imports = [
+      x86_64-linux.imports = [
         ./modules/1password/linux.nix
         ./modules/zsh/linux.nix
       ];

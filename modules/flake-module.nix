@@ -8,9 +8,6 @@
 
         gc = {
           automatic = true;
-          interval = {
-            Weekday = 0;
-          };
           options = "--delete-older-than 30d";
         };
 
