@@ -1,11 +1,10 @@
-{ ... }:
+{ config, ... }:
 
 {
   imports = [ ./common.nix ];
 
-  # TODO: configure this properly for Linux
   _1password = {
-    sockPath = "";
-    sshProgram = "";
+    sockPath = "${config.home.homeDirectory}/.1password/agent.sock";
+    sshProgram = "/run/current-system/sw/bin/op-ssh-sign";
   };
 }
