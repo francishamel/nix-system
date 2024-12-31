@@ -22,7 +22,6 @@
       systems = [ "aarch64-darwin" "x86_64-linux" ];
       imports = [
         inputs.treefmt-nix.flakeModule
-        ./home-manager/flake-module.nix
         ./modules/flake-module.nix
         ./hosts/flake-module.nix
       ];
