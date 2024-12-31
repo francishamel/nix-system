@@ -1,6 +1,10 @@
 { ... }:
 
 {
+  imports = [
+    ./home-manager/flake-module.nix
+  ];
+
   flake.nixosModules = {
     common = {
       nix = {

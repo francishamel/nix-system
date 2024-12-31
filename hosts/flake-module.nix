@@ -22,8 +22,7 @@
             home-manager.users.francis = {
               imports = [
                 self.homeModules.common
-                # TODO: rename to aarch64-darwin
-                self.homeModules.darwin-aarch64
+                self.homeModules.aarch64-darwin
               ];
             };
           }
