@@ -69,7 +69,7 @@
       };
     };
 
-    zsh.shellAliases.lg = "${pkgs.lazygit}/bin/lazygit";
+    zsh.shellAliases.lg = "${config.programs.lazygit.package}/bin/lazygit";
   };
 
 
