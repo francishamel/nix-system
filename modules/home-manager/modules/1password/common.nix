@@ -32,8 +32,6 @@ in
       zsh = {
         initExtra = ''
           SSH_AUTH_SOCK="${cfg.sockPath}"
-          # This is needed for autocompletion to work with op plugin
-          setopt completealiases
         '';
         shellAliases = {
           gh = "op plugin run -- gh";
