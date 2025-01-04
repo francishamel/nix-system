@@ -31,10 +31,8 @@ in
         IdentityAgent "${cfg.sockPath}"
       '';
 
-      zsh = {
-        shellAliases = {
-          gh = "op plugin run -- gh";
-        };
+      zsh.shellAliases = {
+        gh = lib.mkIf config.programs.gh.enable "op plugin run -- gh";
       };
     };
   };
