@@ -2,14 +2,14 @@
 let
   inherit (lib) mkOption types;
 
-  cfg = config._1password;
+  cfg = config.hm._1password;
 in
 {
   options = {
-    _1password.sockPath = mkOption {
+    hm._1password.sockPath = mkOption {
       type = types.str;
     };
-    _1password.sshProgram = mkOption {
+    hm._1password.sshProgram = mkOption {
       type = types.str;
     };
   };
