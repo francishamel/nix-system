@@ -15,6 +15,8 @@ in
   };
 
   config = {
+    home.sessionVariables.SSH_AUTH_SOCK = "${cfg.sockPath}";
+
     programs = {
       git.extraConfig = {
         commit.gpgsign = true;
@@ -30,9 +32,6 @@ in
       '';
 
       zsh = {
-        initExtra = ''
-          SSH_AUTH_SOCK="${cfg.sockPath}"
-        '';
         shellAliases = {
           gh = "op plugin run -- gh";
         };
