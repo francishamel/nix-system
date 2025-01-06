@@ -1,13 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 let
   fd = "${config.programs.fd.package}/bin/fd";
   fileCommand = "${fd} --type=file";
-  openWithHx = ''
-    fzf_with_hx() {
-      ${config.programs.fzf.package}/bin/fzf --multi --bind 'enter:become(${config.programs.helix.package}/bin/hx {+})'
-    }
-    bindkey -s '^o' 'fzf_with_hx\n'
-  '';
 in
 {
   home.packages = [ pkgs.zsh-fzf-tab ];
@@ -44,7 +38,9 @@ in
     };
     zsh.initExtra = ''
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+
+      # fzf-tab does not take default options into consideration so we have to set the height directly
       zstyle ':fzf-tab:*' fzf-flags --height=40%
-    '' + lib.optionalString (config.programs.helix.enable) openWithHx;
+    '';
   };
 }
