@@ -22,9 +22,9 @@
           ./modules/starship.nix
           ./modules/terminal.nix
           ./modules/vscode.nix
-          ./modules/wezterm.nix
+          ./modules/wezterm
           ./modules/yazi.nix
-          ./modules/zellij.nix
+          ./modules/zellij
           ./modules/zoxide.nix
         ];
         home.stateVersion = "22.11";
