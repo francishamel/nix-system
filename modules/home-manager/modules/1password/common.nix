@@ -2,19 +2,21 @@
 let
   inherit (lib) mkOption types;
 
-  cfg = config._1password;
+  cfg = config.hm._1password;
 in
 {
   options = {
-    _1password.sockPath = mkOption {
+    hm._1password.sockPath = mkOption {
       type = types.str;
     };
-    _1password.sshProgram = mkOption {
+    hm._1password.sshProgram = mkOption {
       type = types.str;
     };
   };
 
   config = {
+    home.sessionVariables.SSH_AUTH_SOCK = "${cfg.sockPath}";
+
     programs = {
       git.extraConfig = {
         commit.gpgsign = true;
@@ -29,15 +31,8 @@ in
         IdentityAgent "${cfg.sockPath}"
       '';
 
-      zsh = {
-        initExtra = ''
-          SSH_AUTH_SOCK="${cfg.sockPath}"
-          # This is needed for autocompletion to work with op plugin
-          setopt completealiases
-        '';
-        shellAliases = {
-          gh = "op plugin run -- gh";
-        };
+      zsh.shellAliases = {
+        gh = lib.mkIf config.programs.gh.enable "op plugin run -- gh";
       };
     };
   };

@@ -17,8 +17,6 @@ config.color_scheme = "nord"
 config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 14.0
 
-config.front_end = "WebGpu"
-
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE"
 

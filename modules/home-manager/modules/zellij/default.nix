@@ -15,6 +15,6 @@
 
   xdg.configFile."zellij/layouts" = {
     recursive = true;
-    source = ./zellij/layouts;
+    source = ./layouts;
   };
 }

@@ -5,6 +5,7 @@
     enable = false;
     settings = {
       # Nord theme taken from: https://github.com/alacritty/alacritty-theme/blob/95a7d695605863ede5b7430eb80d9e80f5f504bc/themes/nord.toml
+      # TODO: use fetchUrl 
       colors = {
         primary = {
           background = "#2E3440";
