@@ -23,6 +23,8 @@ in
       pkgs.elixir-ls
       pkgs.gleam
       pkgs.lua-language-server
+      pkgs.markdown-oxide
+      pkgs.marksman
       pkgs.nil
       pkgs.nixd
       pkgs.python312Packages.python-lsp-server
