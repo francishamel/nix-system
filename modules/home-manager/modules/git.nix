@@ -52,7 +52,7 @@
           "prc" = "pr create --web --assignee @me";
           "prd" = "pr create --draft --assignee @me";
           "prv" = "pr view --web";
-          "rc" = "repo clone $1 ${config.home.homeDirectory}/src/$1";
+          "rc" = "repo clone $1 ${config.home.homeDirectory}/src/gh/$1";
         };
         git_protocol = "ssh";
       };

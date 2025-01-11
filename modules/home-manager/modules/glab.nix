@@ -5,6 +5,7 @@
 
   xdg.configFile."glab-cli/hm_aliases.yml" = {
     text = ''
+      rc: repo clone $1 ${config.home.homeDirectory}/src/glab-cli/$1
     '';
     # HACK: necessary since glab-cli requires the permissions of the file to be 600 and
     # home-manager creates a symlink with 444 permissions.
