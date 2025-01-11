@@ -13,6 +13,7 @@
           ./modules/fonts.nix
           ./modules/fzf.nix
           ./modules/git.nix
+          ./modules/glab.nix
           ./modules/gui.nix
           ./modules/helix.nix
           ./modules/jq.nix
