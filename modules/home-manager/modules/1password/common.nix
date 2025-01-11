@@ -3,6 +3,8 @@ let
   inherit (lib) mkOption types;
 
   cfg = config.hm._1password;
+
+  opCommand = "op plugin run --";
 in
 {
   options = {
@@ -32,7 +34,8 @@ in
       '';
 
       zsh.shellAliases = {
-        gh = lib.mkIf config.programs.gh.enable "op plugin run -- gh";
+        gh = lib.mkIf config.programs.gh.enable "${opCommand} gh";
+        glab = "${opCommand} glab";
       };
     };
   };
