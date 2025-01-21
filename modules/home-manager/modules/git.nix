@@ -9,6 +9,7 @@
         ca = "commit --amend --no-edit";
         cae = "commit --amend";
         cf = "commit --fixup";
+        commiters = "shortlog --summary --numbered --email";
         fp = "fetch --prune";
         pfwl = "push --force-with-lease";
         ri = "rebase --interactive";
