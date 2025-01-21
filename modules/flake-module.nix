@@ -92,6 +92,7 @@
           "spotify"
           "todoist"
           "yubico-yubikey-manager"
+          "zoom"
         ];
       };
 
