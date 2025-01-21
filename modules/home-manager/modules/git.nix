@@ -9,10 +9,11 @@
         ca = "commit --amend --no-edit";
         cae = "commit --amend";
         cf = "commit --fixup";
+        commiters = "shortlog --summary --numbered --email";
         fp = "fetch --prune";
         pfwl = "push --force-with-lease";
         ri = "rebase --interactive";
-        "print-branch" = "rev-parse --abbrev-ref HEAD";
+        print-branch = "rev-parse --abbrev-ref HEAD";
       };
       enable = true;
       extraConfig = {
@@ -47,7 +48,7 @@
       settings = {
         aliases = {
           "ic" = "issue create --web";
-          "id" = "issue develop $1 --checkout";
+          "id" = "!gh issue develop $1 --base=\"$(git print-branch)\" --checkout";
           "il" = "issue list";
           "prc" = "pr create --web --assignee @me";
           "prd" = "pr create --draft --assignee @me";
