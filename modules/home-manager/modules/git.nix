@@ -48,7 +48,7 @@
       settings = {
         aliases = {
           "ic" = "issue create --web";
-          "id" = "issue develop $1 --checkout";
+          "id" = "!gh issue develop $1 --base=\"$(git print-branch)\" --checkout";
           "il" = "issue list";
           "prc" = "pr create --web --assignee @me";
           "prd" = "pr create --draft --assignee @me";
