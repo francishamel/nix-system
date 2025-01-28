@@ -39,7 +39,6 @@
           };
           settings.global.excludes = [
             ".envrc"
-            ".gitignore"
             "flake.lock"
             "justfile"
             "**/.gitkeep"
