@@ -33,9 +33,9 @@
       # Needed for correct $PATH
       programs.zsh.enable = true;
 
-      security.pam.enableSudoTouchIdAuth = true;
+      ids.gids.nixbld = 30000;
 
-      services.nix-daemon.enable = true;
+      security.pam.enableSudoTouchIdAuth = true;
 
       system.defaults = {
         ".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
