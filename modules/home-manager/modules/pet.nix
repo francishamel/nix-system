@@ -13,7 +13,17 @@
         }
         {
           command = "bin/rails g maintenance_tasks:task <name>";
-          description = "Generate a Rails maintenance task";
+          description = "Generate a Rails collection maintenance task";
+          tag = [ "rails" ];
+        }
+        {
+          command = "bin/rails g maintenance_tasks:task <name> --csv";
+          description = "Generate a Rails CSV maintenance task";
+          tag = [ "rails" ];
+        }
+        {
+          command = "bin/rails g maintenance_tasks:task <name> --no-collection";
+          description = "Generate a Rails maintenance task with no collection";
           tag = [ "rails" ];
         }
         {
