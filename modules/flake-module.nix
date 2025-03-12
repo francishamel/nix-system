@@ -35,7 +35,7 @@
 
       ids.gids.nixbld = 30000;
 
-      security.pam.enableSudoTouchIdAuth = true;
+      security.pam.services.sudo_local.touchIdAuth = true;
 
       system.defaults = {
         ".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
@@ -87,8 +87,10 @@
           "arc"
           "datagrip"
           "google-chrome"
+          "kicad"
           "obsidian"
           "raycast"
+          "signal"
           "spotify"
           "todoist"
           "yubico-yubikey-manager"
