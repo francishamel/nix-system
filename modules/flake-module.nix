@@ -37,6 +37,8 @@
 
       security.pam.services.sudo_local.touchIdAuth = true;
 
+      system.primaryUser = "francis";
+
       system.defaults = {
         ".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
         loginwindow.GuestEnabled = false;

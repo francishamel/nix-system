@@ -9,7 +9,7 @@
   };
 
   # This is only needed for macOS. It is properly setup when installed through nixpkgs (it is installed through homebrew in this case.)
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     if command -v op >/dev/null; then
       eval "$(op completion zsh)"; compdef _op op
     fi

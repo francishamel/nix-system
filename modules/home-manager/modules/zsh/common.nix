@@ -5,7 +5,7 @@
     dotDir = ".config/zsh";
     enable = true;
     historySubstringSearch.enable = true;
-    initExtra = ''
+    initContent = ''
       # This is needed for autocompletion to work with aliases
       setopt completealiases
 

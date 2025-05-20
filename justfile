@@ -7,7 +7,7 @@ alias f := format
 alias u := update
 
 darwin-rebuild:
-  @darwin-rebuild switch --flake .#
+  @sudo darwin-rebuild switch --flake .#
 
 update:
   @nix flake update

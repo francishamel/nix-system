@@ -36,7 +36,7 @@ in
       fileWidgetCommand = fileCommand;
       changeDirWidgetCommand = "${fd} --type=directory";
     };
-    zsh.initExtra = ''
+    zsh.initContent = ''
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 
       # fzf-tab does not take default options into consideration so we have to set the height directly
