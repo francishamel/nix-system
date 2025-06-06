@@ -17,6 +17,7 @@
           ./modules/gui.nix
           ./modules/helix.nix
           ./modules/jq.nix
+          ./modules/ncspot.nix
           ./modules/pet.nix
           ./modules/ripgrep.nix
           ./modules/ssh.nix
