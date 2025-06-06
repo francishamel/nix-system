@@ -10,5 +10,6 @@
     pkgs.glow
     pkgs.just
     pkgs.tokei
+    pkgs.xh
   ];
 }
