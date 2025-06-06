@@ -9,5 +9,6 @@
     pkgs.glances
     pkgs.glow
     pkgs.just
+    pkgs.tokei
   ];
 }
