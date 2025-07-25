@@ -40,6 +40,7 @@ in
       pkgs.nixd
       pkgs.python312Packages.python-lsp-server
       pkgs.taplo
+      pkgs.tinymist
       pkgs.typescript-language-server
       pkgs.yaml-language-server
     ];
