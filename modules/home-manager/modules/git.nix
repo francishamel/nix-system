@@ -54,6 +54,7 @@
           "prd" = "pr create --draft --assignee @me";
           "prv" = "pr view --web";
           "rc" = "repo clone $1 ${config.home.homeDirectory}/src/gh/$1";
+          "rcme" = "repo clone $1 ${config.home.homeDirectory}/src/gh/francishamel/$1";
         };
         git_protocol = "ssh";
       };
