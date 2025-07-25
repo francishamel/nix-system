@@ -4,7 +4,7 @@ let
 
   cfg = config.hm._1password;
 
-  opCommand = "op plugin run --";
+  opCommand = "OP_ACCOUNT=\"my.1password.com\" op plugin run --";
 in
 {
   options = {
@@ -34,6 +34,8 @@ in
       '';
 
       zsh.shellAliases = {
+        fly = "${opCommand} fly";
+        flyctl = "${opCommand} flyctl";
         gh = lib.mkIf config.programs.gh.enable "${opCommand} gh";
         glab = "${opCommand} glab";
       };
