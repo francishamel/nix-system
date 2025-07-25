@@ -4,7 +4,7 @@ let
 
   cfg = config.hm._1password;
 
-  opCommand = "op plugin run --";
+  opCommand = "OP_ACCOUNT=\"my.1password.com\" op plugin run --";
 in
 {
   options = {
