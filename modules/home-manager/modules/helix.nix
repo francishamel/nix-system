@@ -53,6 +53,11 @@ in
           formatter.command = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
           language-servers = [ "nixd" "nil" ];
         }
+        {
+          name = "typst";
+          auto-format = true;
+          formatter.command = "${pkgs.typstyle}/bin/typstyle";
+        }
       ];
     };
     settings = {
