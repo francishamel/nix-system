@@ -1,8 +1,8 @@
-{ ... }:
+{ config, ... }:
 
 {
   programs.zsh = {
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     enable = true;
     historySubstringSearch.enable = true;
     initContent = ''
