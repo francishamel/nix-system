@@ -25,6 +25,7 @@
           ./modules/vscode.nix
           ./modules/wezterm
           ./modules/yazi.nix
+          ./modules/zathura.nix
           ./modules/zellij
           ./modules/zoxide.nix
         ];
