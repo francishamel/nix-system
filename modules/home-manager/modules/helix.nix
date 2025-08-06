@@ -38,6 +38,7 @@ in
       pkgs.marksman
       pkgs.nil
       pkgs.nixd
+      pkgs.prettier
       pkgs.python312Packages.python-lsp-server
       pkgs.taplo
       pkgs.tinymist
@@ -52,6 +53,39 @@ in
           auto-format = true;
           formatter.command = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
           language-servers = [ "nixd" "nil" ];
+        }
+        {
+          name = "javascript";
+          auto-format = true;
+          formatter = {
+            command = "${pkgs.prettier}/bin/prettier";
+            args = [
+              "--parser"
+              "typescript"
+            ];
+          };
+        }
+        {
+          name = "typescript";
+          auto-format = true;
+          formatter = {
+            command = "${pkgs.prettier}/bin/prettier";
+            args = [
+              "--parser"
+              "typescript"
+            ];
+          };
+        }
+        {
+          name = "tsx";
+          auto-format = true;
+          formatter = {
+            command = "${pkgs.prettier}/bin/prettier";
+            args = [
+              "--parser"
+              "typescript"
+            ];
+          };
         }
         {
           name = "typst";
