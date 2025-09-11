@@ -33,6 +33,7 @@ in
     extraPackages = [
       pkgs.elixir-ls
       pkgs.gleam
+      pkgs.llvmPackages_21.clang-tools
       pkgs.lua-language-server
       pkgs.markdown-oxide
       pkgs.marksman
@@ -48,6 +49,11 @@ in
     languages = {
       language-server.nixd.command = "${pkgs.nixd}/bin/nixd";
       language = [
+        {
+          name = "cpp";
+          auto-format = true;
+          formatter.command = "${pkgs.llvmPackages_21.clang-tools}/bin/clang-format";
+        }
         {
           name = "nix";
           auto-format = true;
