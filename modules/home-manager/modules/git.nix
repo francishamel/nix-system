@@ -64,8 +64,9 @@
       enable = true;
       settings = {
         git = {
-          paging.pager = "${config.programs.git.delta.package}/bin/delta --dark --paging=never";
           overrideGpg = true;
+          paging.pager = "${config.programs.git.delta.package}/bin/delta --dark --paging=never";
+          skipHookPrefix = "fixup!";
         };
         gui.nerdFontsVersion = "3";
       };
