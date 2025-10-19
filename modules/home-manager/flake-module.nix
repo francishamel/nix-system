@@ -12,6 +12,7 @@
           ./modules/fd.nix
           ./modules/fonts.nix
           ./modules/fzf.nix
+          ./modules/ghostty.nix
           ./modules/git.nix
           ./modules/glab.nix
           ./modules/helix.nix
