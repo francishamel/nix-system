@@ -17,12 +17,23 @@
       };
       enable = true;
       extraConfig = {
+        branch.sort = "-commiterdate";
+        column.ui = "auto";
+        core.untrackedCache = true;
+        diff = {
+          algorithm = "histogram";
+          colorMoved = true;
+          mnemonicPrefix = true;
+        };
         fetch.prune = true;
+        help.autocorrect = 10;
         init.defaultBranch = "main";
+        log.date = "iso";
         merge.conflictstyle = "zdiff3";
         pull.rebase = true;
         push = {
           autoSetupRemote = true;
+          default = "current";
           useForceIfIncludes = true;
         };
         rebase = {
@@ -31,6 +42,7 @@
           updateRefs = true;
         };
         rerere.enabled = true;
+        status.submoduleSummary = true;
       };
       delta = {
         enable = true;
@@ -74,7 +86,6 @@
 
     zsh.shellAliases.lg = "${config.programs.lazygit.package}/bin/lazygit";
   };
-
 
   # delta themes config
   xdg.configFile."git/delta/themes.gitconfig" = {
