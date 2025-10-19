@@ -3,7 +3,7 @@
 {
   flake = {
     darwinConfigurations = {
-      "talimachine" = inputs.nix-darwin.lib.darwinSystem {
+      "clicknpark-macbook" = inputs.nix-darwin.lib.darwinSystem {
         modules = [
           self.nixosModules.common
           self.nixosModules.darwin
@@ -11,15 +11,17 @@
           {
             nixpkgs.hostPlatform = "aarch64-darwin";
 
-            networking.hostName = "talimachine";
+            networking.hostName = "clicknpark-macbook";
 
             # These 2 lines are needed to ensure we reuse the nixpkgs config
             # so that we allow unfree packages
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
+            home-manager.backupFileExtension = "backup";
+
             # TODO: parameterize this
-            home-manager.users.francis = {
+            home-manager.users.francishamel = {
               imports = [
                 self.homeModules.common
                 self.homeModules.aarch64-darwin
@@ -47,7 +49,7 @@
             home-manager.useUserPackages = true;
 
             # TODO: parameterize this
-            home-manager.users.francis = {
+            home-manager.users.francishamel = {
               imports = [
                 self.homeModules.common
                 self.homeModules.x86_64-linux

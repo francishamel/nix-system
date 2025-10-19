@@ -33,11 +33,9 @@
       # Needed for correct $PATH
       programs.zsh.enable = true;
 
-      ids.gids.nixbld = 30000;
-
       security.pam.services.sudo_local.touchIdAuth = true;
 
-      system.primaryUser = "francis";
+      system.primaryUser = "francishamel";
 
       system.defaults = {
         ".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
@@ -71,9 +69,9 @@
 
       # Needed for home-manager to work
       # TODO: parameterize the user name
-      users.users.francis = {
-        name = "francis";
-        home = "/Users/francis";
+      users.users.francishamel = {
+        name = "francishamel";
+        home = "/Users/francishamel";
       };
 
       homebrew = {
@@ -87,19 +85,12 @@
           "1password"
           "1password-cli"
           "arc"
-          "datagrip"
-          "discord"
-          "google-chrome"
           "obsidian"
           "postman"
-          "prismlauncher"
+          "mongodb-compass"
           "raycast"
-          "signal"
           "slack"
           "spotify"
-          "todoist"
-          "yubico-yubikey-manager"
-          "zoom"
         ];
       };
 
