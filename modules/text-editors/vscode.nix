@@ -1,4 +1,7 @@
 {
+  nixpkgs.allowedUnfreePackages = [
+    "vscode"
+  ];
   flake.modules.homeManager.gui =
     { pkgs, ... }:
     {

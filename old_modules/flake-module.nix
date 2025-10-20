@@ -19,8 +19,6 @@
         };
       };
 
-      nixpkgs.config.allowUnfree = true;
-
       time.timeZone = "America/Montreal";
 
       security.pam.services.sudo_local.touchIdAuth = true;

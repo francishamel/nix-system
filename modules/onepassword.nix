@@ -1,4 +1,8 @@
 {
+  nixpkgs.allowedUnfreePackages = [
+    "1password"
+    "1password-cli"
+  ];
   flake.modules = {
     darwin.base = {
       programs._1password.enable = true;
