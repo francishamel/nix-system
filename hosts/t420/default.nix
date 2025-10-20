@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   imports = [
     ./hardware-configuration.nix
@@ -20,8 +18,6 @@
     enable = true;
     pulse.enable = true;
   };
-
-  users.defaultUserShell = pkgs.zsh;
 
   users.users.francis = {
     isNormalUser = true;
