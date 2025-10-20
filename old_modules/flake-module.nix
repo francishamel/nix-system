@@ -23,9 +23,6 @@
 
       time.timeZone = "America/Montreal";
 
-      # Needed for correct $PATH
-      programs.zsh.enable = true;
-
       security.pam.services.sudo_local.touchIdAuth = true;
 
       system.primaryUser = "francishamel";
@@ -75,8 +72,6 @@
         };
         enable = true;
         casks = [
-          "1password"
-          "1password-cli"
           "arc"
           "obsidian"
           "postman"

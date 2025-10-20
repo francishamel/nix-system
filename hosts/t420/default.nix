@@ -33,11 +33,5 @@
 
   programs.zsh.enable = true;
 
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ "francis" ];
-  };
-
   system.stateVersion = "24.11";
 }
