@@ -2,7 +2,7 @@
 
 {
   flake = {
-    homeModules = {
+    modules.homeManager = {
       common = {
         imports = [
           ./modules/alacritty.nix
