@@ -1,20 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 let
-  yaziPicker = pkgs.writeShellScriptBin "yazi-picker" ''
-    paths=$(${pkgs.yazi}/bin/yazi --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
-
-    if [[ -n "$paths" ]]; then
-    	${pkgs.zellij}/bin/zellij action toggle-floating-panes
-    	${pkgs.zellij}/bin/zellij action write 27 # send <Escape> key
-    	${pkgs.zellij}/bin/zellij action write-chars ":open $paths"
-    	${pkgs.zellij}/bin/zellij action write 13 # send <Enter> key
-    	${pkgs.zellij}/bin/zellij action toggle-floating-panes
-    fi
-
-    ${pkgs.zellij}/bin/zellij action close-pane
-  '';
-
   noopKeys = {
     up = "no_op";
     down = "no_op";
@@ -124,7 +110,6 @@ in
       keys = {
         normal = {
           "X" = "select_line_above";
-          "C-y" = lib.mkIf (config.programs.yazi.enable && config.programs.zellij.enable) ":sh ${pkgs.zellij}/bin/zellij run -f -n yazi-picker -x 10% -y 10% --width 80% --height 80% -- ${yaziPicker}/bin/yazi-picker";
           "C-j" = [ "extend_to_line_bounds" "delete_selection" "paste_after" ];
           "C-k" = [ "extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before" ];
         } // noopKeys;
