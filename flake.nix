@@ -23,7 +23,7 @@
       imports = [
         inputs.treefmt-nix.flakeModule
         inputs.flake-parts.flakeModules.modules
-        ./modules/flake-module.nix
+        ./old_modules/flake-module.nix
         ./hosts/flake-module.nix
       ];
 
