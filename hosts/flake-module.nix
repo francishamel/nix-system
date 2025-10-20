@@ -22,7 +22,7 @@
             # TODO: parameterize this
             home-manager.users.francishamel = {
               imports = [
-                self.modules.homeManager.common
+                self.modules.homeManager.base
                 self.modules.homeManager.aarch64-darwin
               ];
             };

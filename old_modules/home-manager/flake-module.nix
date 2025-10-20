@@ -3,7 +3,7 @@
 {
   flake = {
     modules.homeManager = {
-      common = {
+      base = {
         imports = [
           ./modules/alacritty.nix
           ./modules/bat.nix
