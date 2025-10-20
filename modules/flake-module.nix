@@ -6,7 +6,7 @@
   ];
 
   flake.modules.darwin = {
-    common = {
+    base = {
       nix = {
         extraOptions = "experimental-features = nix-command flakes";
 
@@ -28,8 +28,7 @@
       nixpkgs.config.allowUnfree = true;
 
       time.timeZone = "America/Montreal";
-    };
-    darwin = {
+
       # Needed for correct $PATH
       programs.zsh.enable = true;
 
