@@ -18,7 +18,6 @@
           ./modules/ncspot.nix
           ./modules/pet.nix
           ./modules/ripgrep.nix
-          ./modules/ssh.nix
           ./modules/starship.nix
           ./modules/terminal.nix
           ./modules/vscode.nix
