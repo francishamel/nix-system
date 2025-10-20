@@ -13,7 +13,6 @@
           ./modules/fzf.nix
           ./modules/ghostty.nix
           ./modules/git.nix
-          ./modules/glab.nix
           ./modules/helix.nix
           ./modules/jq.nix
           ./modules/ncspot.nix

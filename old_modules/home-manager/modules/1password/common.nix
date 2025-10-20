@@ -37,7 +37,6 @@ in
         fly = "${opCommand} fly";
         flyctl = "${opCommand} flyctl";
         gh = lib.mkIf config.programs.gh.enable "${opCommand} gh";
-        glab = "${opCommand} glab";
       };
     };
   };
