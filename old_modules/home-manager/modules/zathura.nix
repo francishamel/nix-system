@@ -1,11 +1,3 @@
-{ ... }:
-
 {
-  programs.zathura = {
-    enable = true;
-
-    mappings = { };
-
-    options = { };
-  };
+  programs.zathura.enable = true;
 }
