@@ -5,7 +5,6 @@
     modules.homeManager = {
       base = {
         imports = [
-          ./modules/alacritty.nix
           ./modules/bat.nix
           ./modules/direnv.nix
           ./modules/eza.nix
