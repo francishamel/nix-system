@@ -5,7 +5,7 @@
     ./home-manager/flake-module.nix
   ];
 
-  flake.nixosModules = {
+  flake.modules.darwin = {
     common = {
       nix = {
         extraOptions = "experimental-features = nix-command flakes";

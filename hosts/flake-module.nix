@@ -5,8 +5,8 @@
     darwinConfigurations = {
       "clicknpark-macbook" = inputs.nix-darwin.lib.darwinSystem {
         modules = [
-          self.nixosModules.common
-          self.nixosModules.darwin
+          self.modules.darwin.common
+          self.modules.darwin.darwin
           inputs.home-manager.darwinModules.home-manager
           {
             nixpkgs.hostPlatform = "aarch64-darwin";
