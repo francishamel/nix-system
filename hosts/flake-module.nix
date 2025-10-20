@@ -5,8 +5,7 @@
     darwinConfigurations = {
       "clicknpark-macbook" = inputs.nix-darwin.lib.darwinSystem {
         modules = [
-          self.nixosModules.common
-          self.nixosModules.darwin
+          self.modules.darwin.base
           inputs.home-manager.darwinModules.home-manager
           {
             nixpkgs.hostPlatform = "aarch64-darwin";
@@ -23,36 +22,8 @@
             # TODO: parameterize this
             home-manager.users.francishamel = {
               imports = [
-                self.homeModules.common
-                self.homeModules.aarch64-darwin
-              ];
-            };
-          }
-        ];
-      };
-    };
-    nixosConfigurations = {
-      "t420" = inputs.nixpkgs.lib.nixosSystem {
-        modules = [
-          ./t420
-          self.nixosModules.common
-          inputs.home-manager.nixosModules.home-manager
-          inputs.disko.nixosModules.default
-          {
-            nixpkgs.hostPlatform = "x86_64-linux";
-
-            networking.hostName = "t420";
-
-            # These 2 lines are needed to ensure we reuse the nixpkgs config
-            # so that we allow unfree packages
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            # TODO: parameterize this
-            home-manager.users.francishamel = {
-              imports = [
-                self.homeModules.common
-                self.homeModules.x86_64-linux
+                self.modules.homeManager.base
+                self.modules.homeManager.gui
               ];
             };
           }

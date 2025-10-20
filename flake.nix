@@ -15,6 +15,8 @@
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    import-tree.url = "github:vic/import-tree";
   };
 
   outputs = inputs@{ ... }:
@@ -22,8 +24,9 @@
       systems = [ "aarch64-darwin" "x86_64-linux" ];
       imports = [
         inputs.treefmt-nix.flakeModule
-        ./modules/flake-module.nix
+        ./old_modules/flake-module.nix
         ./hosts/flake-module.nix
+        (inputs.import-tree ./modules)
       ];
 
       perSystem = { ... }: {
