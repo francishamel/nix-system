@@ -4,20 +4,18 @@
     {
       programs = {
         git = {
-          userName = "Francis Hamel";
-          userEmail = "36383308+francishamel@users.noreply.github.com";
-          aliases = {
-            ca = "commit --amend --no-edit";
-            cae = "commit --amend";
-            cf = "commit --fixup";
-            commiters = "shortlog --summary --numbered --email";
-            fp = "fetch --prune";
-            pfwl = "push --force-with-lease";
-            ri = "rebase --interactive";
-            print-branch = "rev-parse --abbrev-ref HEAD";
-          };
           enable = true;
-          extraConfig = {
+          settings = {
+            alias = {
+              ca = "commit --amend --no-edit";
+              cae = "commit --amend";
+              cf = "commit --fixup";
+              commiters = "shortlog --summary --numbered --email";
+              fp = "fetch --prune";
+              pfwl = "push --force-with-lease";
+              ri = "rebase --interactive";
+              print-branch = "rev-parse --abbrev-ref HEAD";
+            };
             branch.sort = "-commiterdate";
             column.ui = "auto";
             core.untrackedCache = true;
@@ -44,14 +42,20 @@
             };
             rerere.enabled = true;
             status.submoduleSummary = true;
-          };
-          delta = {
-            enable = true;
-            options = {
-              line-numbers = true;
-              navigate = true;
-              side-by-side = true;
+            user = {
+              email = "36383308+francishamel@users.noreply.github.com";
+              name = "Francis Hamel";
             };
+          };
+        };
+
+        delta = {
+          enable = true;
+          enableGitIntegration = true;
+          options = {
+            line-numbers = true;
+            navigate = true;
+            side-by-side = true;
           };
         };
 
@@ -78,7 +82,7 @@
           settings = {
             git = {
               overrideGpg = true;
-              paging.pager = "${config.programs.git.delta.package}/bin/delta --dark --paging=never";
+              paging.pager = "${config.programs.delta.package}/bin/delta --dark --paging=never";
               skipHookPrefix = "fixup!";
             };
             gui.nerdFontsVersion = "3";
@@ -95,7 +99,7 @@
           sha256 = "sha256-NBALeGfKhgDbCqzBVirC0886P0CCVvAH3Pf3NvVg4KM=";
         };
       };
-      programs.git.extraConfig.include.path = "delta/themes.gitconfig";
-      programs.git.delta.options.features = "arctic-fox";
+      programs.git.settings.include.path = "delta/themes.gitconfig";
+      programs.delta.options.features = "arctic-fox";
     };
 }

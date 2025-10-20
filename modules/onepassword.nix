@@ -26,8 +26,9 @@
         home.sessionVariables.SSH_AUTH_SOCK = sockPath;
 
         programs = {
-          git.extraConfig = {
+          git.settings = {
             commit.gpgsign = true;
+            tag.gpgsign = true;
             gpg = {
               format = "ssh";
               ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
