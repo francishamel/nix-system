@@ -23,7 +23,7 @@
             home-manager.users.francishamel = {
               imports = [
                 self.modules.homeManager.base
-                self.modules.homeManager.aarch64-darwin
+                self.modules.homeManager.gui
               ];
             };
           }

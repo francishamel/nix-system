@@ -1,10 +1,4 @@
-{ ... }:
-
 {
-  imports = [
-    ./home-manager/flake-module.nix
-  ];
-
   flake.modules.darwin = {
     base = {
       nix = {
