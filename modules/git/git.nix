@@ -1,4 +1,7 @@
-{ lib, ... }:
+{ config, lib, ... }:
+let
+  user = config.flake.meta.user;
+in
 {
   flake.modules.homeManager.base =
     { config, pkgs, ... }:
@@ -44,8 +47,8 @@
             rerere.enabled = true;
             status.submoduleSummary = true;
             user = {
-              email = "36383308+francishamel@users.noreply.github.com";
-              name = "Francis Hamel";
+              email = user.gitEmail;
+              name = user.name;
             };
           };
         };
@@ -72,7 +75,7 @@
               "prd" = "pr create --draft --assignee @me";
               "prv" = "pr view --web";
               "rc" = "repo clone $1 ${config.home.homeDirectory}/src/gh/$1";
-              "rcme" = "repo clone $1 ${config.home.homeDirectory}/src/gh/francishamel/$1";
+              "rcme" = "repo clone $1 ${config.home.homeDirectory}/src/gh/${user.username}/$1";
             };
             git_protocol = "ssh";
           };

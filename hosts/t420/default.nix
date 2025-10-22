@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   imports = [
     ./hardware-configuration.nix
@@ -19,7 +21,7 @@
     pulse.enable = true;
   };
 
-  users.users.francis = {
+  users.users.${config.flake.meta.user.username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
     initialPassword = "qwerty12345";

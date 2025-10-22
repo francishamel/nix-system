@@ -2,6 +2,8 @@
 {
   flake = {
     meta.user = {
+      gitEmail = "36383308+francishamel@users.noreply.github.com";
+      name = "Francis Hamel";
       username = "francishamel";
     };
 

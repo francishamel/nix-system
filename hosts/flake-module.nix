@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ config, self, inputs, ... }:
 
 {
   flake = {
@@ -19,8 +19,7 @@
 
             home-manager.backupFileExtension = "backup";
 
-            # TODO: parameterize this
-            home-manager.users.francishamel = {
+            home-manager.users.${config.flake.meta.user.username} = {
               imports = [
                 self.modules.homeManager.base
                 self.modules.homeManager.gui

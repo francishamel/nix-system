@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   nixpkgs.allowedUnfreePackages = [
     "1password"
@@ -12,8 +13,7 @@
       programs._1password.enable = true;
       programs._1password-gui = {
         enable = true;
-        # TODO: parameterize user
-        polkitPolicyOwners = [ "francis" ];
+        polkitPolicyOwners = [ config.flake.meta.user.username ];
       };
     };
     homeManager.base =
