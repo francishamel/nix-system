@@ -4,7 +4,6 @@
     {
       home.packages = [
         pkgs.cachix
-        pkgs.devenv
         pkgs.flyctl
         pkgs.glow
         pkgs.google-cloud-sdk

@@ -1,17 +1,6 @@
 {
   flake.modules.darwin = {
     base = {
-      nix = {
-        settings = {
-          substituters = [
-            "https://devenv.cachix.org"
-          ];
-          trusted-public-keys = [
-            "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-          ];
-        };
-      };
-
       time.timeZone = "America/Montreal";
 
       security.pam.services.sudo_local.touchIdAuth = true;
