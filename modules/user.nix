@@ -14,6 +14,8 @@
           initialPassword = "";
           extraGroups = [ "input" ];
         };
+
+        nix.settings.trusted-users = [ config.flake.meta.user.username ];
       };
       darwin.base = {
         users.users.${config.flake.meta.user.username} = {
@@ -22,6 +24,8 @@
         };
 
         system.primaryUser = config.flake.meta.user.username;
+
+        nix.settings.trusted-users = [ config.flake.meta.user.username ];
       };
     };
   };
