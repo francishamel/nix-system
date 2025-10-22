@@ -35,6 +35,7 @@
           pkgs.yaml-language-server
         ];
         # TODO: languages concern
+        # TODO: use lib.getExe and lib.getExe' to set commands properly
         languages = {
           language-server.nixd.command = "${pkgs.nixd}/bin/nixd";
           language = [

@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   flake.modules.homeManager.base =
     { config, pkgs, ... }:
@@ -82,14 +83,14 @@
           settings = {
             git = {
               overrideGpg = true;
-              paging.pager = "${config.programs.delta.package}/bin/delta --dark --paging=never";
+              paging.pager = "${lib.getExe config.programs.delta.package} --dark --paging=never";
               skipHookPrefix = "fixup!";
             };
             gui.nerdFontsVersion = "3";
           };
         };
 
-        zsh.shellAliases.lg = "${config.programs.lazygit.package}/bin/lazygit";
+        zsh.shellAliases.lg = lib.getExe config.programs.lazygit.package;
       };
 
       # delta themes config

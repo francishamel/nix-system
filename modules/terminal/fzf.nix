@@ -1,8 +1,9 @@
+{ lib, ... }:
 {
   flake.modules.homeManager.base =
     { config, pkgs, ... }:
     let
-      fd = "${config.programs.fd.package}/bin/fd";
+      fd = lib.getExe config.programs.fd.package;
       fileCommand = "${fd} --type=file";
     in
     {
