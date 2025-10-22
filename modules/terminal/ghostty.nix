@@ -17,13 +17,19 @@
 
           keybind = [
             "super+t=new_tab"
+
             "super+shift+h=previous_tab"
             "super+shift+l=next_tab"
 
             "super+d=new_split:down"
             "super+r=new_split:right"
-            "super+h=goto_split:previous"
-            "super+l=goto_split:next"
+
+            "super+bracket_left=goto_split:previous"
+            "super+bracket_right=goto_split:next"
+            "super+h=goto_split:left"
+            "super+l=goto_split:right"
+            "super+j=goto_split:down"
+            "super+k=goto_split:up"
 
             "super+q=quit"
             "super+w=close_surface"
