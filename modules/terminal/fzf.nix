@@ -6,8 +6,6 @@
       fileCommand = "${fd} --type=file";
     in
     {
-      home.packages = [ pkgs.zsh-fzf-tab ];
-
       programs = {
         fzf = {
           enable = true;
@@ -38,12 +36,19 @@
           fileWidgetCommand = fileCommand;
           changeDirWidgetCommand = "${fd} --type=directory";
         };
-        zsh.initContent = ''
-          source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
-
-          # fzf-tab does not take default options into consideration so we have to set the height directly
-          zstyle ':fzf-tab:*' fzf-flags --height=40%
-        '';
+        zsh = {
+          plugins = [
+            {
+              name = "fzf-tab";
+              src = pkgs.zsh-fzf-tab;
+              file = "share/fzf-tab/fzf-tab.plugin.zsh";
+            }
+          ];
+          initContent = ''
+            # fzf-tab does not take default options into consideration so we have to set the height directly
+            zstyle ':fzf-tab:*' fzf-flags --height=40%
+          '';
+        };
       };
     };
 }
