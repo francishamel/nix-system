@@ -21,7 +21,6 @@
 
   outputs = inputs@{ ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "aarch64-darwin" "x86_64-linux" ];
       imports = [
         inputs.treefmt-nix.flakeModule
         ./old_modules/flake-module.nix
