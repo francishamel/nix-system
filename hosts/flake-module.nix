@@ -22,6 +22,7 @@
             home-manager.users.${config.flake.meta.user.username} = {
               imports = [
                 self.modules.homeManager.base
+                self.modules.homeManager.darwin
                 self.modules.homeManager.gui
               ];
             };
