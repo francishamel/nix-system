@@ -8,9 +8,6 @@
         historySubstringSearch.enable = true;
         # TODO: ensure we don't eval brew on x86_64 darwin
         initContent = ''
-          # This is needed for autocompletion to work with aliases
-          setopt completealiases
-
           bindkey '^U' backward-kill-line
 
           eval "$(/opt/homebrew/bin/brew shellenv)"

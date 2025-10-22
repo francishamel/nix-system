@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, inputs, ... }:
 {
   nixpkgs.allowedUnfreePackages = [
     "1password"
@@ -18,15 +18,23 @@
     };
     homeManager = {
       base =
-        { config, lib, ... }:
+        { config, pkgs, ... }:
         let
-          opCommand = "OP_ACCOUNT=\"my.1password.com\" op plugin run --";
           sockPath = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
         in
         {
+          imports = [ inputs._1password-shell-plugins.hmModules.default ];
+
           home.sessionVariables.SSH_AUTH_SOCK = sockPath;
 
           programs = {
+            _1password-shell-plugins = {
+              enable = true;
+              plugins = [
+                pkgs.gh
+              ];
+            };
+
             git.settings = {
               commit.gpgsign = true;
               tag.gpgsign = true;
@@ -40,15 +48,6 @@
             ssh.extraConfig = ''
               IdentityAgent "${sockPath}"
             '';
-
-            zsh = {
-              # TODO: use plugins flake
-              shellAliases = {
-                fly = "${opCommand} fly";
-                flyctl = "${opCommand} flyctl";
-                gh = lib.mkIf config.programs.gh.enable "${opCommand} gh";
-              };
-            };
           };
         };
       darwin =
