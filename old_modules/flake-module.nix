@@ -1,12 +1,13 @@
 {
   flake.modules.darwin = {
     base = {
+      # TODO: time concern
       time.timeZone = "America/Montreal";
 
+      # TODO: security concern
       security.pam.services.sudo_local.touchIdAuth = true;
 
-      system.primaryUser = "francishamel";
-
+      # TODO: Desktop manager concern
       system.defaults = {
         ".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
         loginwindow.GuestEnabled = false;
@@ -37,13 +38,7 @@
         };
       };
 
-      # Needed for home-manager to work
-      # TODO: parameterize the user name
-      users.users.francishamel = {
-        name = "francishamel";
-        home = "/Users/francishamel";
-      };
-
+      # TODO: homebrew concern
       homebrew = {
         onActivation = {
           autoUpdate = false;
@@ -62,6 +57,7 @@
         ];
       };
 
+      # TODO: Networking concern
       networking = {
         dns = [
           "1.1.1.1" # Cloudflare's primary dns
