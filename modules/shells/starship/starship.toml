@@ -56,7 +56,19 @@ symbol = " "
 symbol = " "
 
 [git_commit]
-tag_symbol = '  '
+tag_symbol = "  "
+
+[git_status]
+stashed = ""
+ahead = ""
+behind = ""
+diverged = ""
+conflicted = "󰇼"
+deleted = ""
+renamed = "󰄾"
+modified = ""
+staged = ""
+untracked = ""
 
 [golang]
 symbol = " "
