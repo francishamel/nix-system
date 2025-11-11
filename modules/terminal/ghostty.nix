@@ -10,7 +10,7 @@
           # TODO: styling concern
           theme = "Nord";
           font-family = "FiraCode Nerd Font";
-          font-size = 16;
+          font-size = 12;
 
           auto-update = "off";
           maximize = true;
