@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   flake.modules.homeManager.base =
     { pkgs, ... }:
@@ -12,6 +13,7 @@
         home = "no_op";
         end = "no_op";
       };
+      prettier = lib.getExe pkgs.prettier;
     in
     {
       programs.helix = {
@@ -54,7 +56,7 @@
               name = "javascript";
               auto-format = true;
               formatter = {
-                command = "${pkgs.prettier}/bin/prettier";
+                command = prettier;
                 args = [
                   "--parser"
                   "typescript"
@@ -65,7 +67,7 @@
               name = "typescript";
               auto-format = true;
               formatter = {
-                command = "${pkgs.prettier}/bin/prettier";
+                command = prettier;
                 args = [
                   "--parser"
                   "typescript"
@@ -76,10 +78,21 @@
               name = "tsx";
               auto-format = true;
               formatter = {
-                command = "${pkgs.prettier}/bin/prettier";
+                command = prettier;
                 args = [
                   "--parser"
                   "typescript"
+                ];
+              };
+            }
+            {
+              name = "json";
+              auto-format = true;
+              formatter = {
+                command = prettier;
+                args = [
+                  "--parser"
+                  "json"
                 ];
               };
             }
