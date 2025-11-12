@@ -16,6 +16,8 @@
     import-tree.url = "github:vic/import-tree";
 
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
+
+    try.url = "github:tobi/try";
   };
 
   outputs = inputs@{ ... }:
