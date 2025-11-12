@@ -86,7 +86,9 @@ in
           settings = {
             git = {
               overrideGpg = true;
-              paging.pager = "${lib.getExe config.programs.delta.package} --dark --paging=never";
+              pagers = [{
+                pager = "${lib.getExe config.programs.delta.package} --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+              }];
               skipHookPrefix = "fixup!";
             };
             gui.nerdFontsVersion = "3";
