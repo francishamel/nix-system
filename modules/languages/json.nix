@@ -1,15 +1,20 @@
+{ inputs, ... }:
+
 {
   flake.modules.homeManager.base =
     { pkgs, ... }:
     {
       home = {
-        packages = [ pkgs.jqp ];
-
-        # TODO: this is a styling concern
-        file.".jqp.yaml".text = ''
-          theme:
-            name: "nord"
-        '';
+        packages = [
+          (inputs.wrappers.lib.wrapPackage
+            {
+              inherit pkgs;
+              package = pkgs.jqp;
+              flags = {
+                "--theme" = "nord";
+              };
+            })
+        ];
       };
 
       programs.jq.enable = true;

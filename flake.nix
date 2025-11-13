@@ -18,6 +18,8 @@
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
 
     try.url = "github:tobi/try";
+
+    wrappers.url = "github:lassulus/wrappers";
   };
 
   outputs = inputs@{ ... }:
