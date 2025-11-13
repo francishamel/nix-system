@@ -8,8 +8,6 @@
         historySubstringSearch.enable = true;
         # TODO: ensure we don't eval brew on x86_64 darwin
         initContent = ''
-          bindkey '^U' backward-kill-line
-
           eval "$(/opt/homebrew/bin/brew shellenv)"
         '';
       };
@@ -19,4 +17,3 @@
       home.file.".hushlogin".text = "";
     };
 }
-

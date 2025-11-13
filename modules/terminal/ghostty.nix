@@ -36,6 +36,13 @@
 
             "super+c=copy_to_clipboard"
             "super+v=paste_from_clipboard"
+
+            "alt+arrow_left=esc:b"
+            "alt+arrow_right=esc:f"
+            "super+arrow_left=text:\\x01"
+            "super+arrow_right=text:\\x05"
+
+            "super+backspace=text:\\x15"
           ];
         };
         enableZshIntegration = true;
