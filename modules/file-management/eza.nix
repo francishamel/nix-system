@@ -4,12 +4,12 @@
       enable = true;
       enableZshIntegration = true;
       extraOptions = [
+        "--git-repos-no-status"
         "--group"
         "--group-directories-first"
         "--header"
         "--hyperlink"
       ];
-      git = true;
       icons = "auto";
     };
   };
