@@ -1,10 +1,11 @@
 { config, ... }:
 {
   flake = {
-    meta.user = {
+    meta.user = rec {
       gitEmail = "36383308+francishamel@users.noreply.github.com";
       name = "Francis Hamel";
       username = "francishamel";
+      githubUsername = username;
     };
 
     modules = {

@@ -65,7 +65,7 @@ in
               "prc" = "pr create --web --assignee @me";
               "prv" = "pr view --web";
               "rc" = "repo clone $1 ${config.home.homeDirectory}/src/gh/$1";
-              "rcme" = "repo clone $1 ${config.home.homeDirectory}/src/gh/${user.username}/$1";
+              "rcme" = "repo clone $1 ${config.home.homeDirectory}/src/gh/${user.githubUsername}/$1";
             };
             git_protocol = "ssh";
           };
