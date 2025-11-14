@@ -11,13 +11,7 @@ in
           enable = true;
           settings = {
             alias = {
-              ca = "commit --amend --no-edit";
-              cae = "commit --amend";
-              cf = "commit --fixup";
               commiters = "shortlog --summary --numbered --email";
-              fp = "fetch --prune";
-              pfwl = "push --force-with-lease";
-              ri = "rebase --interactive";
               print-branch = "rev-parse --abbrev-ref HEAD";
             };
             branch.sort = "-commiterdate";
@@ -68,11 +62,7 @@ in
           gitCredentialHelper.enable = false;
           settings = {
             aliases = {
-              "ic" = "issue create --web";
-              "id" = "!gh issue develop $1 --base=\"$(git print-branch)\" --checkout";
-              "il" = "issue list";
               "prc" = "pr create --web --assignee @me";
-              "prd" = "pr create --draft --assignee @me";
               "prv" = "pr view --web";
               "rc" = "repo clone $1 ${config.home.homeDirectory}/src/gh/$1";
               "rcme" = "repo clone $1 ${config.home.homeDirectory}/src/gh/${user.username}/$1";
