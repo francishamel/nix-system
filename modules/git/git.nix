@@ -4,7 +4,7 @@ let
 in
 {
   flake.modules.homeManager.base =
-    { config, pkgs, ... }:
+    { config, ... }:
     {
       programs = {
         git = {
@@ -47,16 +47,6 @@ in
           };
         };
 
-        delta = {
-          enable = true;
-          enableGitIntegration = true;
-          options = {
-            line-numbers = true;
-            navigate = true;
-            side-by-side = true;
-          };
-        };
-
         lazygit = {
           enable = true;
           settings = {
@@ -73,15 +63,5 @@ in
 
         zsh.shellAliases.lg = lib.getExe config.programs.lazygit.package;
       };
-
-      # delta themes config
-      xdg.configFile."git/delta/themes.gitconfig" = {
-        source = pkgs.fetchurl {
-          url = "https://raw.githubusercontent.com/dandavison/delta/ef3e1be569bf076f035327342939bd9d7c8908bd/themes.gitconfig";
-          sha256 = "sha256-NBALeGfKhgDbCqzBVirC0886P0CCVvAH3Pf3NvVg4KM=";
-        };
-      };
-      programs.git.settings.include.path = "delta/themes.gitconfig";
-      programs.delta.options.features = "arctic-fox";
     };
 }
