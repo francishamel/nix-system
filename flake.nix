@@ -1,25 +1,40 @@
 {
   inputs = {
+    _1password-shell-plugins = {
+      url = "github:1Password/shell-plugins/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    flake-parts.url = "github:hercules-ci/flake-parts/main";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    import-tree.url = "github:vic/import-tree/v0.1.0";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nix-darwin.url = "github:lnl7/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    treefmt-nix.url = "github:numtide/treefmt-nix";
-    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+    try = {
+      url = "github:tobi/try/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
-    import-tree.url = "github:vic/import-tree";
-
-    _1password-shell-plugins.url = "github:1Password/shell-plugins";
-
-    try.url = "github:tobi/try";
-
-    wrappers.url = "github:lassulus/wrappers";
+    wrappers = {
+      url = "github:lassulus/wrappers/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ ... }:
