@@ -13,7 +13,13 @@
         home = "no_op";
         end = "no_op";
       };
-      prettier = lib.getExe pkgs.prettier;
+      prettierFormatter = {
+        command = lib.getExe pkgs.prettier;
+        args = [
+          "--parser"
+          "typescript"
+        ];
+      };
       # Temporary fix for LSP issue
       # https://github.com/helix-editor/helix/issues/14738
       # https://github.com/typescript-language-server/typescript-language-server/issues/1014
@@ -53,59 +59,40 @@
           pkgs.yaml-language-server
         ];
         # TODO: languages concern
-        # TODO: use lib.getExe and lib.getExe' to set commands properly
         languages = {
-          language-server.nixd.command = "${pkgs.nixd}/bin/nixd";
+          language-server.nixd.command = lib.getExe pkgs.nixd;
           language = [
             {
               name = "cpp";
               auto-format = true;
-              formatter.command = "${pkgs.llvmPackages_21.clang-tools}/bin/clang-format";
+              formatter.command = lib.getExe' pkgs.llvmPackages_21.clang-tools "clang-format";
             }
             {
               name = "nix";
               auto-format = true;
-              formatter.command = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
+              formatter.command = lib.getExe pkgs.nixpkgs-fmt;
               language-servers = [ "nixd" "nil" ];
             }
             {
               name = "javascript";
               auto-format = true;
-              formatter = {
-                command = prettier;
-                args = [
-                  "--parser"
-                  "typescript"
-                ];
-              };
+              formatter = prettierFormatter;
             }
             {
               name = "typescript";
               auto-format = true;
-              formatter = {
-                command = prettier;
-                args = [
-                  "--parser"
-                  "typescript"
-                ];
-              };
+              formatter = prettierFormatter;
             }
             {
               name = "tsx";
               auto-format = true;
-              formatter = {
-                command = prettier;
-                args = [
-                  "--parser"
-                  "typescript"
-                ];
-              };
+              formatter = prettierFormatter;
             }
             {
               name = "json";
               auto-format = true;
               formatter = {
-                command = prettier;
+                command = lib.getExe pkgs.prettier;
                 args = [
                   "--parser"
                   "json"
@@ -115,7 +102,7 @@
             {
               name = "typst";
               auto-format = true;
-              formatter.command = "${pkgs.typstyle}/bin/typstyle";
+              formatter.command = lib.getExe pkgs.typstyle;
             }
           ];
         };
