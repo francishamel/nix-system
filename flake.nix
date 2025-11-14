@@ -1,5 +1,7 @@
 {
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
     _1password-shell-plugins = {
       url = "github:1Password/shell-plugins/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,8 +15,6 @@
     };
 
     import-tree.url = "github:vic/import-tree/v0.1.0";
-
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
