@@ -6,7 +6,7 @@ in
   flake.modules.homeManager.base =
     { config, ... }:
     {
-      gh = {
+      programs.gh = {
         enable = true;
         gitCredentialHelper.enable = false;
         settings = {
