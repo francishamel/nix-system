@@ -17,7 +17,7 @@
       # Temporary fix for LSP issue
       # https://github.com/helix-editor/helix/issues/14738
       # https://github.com/typescript-language-server/typescript-language-server/issues/1014
-      typescript-language-server = pkgs.typescript-language-server.overrideAttrs (oldAttrs: rec {
+      typescript-language-server = pkgs.typescript-language-server.overrideAttrs (_: rec {
         version = "5.0.1";
         src = pkgs.fetchFromGitHub {
           owner = "typescript-language-server";
