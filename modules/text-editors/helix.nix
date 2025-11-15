@@ -70,7 +70,7 @@
             {
               name = "nix";
               auto-format = true;
-              formatter.command = lib.getExe pkgs.nixpkgs-fmt;
+              formatter.command = lib.getExe pkgs.nixfmt;
               language-servers = [
                 "nixd"
                 "nil"
