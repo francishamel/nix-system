@@ -13,37 +13,12 @@
         home = "no_op";
         end = "no_op";
       };
-      prettierFormatter = {
-        command = lib.getExe pkgs.prettier;
-        args = [
-          "--parser"
-          "typescript"
-        ];
-      };
-      # Temporary fix for LSP issue
-      # https://github.com/helix-editor/helix/issues/14738
-      # https://github.com/typescript-language-server/typescript-language-server/issues/1014
-      typescript-language-server = pkgs.typescript-language-server.overrideAttrs (_: rec {
-        version = "5.0.1";
-        src = pkgs.fetchFromGitHub {
-          owner = "typescript-language-server";
-          repo = "typescript-language-server";
-          rev = "v5.0.1";
-          hash = "sha256-Ziiiw6MXoIa1bWtME7dvzg+kQ8iXMG3P5rNR1B/Iifg=";
-        };
-        offlineCache = pkgs.fetchYarnDeps {
-          yarnLock = "${src}/yarn.lock";
-          hash = "sha256-ODO1G1AJd38cGqHhau1t4D8Mrug44pLk36d9dGtb/nM=";
-        };
-      });
     in
     {
       programs.helix = {
         enable = true;
         defaultEditor = true;
-        # TODO: languages concern
         extraPackages = [
-          pkgs.elixir-ls
           pkgs.gleam
           pkgs.llvmPackages_21.clang-tools
           pkgs.lua-language-server
@@ -52,13 +27,10 @@
           pkgs.nil
           pkgs.nixd
           pkgs.prettier
-          pkgs.python312Packages.python-lsp-server
           pkgs.taplo
           pkgs.tinymist
-          typescript-language-server
           pkgs.yaml-language-server
         ];
-        # TODO: languages concern
         languages = {
           language-server.nixd.command = lib.getExe pkgs.nixd;
           language = [
@@ -75,21 +47,6 @@
                 "nixd"
                 "nil"
               ];
-            }
-            {
-              name = "javascript";
-              auto-format = true;
-              formatter = prettierFormatter;
-            }
-            {
-              name = "typescript";
-              auto-format = true;
-              formatter = prettierFormatter;
-            }
-            {
-              name = "tsx";
-              auto-format = true;
-              formatter = prettierFormatter;
             }
             {
               name = "json";
