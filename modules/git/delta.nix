@@ -17,9 +17,11 @@
 
         git.settings.include.path = "delta/themes.gitconfig";
 
-        lazygit.settings.git.pagers = [{
-          pager = "${lib.getExe config.programs.delta.package} --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
-        }];
+        lazygit.settings.git.pagers = [
+          {
+            pager = "${lib.getExe config.programs.delta.package} --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+          }
+        ];
       };
 
       # delta themes config

@@ -13,7 +13,8 @@
             pkgs.vscode-extensions.jnoortheen.nix-ide
             pkgs.vscode-extensions.mkhl.direnv
             pkgs.vscode-extensions.pkief.material-icon-theme
-          ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ ];
+          ]
+          ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ ];
           userSettings = {
             "diffEditor.ignoreTrimWhitespace" = false;
             "editor.accessibilitySupport" = "off";
@@ -34,8 +35,3 @@
       };
     };
 }
-
-
-
-  
-

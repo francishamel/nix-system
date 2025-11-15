@@ -71,7 +71,10 @@
               name = "nix";
               auto-format = true;
               formatter.command = lib.getExe pkgs.nixpkgs-fmt;
-              language-servers = [ "nixd" "nil" ];
+              language-servers = [
+                "nixd"
+                "nil"
+              ];
             }
             {
               name = "javascript";
@@ -130,9 +133,19 @@
           keys = {
             normal = {
               "X" = "select_line_above";
-              "C-j" = [ "extend_to_line_bounds" "delete_selection" "paste_after" ];
-              "C-k" = [ "extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before" ];
-            } // noopKeys;
+              "C-j" = [
+                "extend_to_line_bounds"
+                "delete_selection"
+                "paste_after"
+              ];
+              "C-k" = [
+                "extend_to_line_bounds"
+                "delete_selection"
+                "move_line_up"
+                "paste_before"
+              ];
+            }
+            // noopKeys;
             insert = { } // noopKeys;
           };
           # TODO: styling concern

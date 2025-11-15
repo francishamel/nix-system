@@ -37,7 +37,8 @@
     };
   };
 
-  outputs = inputs@{ ... }:
+  outputs =
+    inputs@{ ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.treefmt-nix.flakeModule
@@ -46,13 +47,13 @@
         (inputs.import-tree ./modules)
       ];
 
-      perSystem = { ... }: {
+      perSystem = {
         treefmt = {
           flakeFormatter = true;
           projectRootFile = "flake.nix";
           programs = {
             deadnix.enable = true;
-            nixpkgs-fmt.enable = true;
+            nixfmt.enable = true;
             prettier.enable = true;
             stylua.enable = true;
             taplo.enable = true;
