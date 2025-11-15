@@ -5,16 +5,14 @@
       programs.bat = {
         enable = true;
         config.theme = "Nord";
-        syntaxes = {
-          gleam = {
-            src = pkgs.fetchFromGitHub {
-              owner = "molnarmark";
-              repo = "sublime-gleam";
-              rev = "2e761cdb1a87539d827987f997a20a35efd68aa9";
-              hash = "sha256-Zj2DKTcO1t9g18qsNKtpHKElbRSc9nBRE2QBzRn9+qs=";
-            };
-            file = "syntax/gleam.sublime-syntax";
+        syntaxes.gleam = {
+          src = pkgs.fetchFromGitHub {
+            owner = "digitalcora";
+            repo = "sublime-text-gleam";
+            rev = "d2662e0fa8120ee21d0793194634fb9d31be9c6d";
+            hash = "sha256-fzTwVG0lxSBh7F3A7nHET9Makh+UrIaIXjF/sc9Z5A0=";
           };
+          file = "package/Gleam.sublime-syntax";
         };
       };
     };
