@@ -19,7 +19,6 @@
         enable = true;
         defaultEditor = true;
         extraPackages = [
-          pkgs.gleam
           pkgs.llvmPackages_21.clang-tools
           pkgs.lua-language-server
           pkgs.markdown-oxide
