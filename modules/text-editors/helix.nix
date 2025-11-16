@@ -19,10 +19,7 @@
         enable = true;
         defaultEditor = true;
         extraPackages = [
-          pkgs.llvmPackages_21.clang-tools
           pkgs.lua-language-server
-          pkgs.markdown-oxide
-          pkgs.marksman
           pkgs.nil
           pkgs.nixd
           pkgs.taplo
@@ -32,11 +29,6 @@
         languages = {
           language-server.nixd.command = lib.getExe pkgs.nixd;
           language = [
-            {
-              name = "cpp";
-              auto-format = true;
-              formatter.command = lib.getExe' pkgs.llvmPackages_21.clang-tools "clang-format";
-            }
             {
               name = "nix";
               auto-format = true;
