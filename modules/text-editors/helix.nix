@@ -1,6 +1,5 @@
 {
   flake.modules.homeManager.base =
-    { pkgs, ... }:
     let
       noopKeys = {
         up = "no_op";
@@ -17,9 +16,6 @@
       programs.helix = {
         enable = true;
         defaultEditor = true;
-        extraPackages = [
-          pkgs.yaml-language-server
-        ];
         settings = {
           editor = {
             bufferline = "always";
