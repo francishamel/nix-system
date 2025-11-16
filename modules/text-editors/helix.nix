@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 {
   flake.modules.homeManager.base =
     { pkgs, ... }:
@@ -20,25 +20,9 @@
         defaultEditor = true;
         extraPackages = [
           pkgs.lua-language-server
-          pkgs.nil
-          pkgs.nixd
           pkgs.taplo
           pkgs.yaml-language-server
         ];
-        languages = {
-          language-server.nixd.command = lib.getExe pkgs.nixd;
-          language = [
-            {
-              name = "nix";
-              auto-format = true;
-              formatter.command = lib.getExe pkgs.nixfmt;
-              language-servers = [
-                "nixd"
-                "nil"
-              ];
-            }
-          ];
-        };
         settings = {
           editor = {
             bufferline = "always";
