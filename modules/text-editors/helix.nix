@@ -18,7 +18,6 @@
         enable = true;
         defaultEditor = true;
         extraPackages = [
-          pkgs.taplo
           pkgs.yaml-language-server
         ];
         settings = {
