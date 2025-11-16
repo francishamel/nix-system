@@ -1,4 +1,3 @@
-{ ... }:
 {
   flake.modules.homeManager.base =
     { pkgs, ... }:
@@ -19,7 +18,6 @@
         enable = true;
         defaultEditor = true;
         extraPackages = [
-          pkgs.lua-language-server
           pkgs.taplo
           pkgs.yaml-language-server
         ];
