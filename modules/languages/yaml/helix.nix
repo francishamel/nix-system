@@ -2,6 +2,6 @@
   flake.modules.homeManager.base =
     { pkgs, ... }:
     {
-      programs.helix.extraPackages = [ pkgs.yaml-yaml-language-server ];
+      programs.helix.extraPackages = [ pkgs.yaml-language-server ];
     };
 }
