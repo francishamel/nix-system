@@ -23,7 +23,6 @@
           pkgs.nil
           pkgs.nixd
           pkgs.taplo
-          pkgs.tinymist
           pkgs.yaml-language-server
         ];
         languages = {
@@ -37,11 +36,6 @@
                 "nixd"
                 "nil"
               ];
-            }
-            {
-              name = "typst";
-              auto-format = true;
-              formatter.command = lib.getExe pkgs.typstyle;
             }
           ];
         };
