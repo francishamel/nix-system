@@ -25,7 +25,6 @@
           pkgs.marksman
           pkgs.nil
           pkgs.nixd
-          pkgs.prettier
           pkgs.taplo
           pkgs.tinymist
           pkgs.yaml-language-server
@@ -46,17 +45,6 @@
                 "nixd"
                 "nil"
               ];
-            }
-            {
-              name = "json";
-              auto-format = true;
-              formatter = {
-                command = lib.getExe pkgs.prettier;
-                args = [
-                  "--parser"
-                  "json"
-                ];
-              };
             }
             {
               name = "typst";
