@@ -41,29 +41,8 @@
     inputs@{ ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
-        inputs.treefmt-nix.flakeModule
         ./hosts/flake-module.nix
         (inputs.import-tree ./modules)
       ];
-
-      perSystem = {
-        treefmt = {
-          flakeFormatter = true;
-          projectRootFile = "flake.nix";
-          programs = {
-            deadnix.enable = true;
-            nixfmt.enable = true;
-            prettier.enable = true;
-            stylua.enable = true;
-            taplo.enable = true;
-          };
-          settings.global.excludes = [
-            ".envrc"
-            "flake.lock"
-            "justfile"
-            "**/.gitkeep"
-          ];
-        };
-      };
     };
 }
