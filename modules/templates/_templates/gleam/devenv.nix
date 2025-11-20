@@ -1,0 +1,5 @@
+{ ... }:
+
+{
+  languages.gleam.enable = true;
+}
