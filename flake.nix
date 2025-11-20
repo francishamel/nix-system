@@ -42,7 +42,6 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.treefmt-nix.flakeModule
-        ./old_modules/flake-module.nix
         ./hosts/flake-module.nix
         (inputs.import-tree ./modules)
       ];
