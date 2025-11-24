@@ -2,7 +2,7 @@
   flake.modules.homeManager.base = {
     programs.starship = {
       enable = true;
-      settings = builtins.fromTOML (builtins.readFile ./starship/starship.toml);
+      settings = builtins.readFile ./starship/starship.toml |> builtins.fromTOML;
     };
   };
 }
