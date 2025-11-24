@@ -1,19 +1,23 @@
 {
-  flake.modules.homeManager.base =
-    { config, ... }:
-    {
-      programs.zsh = {
-        enable = true;
-        dotDir = "${config.xdg.configHome}/zsh";
-        historySubstringSearch.enable = true;
-        # TODO: ensure we don't eval brew on x86_64 darwin
-        initContent = ''
-          eval "$(/opt/homebrew/bin/brew shellenv)"
-        '';
+  flake.modules.homeManager = {
+    base =
+      { config, ... }:
+      {
+        programs.zsh = {
+          enable = true;
+          dotDir = "${config.xdg.configHome}/zsh";
+          historySubstringSearch.enable = true;
+        };
       };
-
-      # TODO: ensure we do that only for all darwin
+    darwin = {
       # Disable last login message
       home.file.".hushlogin".text = "";
     };
+    darwinAarch64 = {
+      # Brew installation changed on Darwin ARM
+      programs.zsh.initContent = ''
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      '';
+    };
+  };
 }

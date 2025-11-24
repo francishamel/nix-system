@@ -28,6 +28,7 @@
               imports = [
                 self.modules.homeManager.base
                 self.modules.homeManager.darwin
+                self.modules.homeManager.darwinAarch64
                 self.modules.homeManager.gui
               ];
             };
