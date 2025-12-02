@@ -27,7 +27,7 @@
     };
 
     try = {
-      url = "github:tobi/try/main";
+      url = "github:tobi/try-c/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
