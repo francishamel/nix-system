@@ -48,10 +48,11 @@
         enable = true;
         casks = [
           "arc"
+          "claude"
           "linear-linear"
+          "mongodb-compass"
           "obsidian"
           "postman"
-          "mongodb-compass"
           "raycast"
           "slack"
           "spotify"
