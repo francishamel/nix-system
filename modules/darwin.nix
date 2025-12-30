@@ -45,7 +45,6 @@
         enable = true;
         casks = [
           "arc"
-          "claude"
           "linear-linear"
           "mongodb-compass"
           "obsidian"
