@@ -1,9 +1,6 @@
 {
   flake.modules.darwin = {
     base = {
-      # TODO: time concern
-      time.timeZone = "America/Montreal";
-
       # TODO: security concern
       security.pam.services.sudo_local.touchIdAuth = true;
 
