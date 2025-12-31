@@ -7,6 +7,12 @@
           enable = true;
           dotDir = "${config.xdg.configHome}/zsh";
           historySubstringSearch.enable = true;
+          initContent = ''
+            # Load edit-command-line widget
+            autoload -Uz edit-command-line
+            zle -N edit-command-line
+            bindkey '^x^e' edit-command-line    
+          '';
         };
       };
     darwin = {
