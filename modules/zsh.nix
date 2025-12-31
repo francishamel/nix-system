@@ -7,6 +7,7 @@
           enable = true;
           dotDir = "${config.xdg.configHome}/zsh";
           historySubstringSearch.enable = true;
+          syntaxHighlighting.enable = true;
           initContent = ''
             # Load edit-command-line widget
             autoload -Uz edit-command-line
