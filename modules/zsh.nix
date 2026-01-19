@@ -22,6 +22,11 @@
     darwin = {
       # Disable last login message
       home.file.".hushlogin".text = "";
+
+      programs.zsh.initContent = ''
+        # Global aliases
+        alias -g C='| pbcopy'
+      '';
     };
     darwinAarch64 = {
       # Brew installation changed on Darwin ARM
