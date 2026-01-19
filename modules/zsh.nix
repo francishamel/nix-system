@@ -12,10 +12,13 @@
             # Load edit-command-line widget
             autoload -Uz edit-command-line
             zle -N edit-command-line
-            bindkey '^x^e' edit-command-line    
+            bindkey '^x^e' edit-command-line
 
             # Bind magic-space
             bindkey ' ' magic-space
+
+            # Enable zmv (used to rename multiple files easily)
+            autoload zmv
           '';
         };
       };
