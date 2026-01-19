@@ -4,7 +4,6 @@
     {
       home.packages = [
         pkgs.cachix
-        pkgs.glow
         pkgs.google-cloud-sdk
         pkgs.just
       ];
