@@ -11,7 +11,7 @@ in
         gitCredentialHelper.enable = false;
         settings = {
           aliases = {
-            "prc" = "pr create --web --assignee @me";
+            "prc" = "pr create --web --assignee @me --base $1";
             "prv" = "pr view --web";
             "rc" = "repo clone $1 ${config.home.homeDirectory}/src/gh/$1";
             "rcme" = "repo clone $1 ${config.home.homeDirectory}/src/gh/${user.githubUsername}/$1";
