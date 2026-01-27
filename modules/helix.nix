@@ -25,6 +25,7 @@
               normal = "block";
               select = "underline";
             };
+            default-yank-register = "+";
             line-number = "relative";
             middle-click-paste = false;
             mouse = false;
