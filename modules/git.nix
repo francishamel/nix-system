@@ -11,6 +11,7 @@ in
           commiters = "shortlog --summary --numbered --email";
           print-branch = "rev-parse --abbrev-ref HEAD";
         };
+        blame.ignoreRevsFile = ".git-blame-ignore-revs";
         branch.sort = "-commiterdate";
         column.ui = "auto";
         core = {
