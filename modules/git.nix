@@ -13,7 +13,10 @@ in
         };
         branch.sort = "-commiterdate";
         column.ui = "auto";
-        core.untrackedCache = true;
+        core = {
+          abbrev = 40;
+          untrackedCache = true;
+        };
         diff = {
           algorithm = "histogram";
           colorMoved = true;
