@@ -40,6 +40,10 @@
           };
           keys = {
             normal = {
+              "A-d" = "delete_selection";
+              "d" = "delete_selection_noyank";
+              "A-c" = "change_selection";
+              "c" = "change_selection_noyank";
               "X" = "select_line_above";
               "C-j" = [
                 "extend_to_line_bounds"

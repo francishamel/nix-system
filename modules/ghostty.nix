@@ -15,6 +15,8 @@
           auto-update = "off";
           maximize = true;
 
+          macos-option-as-alt = true;
+
           keybind = [
             "super+t=new_tab"
 
