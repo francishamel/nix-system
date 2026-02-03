@@ -8,12 +8,12 @@ in
       enable = true;
       settings = {
         alias = {
-          commiters = "shortlog --summary --numbered --email";
+          committers = "shortlog --summary --numbered --email";
           print-branch = "rev-parse --abbrev-ref HEAD";
           setup-blame = "config blame.ignoreRevsFile .git-blame-ignore-revs";
           unset-blame = "config --unset blame.ignoreRevsFile";
         };
-        branch.sort = "-commiterdate";
+        branch.sort = "-committerdate";
         column.ui = "auto";
         core = {
           abbrev = 40;
