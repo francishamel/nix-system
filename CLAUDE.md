@@ -131,7 +131,17 @@ flake.meta.user = { username = "..."; gitEmail = "..."; };
      };
    }
    ```
-3. Module is automatically imported by `import-tree`
+3. Stage the file with git for Nix flakes to recognize it:
+   ```bash
+   git add modules/newtool.nix
+   ```
+   **Important**: Nix flakes only recognize git-tracked files. New modules won't be imported until staged, even if they exist on disk.
+4. Test changes:
+   ```bash
+   nix flake check  # Verify syntax
+   just darwin-rebuild  # Test the full configuration
+   ```
+5. Module is automatically imported by `import-tree` once tracked
 
 ### Language Support Pattern
 
@@ -184,6 +194,44 @@ Edit `modules/user.nix` to change:
 - `githubUsername` - GitHub username
 
 This is read via `config.flake.meta.user` by other modules (git, GitHub CLI, etc.).
+
+## Common Patterns
+
+Quick reference for implementing common tasks. See referenced files for full context.
+
+### Adding Tools and Scripts
+
+**Custom shell script**: Use `pkgs.writeShellScriptBin` to create an executable
+→ See: `modules/git-worktree-init.nix`
+
+**Simple package**: Add to `home.packages` for basic CLI tools
+→ See: `modules/choose.nix`, `modules/just.nix`, `modules/cachix.nix`
+
+**Configured program**: Use `programs.<name>` when the tool has settings
+→ See: `modules/search.nix` (ripgrep with args), `modules/lazygit.nix` (with config)
+
+**System-level tool (macOS)**: Export to `darwin.base` for system services
+→ See: `modules/onepassword.nix`
+
+**GUI application (macOS)**: Use `darwin.base.homebrew.casks`
+→ See: `modules/docker.nix`
+
+### Shell Integration
+
+**Aliases**: Define in `programs.zsh.shellAliases`
+→ See: `modules/lazygit.nix` (line 18)
+
+**Using `lib.getExe`**: Prefer over hardcoding paths for portability
+→ See: `modules/lazygit.nix` (line 18)
+
+### Finding Patterns
+
+Search existing modules before creating new ones:
+```bash
+rg "writeShellScriptBin" modules/
+rg "home.packages" modules/
+rg "programs\." modules/
+```
 
 ## Multi-System Support
 
