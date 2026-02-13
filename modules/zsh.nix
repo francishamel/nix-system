@@ -29,6 +29,7 @@
       programs.zsh.initContent = ''
         # Global aliases
         alias -g C='| pbcopy'
+        alias -g OR='op run -- '
       '';
     };
     darwinAarch64 = {
