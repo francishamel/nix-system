@@ -50,7 +50,6 @@
           "mongodb-compass"
           "obsidian"
           "postman"
-          "raycast"
           "slack"
           "spotify"
         ];
