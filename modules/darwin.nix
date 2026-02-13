@@ -45,6 +45,7 @@
         enable = true;
         casks = [
           "arc"
+          "datagrip"
           "linear-linear"
           "mongodb-compass"
           "obsidian"
