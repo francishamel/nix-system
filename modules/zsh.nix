@@ -30,6 +30,20 @@
         # Global aliases
         alias -g C='| pbcopy'
         alias -g OR='op run -- '
+
+        # Nix cleanup function
+        nix-clean() {
+          echo "Deleting old system generations (keeping last 3)..."
+          sudo -H nix-env --delete-generations +3 --profile /nix/var/nix/profiles/system
+
+          echo "Deleting old home-manager generations (keeping last 3)..."
+          nix-env --delete-generations +3 --profile ~/.local/state/nix/profiles/home-manager
+
+          echo "Running garbage collection..."
+          sudo -H nix-collect-garbage -d
+
+          echo "Done! Check space with: df -h"
+        }
       '';
     };
     darwinAarch64 = {
