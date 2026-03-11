@@ -37,6 +37,11 @@
     };
 
     devenv.url = "github:cachix/devenv/v1.11.2";
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
