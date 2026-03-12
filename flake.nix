@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    import-tree.url = "github:vic/import-tree/v0.1.0";
+    import-tree.url = "github:vic/import-tree/main";
 
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
