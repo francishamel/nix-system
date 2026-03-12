@@ -18,6 +18,8 @@
 
     import-tree.url = "github:vic/import-tree/main";
 
+    llm-agents.url = "github:numtide/llm-agents.nix/main";
+
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
