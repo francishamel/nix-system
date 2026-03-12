@@ -7,6 +7,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    devenv.url = "github:cachix/devenv/v1.11.2";
+
     flake-parts.url = "github:hercules-ci/flake-parts/main";
 
     home-manager = {
@@ -18,6 +20,11 @@
 
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,13 +40,6 @@
 
     wrappers = {
       url = "github:lassulus/wrappers/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    devenv.url = "github:cachix/devenv/v1.11.2";
-
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
