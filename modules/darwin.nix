@@ -48,7 +48,6 @@
           "datagrip"
           "linear-linear"
           "mongodb-compass"
-          "obsidian"
           "postman"
           "slack"
           "spotify"
