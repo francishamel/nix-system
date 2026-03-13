@@ -7,6 +7,8 @@
     programs.obsidian = {
       enable = true;
 
+      cli.enable = true;
+
       defaultSettings = {
         app = {
           spellcheck = true;
