@@ -7,8 +7,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    devenv.url = "github:cachix/devenv/v1.11.2";
-
     flake-parts.url = "github:hercules-ci/flake-parts/main";
 
     home-manager = {

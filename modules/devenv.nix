@@ -1,4 +1,3 @@
-{ inputs, ... }:
 {
   nix.settings = {
     substituters = [ "https://devenv.cachix.org" ];
@@ -8,6 +7,6 @@
   flake.modules.homeManager.base =
     { pkgs, ... }:
     {
-      home.packages = [ inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.devenv ];
+      home.packages = [ pkgs.devenv ];
     };
 }
