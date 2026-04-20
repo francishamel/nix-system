@@ -4,7 +4,7 @@
     inputs.treefmt-nix.flakeModule
   ];
 
-  flake.perSystem = {
+  perSystem = {
     treefmt = {
       flakeFormatter = true;
       programs = {
