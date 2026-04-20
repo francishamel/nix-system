@@ -44,11 +44,7 @@
         };
         enable = true;
         casks = [
-          "arc"
-          "datagrip"
           "linear-linear"
-          "mongodb-compass"
-          "postman"
           "slack"
           "spotify"
         ];
