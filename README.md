@@ -5,7 +5,6 @@ Nix-based system configuration using flakes, nix-darwin, and home-manager. Organ
 ## Supported Architectures
 
 - **aarch64-darwin** (Apple Silicon)
-- **x86_64-darwin** (Intel Mac)
 
 ## Installation from Scratch
 
