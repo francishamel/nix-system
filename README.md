@@ -7,10 +7,6 @@ Nix-based system configuration using flakes, nix-darwin, and home-manager. Organ
 - **aarch64-darwin** (Apple Silicon)
 - **x86_64-darwin** (Intel Mac)
 
-## Current Hosts
-
-- `clicknpark-macbook` - aarch64-darwin (Apple Silicon)
-
 ## Installation from Scratch
 
 1. [Install Nix](https://nixos.org/download#nix-install-macos)
@@ -33,18 +29,9 @@ darwinConfigurations = {
 };
 ```
 
-### Intel Mac (x86_64-darwin)
-
-```nix
-darwinConfigurations = {
-  new-hostname = self.lib.mkDarwinHostX86_64 {
-    hostname = "new-hostname";
-  };
-};
-```
-
 The helpers (defined in `modules/host-helpers.nix`) automatically:
-- Include appropriate platform-specific modules for aarch64 or x86_64
+
+- Include appropriate platform-specific modules for aarch64
 - Include GUI applications (all macOS systems are desktop systems)
 - Configure home-manager with the user from `modules/user.nix`
 - Set up nixpkgs for the target platform
