@@ -6,6 +6,7 @@ in
   flake.modules.homeManager.base = {
     programs.git = {
       enable = true;
+      signing.format = "openpgp";
       settings = {
         alias = {
           committers = "shortlog --summary --numbered --email";
