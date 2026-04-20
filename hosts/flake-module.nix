@@ -2,8 +2,8 @@
 
 {
   flake.darwinConfigurations = {
-    clicknpark-macbook = self.lib.mkDarwinHostAarch64 {
-      hostname = "clicknpark-macbook";
+    francis-atob-macbook-pro = self.lib.mkDarwinHostAarch64 {
+      hostname = "francis-atob-macbook-pro";
     };
   };
 }
