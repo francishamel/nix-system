@@ -7,7 +7,7 @@
   flake.modules = {
     darwin.base = {
       programs._1password.enable = true;
-      programs._1password-gui.enable = true;
+      # programs._1password-gui.enable = true;
     };
     nixos.base = {
       programs._1password.enable = true;
