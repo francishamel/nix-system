@@ -9,10 +9,10 @@ Nix-based system configuration using flakes, nix-darwin, and home-manager. Organ
 ## Installation from Scratch
 
 1. [Install Nix](https://nixos.org/download#nix-install-macos)
-2. Clone this repo: `git clone <your-repo-url> ~/.config/nix-system && cd ~/.config/nix-system`
-3. Update hostname in `hosts/flake-module.nix` to match your system: `scutil --get LocalHostName`
+2. Clone this repo
+3. Update hostname in `hosts/flake-module.nix` to match your system by running: `hostname`
 4. Update username in `modules/user.nix`
-5. Run initial build: `nix run --extra-experimental-features 'nix-command flakes' .#activate`
+5. Run initial build: `nix run --extra-experimental-features 'nix-command flakes' nix-darwin -- switch --flake .#`
 
 ## Adding New Hosts
 
