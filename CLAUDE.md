@@ -9,6 +9,7 @@ Run `just` to see available commands.
 ## Key Architecture
 
 **Every `modules/*.nix` file** is a flake-parts module that exports to one or more of:
+
 - `flake.modules.darwin.base` — nix-darwin system config
 - `flake.modules.homeManager.base` — home-manager, all platforms
 - `flake.modules.homeManager.darwin` — macOS-specific
