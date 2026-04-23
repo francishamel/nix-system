@@ -44,6 +44,7 @@
         };
         enable = true;
         casks = [
+          "google-chrome"
           "linear-linear"
           "slack"
           "spotify"
