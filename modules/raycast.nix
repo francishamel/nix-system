@@ -1,10 +1,14 @@
 {
-  flake = {
-    modules.homeManager.darwin =
+  flake.modules = {
+    homeManager.darwin =
       { pkgs, ... }:
       {
         home.packages = [ pkgs.tesseract ];
       };
-    modules.darwin.base.homebrew.casks = [ "raycast" ];
+
+    darwin.base.homebrew.casks = [
+      "betterdisplay"
+      "raycast"
+    ];
   };
 }
