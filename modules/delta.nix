@@ -15,7 +15,10 @@
           };
         };
 
-        git.settings.include.path = "delta/themes.gitconfig";
+        git.settings = {
+          include.path = "delta/themes.gitconfig";
+          pager.blame = lib.getExe config.programs.delta.package;
+        };
 
         lazygit.settings.git.pagers = [
           {
