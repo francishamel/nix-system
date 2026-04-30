@@ -20,6 +20,8 @@
           macos-titlebar-proxy-icon = "hidden";
 
           keybind = [
+            "super+p=toggle_command_palette"
+
             "super+t=new_tab"
 
             "super+shift+h=previous_tab"
