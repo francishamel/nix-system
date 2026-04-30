@@ -10,6 +10,7 @@ in
       settings = {
         alias = {
           committers = "shortlog --summary --numbered --email";
+          file-authors = "shortlog --summary --numbered --email --";
           print-branch = "rev-parse --abbrev-ref HEAD";
           setup-blame = "config blame.ignoreRevsFile .git-blame-ignore-revs";
           unset-blame = "config --unset blame.ignoreRevsFile";
