@@ -14,8 +14,10 @@
 
           auto-update = "off";
           maximize = true;
+          title = "👻 Ghostty";
 
           macos-option-as-alt = true;
+          macos-titlebar-proxy-icon = "hidden";
 
           keybind = [
             "super+t=new_tab"
