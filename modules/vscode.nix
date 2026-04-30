@@ -6,7 +6,7 @@
     { pkgs, ... }:
     {
       programs.vscode = {
-        enable = true;
+        enable = false;
         profiles.default = {
           extensions = [
             pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
