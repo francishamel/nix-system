@@ -4,9 +4,12 @@
     programs = {
       jujutsu = {
         enable = true;
-        settings.user = {
-          name = config.flake.meta.user.name;
-          email = config.flake.meta.user.gitEmail;
+        settings = {
+          ui.default-command = "log";
+          user = {
+            name = config.flake.meta.user.name;
+            email = config.flake.meta.user.gitEmail;
+          };
         };
       };
 
