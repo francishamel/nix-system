@@ -26,6 +26,10 @@
             installation_mode = "allowed";
             default_area = "navbar";
           };
+          "clipper@obsidian.md" = {
+            installation_mode = "allowed";
+            default_area = "navbar";
+          };
         };
         profiles.default = {
           id = 0;
@@ -33,6 +37,7 @@
           extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
             ublock-origin
             onepassword-password-manager
+            web-clipper-obsidian
           ];
           search = {
             force = true;
