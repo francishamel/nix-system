@@ -6,7 +6,7 @@
     {
       home.packages = [ pkgs.fx ];
 
-      programs.zsh.initExtra = ''
+      programs.zsh.initContent = ''
         alias -s json=${lib.getExe pkgs.fx}
       '';
     };
