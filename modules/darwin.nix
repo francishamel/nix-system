@@ -45,7 +45,7 @@
         enable = true;
         casks = [
           "google-chrome"
-          "linear-linear"
+          "linear"
           "loom"
           "slack"
           "spotify"
