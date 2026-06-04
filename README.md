@@ -18,11 +18,9 @@ Nix-based system configuration using flakes, nix-darwin, and home-manager. Organ
 
 Add a new configuration in `hosts/flake-module.nix`:
 
-### Apple Silicon (aarch64-darwin)
-
 ```nix
 darwinConfigurations = {
-  new-hostname = self.lib.mkDarwinHostAarch64 {
+  new-hostname = self.lib.mkDarwinHost {
     hostname = "new-hostname";
   };
 };
@@ -30,7 +28,7 @@ darwinConfigurations = {
 
 The helpers (defined in `modules/host-helpers.nix`) automatically:
 
-- Include appropriate platform-specific modules for aarch64
+- Include platform-specific modules
 - Include GUI applications (all macOS systems are desktop systems)
 - Configure home-manager with the user from `modules/user.nix`
 - Set up nixpkgs for the target platform

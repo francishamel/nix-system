@@ -7,8 +7,8 @@
 
 {
   flake.lib = {
-    # Helper function to create an Apple Silicon (aarch64) nix-darwin host configuration
-    mkDarwinHostAarch64 =
+    # Helper function to create a nix-darwin host configuration (Apple Silicon)
+    mkDarwinHost =
       { hostname }:
       inputs.nix-darwin.lib.darwinSystem {
         modules = [
@@ -25,7 +25,6 @@
             home-manager.users.${config.flake.meta.user.username}.imports = [
               self.modules.homeManager.base
               self.modules.homeManager.darwin
-              self.modules.homeManager.darwinAarch64
               self.modules.homeManager.gui
             ];
           }

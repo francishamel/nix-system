@@ -27,6 +27,9 @@
       home.file.".hushlogin".text = "";
 
       programs.zsh.initContent = ''
+        # Set up Homebrew environment
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+
         # Global aliases
         alias -g C='| pbcopy'
         alias -g OR='op run -- '
@@ -44,12 +47,6 @@
 
           echo "Done! Check space with: df -h"
         }
-      '';
-    };
-    darwinAarch64 = {
-      # Brew installation changed on Darwin ARM
-      programs.zsh.initContent = ''
-        eval "$(/opt/homebrew/bin/brew shellenv)"
       '';
     };
   };

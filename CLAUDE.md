@@ -13,7 +13,6 @@ Run `just` to see available commands.
 - `flake.modules.darwin.base` — nix-darwin system config
 - `flake.modules.homeManager.base` — home-manager, all platforms
 - `flake.modules.homeManager.darwin` — macOS-specific
-- `flake.modules.homeManager.darwinAarch64` — Apple Silicon
 - `flake.modules.homeManager.gui` — GUI apps
 
 `hosts/flake-module.nix` aggregates these into the final system. `import-tree` auto-imports all `.nix` files in `modules/`.
