@@ -41,6 +41,10 @@
           autoUpdate = false;
           cleanup = "zap";
           upgrade = false;
+          # Homebrew 5.x requires --force-cleanup for non-interactive cleanup/zap.
+          # Workaround until nix-darwin ships the fix.
+          # https://github.com/nix-darwin/nix-darwin/issues/1787
+          extraFlags = [ "--force-cleanup" ];
         };
         enable = true;
         casks = [
