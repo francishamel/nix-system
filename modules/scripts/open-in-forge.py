@@ -1,6 +1,6 @@
 """Open the given file (optionally at a line/range) on its remote forge.
 
-Usage: open-in-forge <file> [start_line] [end_line]
+Usage: open-in-forge [--blame] <file> [start_line] [end_line]
 """
 
 import subprocess
@@ -27,12 +27,15 @@ def to_https(url):
 
 
 def main():
-    if len(sys.argv) < 2:
-        sys.exit("usage: open-in-forge <file> [line]")
+    argv = sys.argv[1:]
+    blame = "--blame" in argv
+    argv = [a for a in argv if a != "--blame"]
+    if not argv:
+        sys.exit("usage: open-in-forge [--blame] <file> [line]")
 
-    path = Path(sys.argv[1]).resolve()
-    start = sys.argv[2] if len(sys.argv) > 2 else None
-    end = sys.argv[3] if len(sys.argv) > 3 else start
+    path = Path(argv[0]).resolve()
+    start = argv[1] if len(argv) > 1 else None
+    end = argv[2] if len(argv) > 2 else start
     repo = path.parent
 
     root = Path(git("rev-parse", "--show-toplevel", cwd=repo))
@@ -49,9 +52,10 @@ def main():
 
     base = to_https(git("remote", "get-url", remote, cwd=repo))
 
-    # GitLab nests blobs under /-/; GitHub (and most others) use /blob/.
-    blob = "/-/blob/" if "gitlab" in base else "/blob/"
-    target = f"{base}{blob}{ref}/{rel}"
+    # GitLab nests paths under /-/; GitHub (and most others) don't.
+    view = "blame" if blame else "blob"
+    prefix = f"/-/{view}/" if "gitlab" in base else f"/{view}/"
+    target = f"{base}{prefix}{ref}/{rel}"
     if start:
         target += f"#L{start}"
         if end and end != start:

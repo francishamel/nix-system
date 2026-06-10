@@ -2,7 +2,8 @@
   flake.modules.homeManager.base =
     { pkgs, ... }:
     let
-      open-in-forge = pkgs.writers.writePython3Bin "open-in-forge" { } (
+      # flake8's E501 (79 cols) conflicts with ruff-format's 88; let ruff own width.
+      open-in-forge = pkgs.writers.writePython3Bin "open-in-forge" { flakeIgnore = [ "E501" ]; } (
         builtins.readFile ./scripts/open-in-forge.py
       );
       noopKeys = {
@@ -62,6 +63,7 @@
                 "paste_before"
               ];
               "space"."o" = ":sh open-in-forge %{buffer_name} %{selection_line_start} %{selection_line_end}";
+              "space"."b" = ":sh open-in-forge --blame %{buffer_name} %{selection_line_start} %{selection_line_end}";
             }
             // noopKeys;
             insert = { } // noopKeys;
