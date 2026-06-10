@@ -1,6 +1,10 @@
 {
   flake.modules.homeManager.base =
+    { pkgs, ... }:
     let
+      open-in-forge = pkgs.writers.writePython3Bin "open-in-forge" { } (
+        builtins.readFile ./scripts/open-in-forge.py
+      );
       noopKeys = {
         up = "no_op";
         down = "no_op";
@@ -16,6 +20,7 @@
       programs.helix = {
         enable = true;
         defaultEditor = true;
+        extraPackages = [ open-in-forge ];
         settings = {
           editor = {
             bufferline = "always";
@@ -56,6 +61,7 @@
                 "move_line_up"
                 "paste_before"
               ];
+              "space"."o" = ":sh open-in-forge %{buffer_name} %{selection_line_start} %{selection_line_end}";
             }
             // noopKeys;
             insert = { } // noopKeys;
