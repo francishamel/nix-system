@@ -11,14 +11,18 @@
         deadnix.enable = true;
         nixfmt.enable = true;
         prettier.enable = true;
+        ruff-format.enable = true;
         stylua.enable = true;
         taplo.enable = true;
       };
-      settings.global.excludes = [
-        ".envrc"
-        "flake.lock"
-        "justfile"
-      ];
+      settings = {
+        global.excludes = [
+          ".envrc"
+          "flake.lock"
+          "justfile"
+        ];
+        on-unmatched = "error";
+      };
     };
   };
 }
