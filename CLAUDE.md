@@ -25,6 +25,6 @@ Run `just` to see available commands.
 
 ## Gotchas
 
-- Hostname in `hosts/flake-module.nix` must match the system hostname (`clicknpark-macbook`)
+- Hostname in `hosts/flake-module.nix` must match the system hostname
 - User config (username, git email, GitHub handle) lives in `modules/user.nix`
 - Always check existing modules with `rg "programs\." modules/` before adding new ones
