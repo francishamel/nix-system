@@ -63,7 +63,8 @@
                 "paste_before"
               ];
               "space"."o" = ":sh open-in-forge %{buffer_name} %{selection_line_start} %{selection_line_end}";
-              "space"."b" = ":sh open-in-forge --blame %{buffer_name} %{selection_line_start} %{selection_line_end}";
+              "space"."b" =
+                ":sh open-in-forge --blame %{buffer_name} %{selection_line_start} %{selection_line_end}";
             }
             // noopKeys;
             insert = { } // noopKeys;
