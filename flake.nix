@@ -9,6 +9,11 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts/main";
 
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
