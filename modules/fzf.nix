@@ -34,8 +34,8 @@
             "--margin=1"
             "--padding=1"
           ];
-          fileWidgetCommand = fileCommand;
-          changeDirWidgetCommand = "${fd} --type=directory";
+          fileWidget.command = fileCommand;
+          changeDirWidget.command = "${fd} --type=directory";
         };
         zsh = {
           plugins = [
