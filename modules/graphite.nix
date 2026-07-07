@@ -1,11 +1,3 @@
 {
-  nixpkgs.allowedUnfreePackages = [
-    "graphite-cli"
-  ];
-
-  flake.modules.homeManager.base =
-    { pkgs, ... }:
-    {
-      home.packages = [ pkgs.graphite-cli ];
-    };
+  flake.modules.darwin.base.homebrew.brews = [ "withgraphite/tap/graphite" ];
 }
