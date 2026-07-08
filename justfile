@@ -18,3 +18,6 @@ format:
 
 update:
   @nix flake update
+
+update-llm-agents:
+  @nix flake update llm-agents
