@@ -17,7 +17,7 @@
         # top-level command -> allowed read-only subcommands
         ALLOWED = {
             "pr": {"view", "list", "checks", "diff", "status"},
-            "run": {"view", "list"},
+            "run": {"view", "list", "download"},
             "workflow": {"view", "list"},
             "search": {"prs", "issues"},
             "auth": {"status"},
@@ -56,7 +56,7 @@
               `GITHUB_TOKEN="op://Employee/Claude GitHub PAT/token" op run --account atob.1password.com -- gh-ro <args>`
             - Anywhere else:
               `GITHUB_TOKEN="op://Private/GitHub/cli/Token" op run --account my.1password.com -- gh-ro <args>`
-            `gh-ro` only permits reading PRs (e.g. `pr view --comments`, `pr diff`, `pr checks`) and Actions runs (`run view`, `run list`). Never print or echo `GITHUB_TOKEN`.
+            `gh-ro` only permits reading PRs (e.g. `pr view --comments`, `pr diff`, `pr checks`) and Actions runs (`run view`, `run list`, `run download`). Never print or echo `GITHUB_TOKEN`.
         '';
 
       # Deny direct `gh` outright (enforced in every mode, incl. auto) so the
