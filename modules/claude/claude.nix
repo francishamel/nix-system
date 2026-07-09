@@ -14,10 +14,11 @@
             enable = true;
             package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code;
 
-            context = ''
-              - **NEVER** use `python` or `python3`
-              - For JSON, use `jq` (already available). It handles nearly everything.
-            '';
+            context = # markdown
+              ''
+                - **NEVER** use `python` or `python3`
+                - For JSON, use `jq` (already available). It handles nearly everything.
+              '';
           };
         };
       darwin.base.homebrew.casks = [ "claude" ];
