@@ -1,7 +1,4 @@
 {
-  # Anthropic's official plugin marketplace. Hosts many first-party/partner
-  # plugins (github, playwright, sentry, figma, ...); enable more by adding
-  # "<plugin>@claude-plugins-official" entries below.
   flake.modules.homeManager.base =
     { pkgs, ... }:
     {
