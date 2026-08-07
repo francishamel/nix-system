@@ -4,11 +4,12 @@ let
 in
 {
   flake.modules.homeManager.base =
-    { config, ... }:
+    { config, pkgs, ... }:
     {
       programs.gh = {
         enable = true;
         gitCredentialHelper.enable = false;
+        extensions = [ pkgs.gh-stack ];
         settings = {
           aliases = {
             "prc" = "pr create --web --assignee @me";
