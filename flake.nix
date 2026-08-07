@@ -2,11 +2,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    _1password-shell-plugins = {
-      url = "github:1Password/shell-plugins/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     flake-parts.url = "github:hercules-ci/flake-parts/main";
 
     git-hooks = {

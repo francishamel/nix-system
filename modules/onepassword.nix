@@ -1,4 +1,4 @@
-{ config, inputs, ... }:
+{ config, ... }:
 {
   nixpkgs.allowedUnfreePackages = [
     "1password"
@@ -18,23 +18,14 @@
     };
     homeManager = {
       base =
-        { config, pkgs, ... }:
+        { config, ... }:
         let
           sockPath = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
         in
         {
-          imports = [ inputs._1password-shell-plugins.hmModules.default ];
-
           home.sessionVariables.SSH_AUTH_SOCK = sockPath;
 
           programs = {
-            _1password-shell-plugins = {
-              enable = true;
-              plugins = [
-                pkgs.gh
-              ];
-            };
-
             git.settings = {
               commit.gpgsign = true;
               tag.gpgsign = true;
