@@ -20,9 +20,9 @@
           pager.blame = lib.getExe config.programs.delta.package;
         };
 
-        lazygit.settings.git.pagers = [
+        lazygit.settings.git.diffRenderers = [
           {
-            pager = "${lib.getExe config.programs.delta.package} --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+            command = "${lib.getExe config.programs.delta.package} --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
           }
         ];
       };
