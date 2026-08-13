@@ -1,4 +1,8 @@
 { config, ... }:
+let
+  gitEmail = config.flake.meta.user.gitEmail;
+  signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuLaEvAkPRVZ5v7uVOxM+Te9n/iJom7RSZogNHK+Jd3";
+in
 {
   nixpkgs.allowedUnfreePackages = [
     "1password"
@@ -18,7 +22,7 @@
     };
     homeManager = {
       base =
-        { config, ... }:
+        { config, pkgs, ... }:
         let
           sockPath = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
         in
@@ -31,9 +35,12 @@
               tag.gpgsign = true;
               gpg = {
                 format = "ssh";
-                ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+                ssh = {
+                  allowedSignersFile = toString (pkgs.writeText "git-allowed-signers" "${gitEmail} ${signingKey}\n");
+                  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+                };
               };
-              user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuLaEvAkPRVZ5v7uVOxM+Te9n/iJom7RSZogNHK+Jd3";
+              user.signingkey = signingKey;
             };
 
             ssh.extraConfig = ''
