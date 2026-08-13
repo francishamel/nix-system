@@ -44,6 +44,8 @@
                     - Keep paragraphs to three sentences or fewer.
                     - Use headings only when I asked several separate questions, one heading per question. Never use a heading for a topic I did not ask about.
                     - Use a table when comparing the same two or more facts across three or more items. Keep cells to a few words. If a cell needs a full sentence, use bullets instead.
+
+                - **ALWAYS** start a PR reply with `Claude here 🤖:` and end it with `🤖 Addressed by Claude Code`. A reply is a comment or a review comment on a PR. Never put either line in the PR description.
               '';
           };
         };
