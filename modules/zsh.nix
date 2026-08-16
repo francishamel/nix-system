@@ -27,9 +27,6 @@
       home.file.".hushlogin".text = "";
 
       programs.zsh.initContent = ''
-        # Set up Homebrew environment
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-
         # Global aliases
         alias -g C='| pbcopy'
         alias -g OR='op run -- '
