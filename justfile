@@ -6,6 +6,7 @@ alias dr := darwin-rebuild
 alias f := format
 alias fc := flake-checker
 alias u := update
+alias vr := verify-refactor
 
 darwin-rebuild:
   @sudo darwin-rebuild switch --flake .#
@@ -21,3 +22,7 @@ update:
 
 update-llm-agents:
   @nix flake update llm-agents
+
+# Show how the working tree changes the built system, against a baseline ref
+verify-refactor ref="main":
+  @nix run .#verify-refactor -- {{ ref }}
