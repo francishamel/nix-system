@@ -69,7 +69,6 @@
             // noopKeys;
             insert = { } // noopKeys;
           };
-          # TODO: styling concern
           theme = "nord";
         };
       };

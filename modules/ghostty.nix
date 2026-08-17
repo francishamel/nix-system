@@ -7,7 +7,6 @@
         package = pkgs.ghostty-bin;
         clearDefaultKeybinds = true;
         settings = {
-          # TODO: styling concern
           theme = "Nord";
           font-family = "FiraCode Nerd Font";
           font-size = 12;

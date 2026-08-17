@@ -1,10 +1,8 @@
 {
   flake.modules.darwin = {
     base = {
-      # TODO: security concern
       security.pam.services.sudo_local.touchIdAuth = true;
 
-      # TODO: Desktop manager concern
       system.defaults = {
         ".GlobalPreferences"."com.apple.sound.beep.sound" = "/System/Library/Sounds/Blow.aiff";
         loginwindow.GuestEnabled = false;
@@ -35,7 +33,6 @@
         };
       };
 
-      # TODO: Networking concern
       networking = {
         dns = [
           "1.1.1.1" # Cloudflare's primary dns
