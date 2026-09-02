@@ -203,3 +203,27 @@ symbol = " "
 
 [gradle]
 symbol = " "
+
+# Shown when the current directory is a linked worktree rather than the main
+# one. `git_branch` already names the branch; this names the repo the worktree
+# belongs to, which the directory module cannot show because starship treats a
+# linked worktree as its own repo root.
+#
+# `shell` has to be set. Without it starship reads STARSHIP_SHELL, which the
+# status line clears to get raw ANSI, and then fails to start any command.
+# One element only: with arguments, starship passes the command as an argument
+# instead of on stdin, and `/bin/sh -c` then has nothing to run.
+[custom.worktree]
+description = "Repo a linked git worktree belongs to"
+command = 'basename "$(dirname "$(git rev-parse --git-common-dir)")"'
+when = 'test "$(git rev-parse --git-dir)" != "$(git rev-parse --git-common-dir)"'
+shell = ["/bin/sh"]
+format = "[$symbol$output]($style) "
+symbol = "󰙅 of "
+style = "bold yellow"
+
+# Single-line prompt reused by the Claude Code status line. See
+# modules/claude/statusline.nix. Kept here so both prompts share the symbols
+# above.
+[profiles]
+claude = "$claude_model$directory${custom.worktree}$git_branch$git_status$nix_shell$claude_context$claude_cost"
