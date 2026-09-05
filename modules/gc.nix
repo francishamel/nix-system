@@ -9,9 +9,7 @@
       };
     in
     {
-
       darwin.base = gcModule;
-      nixos.base = gcModule;
       homeManager.base = gcModule;
     };
 }

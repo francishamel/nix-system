@@ -29,7 +29,6 @@
     };
     flake.modules = {
       darwin.base.nix.settings = (config.nix).settings;
-      nixos.base.nix.settings = (config.nix).settings;
       homeManager.base.nix.settings = (config.nix).settings;
     };
   };

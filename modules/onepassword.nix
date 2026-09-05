@@ -13,13 +13,6 @@ in
       programs._1password.enable = true;
       # programs._1password-gui.enable = true;
     };
-    nixos.base = {
-      programs._1password.enable = true;
-      programs._1password-gui = {
-        enable = true;
-        polkitPolicyOwners = [ config.flake.meta.user.username ];
-      };
-    };
     homeManager = {
       base =
         { config, pkgs, ... }:

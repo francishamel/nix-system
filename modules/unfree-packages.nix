@@ -5,14 +5,8 @@
     default = [ ];
   };
 
-  config.flake.modules =
-    let
-      predicate = pkg: builtins.elem (lib.getName pkg) config.nixpkgs.allowedUnfreePackages;
-    in
-    {
-      nixos.base.nixpkgs.config.allowUnfreePredicate = predicate;
-      darwin.base.nixpkgs.config.allowUnfreePredicate = predicate;
-    };
+  config.flake.modules.darwin.base.nixpkgs.config.allowUnfreePredicate =
+    pkg: builtins.elem (lib.getName pkg) config.nixpkgs.allowedUnfreePackages;
 
   config.flake.meta.nixpkgs.allowedUnfreePackages = config.nixpkgs.allowedUnfreePackages;
 }
