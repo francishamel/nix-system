@@ -12,7 +12,6 @@
       users.${config.flake.meta.user.username}.imports = [
         config.flake.modules.homeManager.base
         config.flake.modules.homeManager.darwin
-        config.flake.modules.homeManager.gui
       ];
     };
   };
