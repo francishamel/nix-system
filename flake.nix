@@ -54,6 +54,7 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         ./hosts/flake-module.nix
+        (inputs.import-tree ./dev)
         (inputs.import-tree ./modules)
       ];
     };

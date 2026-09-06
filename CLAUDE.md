@@ -17,6 +17,8 @@ Run `just` to see available commands.
 
 `hosts/flake-module.nix` aggregates these into the final system. `import-tree` auto-imports all `.nix` files in `modules/`.
 
+**`dev/` is not `modules/`**: files there configure _this repo_ — formatter, git hooks, `verify-refactor`. They write `perSystem` and touch no machine. Own `import-tree` call in `flake.nix`.
+
 **Cross-module sharing** uses `flake.meta.*` (defined in `modules/meta-output.nix`) — no `specialArgs` needed. See `modules/user.nix` (defines) and `modules/git.nix` (reads) for the pattern.
 
 **Unfree packages**: add to `nixpkgs.allowedUnfreePackages` in the relevant module; `modules/unfree-packages.nix` aggregates them.
