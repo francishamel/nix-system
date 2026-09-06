@@ -43,8 +43,6 @@
 
         knownNetworkServices = [ "Wi-Fi" ];
       };
-
-      system.stateVersion = 5;
     };
   };
 }
