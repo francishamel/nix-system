@@ -13,6 +13,11 @@
         settings.enabledPlugins = {
           "show-me@humanlayer" = true;
         };
+
+        context = # markdown
+          ''
+            - **ALWAYS** use the `show-me` skill to write a PR description. Add one visual that shows what changed. GitHub renders Mermaid and fenced code blocks, so use those. Never write an HTML file for a PR description.
+          '';
       };
     };
 }
