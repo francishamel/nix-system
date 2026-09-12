@@ -2,14 +2,17 @@
 
 {
   flake.modules.homeManager.base =
-    { config, pkgs, ... }:
+    { pkgs, ... }:
     {
       programs.pi-coding-agent = {
         enable = true;
         package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi;
-        settings.theme = "nord";
+        settings = {
+          theme = "nord";
+          quietStartup = true;
+          themes = [ ./pi/nord.json ];
+          extensions = [ ./pi/custom-header.ts ];
+        };
       };
-
-      home.file."${config.programs.pi-coding-agent.configDir}/themes/nord.json".source = ./pi/nord.json;
     };
 }
