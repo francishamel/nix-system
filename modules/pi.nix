@@ -12,7 +12,7 @@
           theme = "nord";
           quietStartup = true;
           defaultProjectTrust = "ask";
-          defaultProvider = "openai";
+          defaultProvider = "openai-codex";
           defaultModel = "gpt-5.6-terra";
           defaultThinkingLevel = "medium";
           enableInstallTelemetry = false;
