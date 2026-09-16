@@ -222,8 +222,5 @@ format = "[$symbol$output]($style) "
 symbol = "󰙅 of "
 style = "bold yellow"
 
-# Single-line prompt reused by the Claude Code status line. See
-# modules/claude/statusline.nix. Kept here so both prompts share the symbols
-# above.
 [profiles]
 claude = "$claude_model$directory${custom.worktree}$git_branch$git_status$nix_shell$claude_context$claude_cost"
