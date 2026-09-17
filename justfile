@@ -26,3 +26,6 @@ update-llm-agents:
 # Show how the working tree changes the built system, against a baseline ref
 verify-refactor ref="main":
   @nix run .#verify-refactor -- {{ ref }}
+
+output-meta:
+  @nix eval .#meta --json
