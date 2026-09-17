@@ -18,9 +18,9 @@ Run `just` to see available commands.
 
 `hosts/flake-module.nix` builds the system. It names the host and feeds `flake.modules.darwin.base` to `darwinSystem`, alongside the per-host overrides. `modules/system/home-manager.nix` pulls the two `homeManager` targets into that system.
 
-**Directories under `modules/` are navigation only.** `import-tree` assigns them no meaning — it walks the tree and merges whatever it finds. A subject earns a folder once it has several files.
+**Directories under `modules/` are navigation only.** `import-tree` assigns them no meaning — it walks the tree and merges whatever it finds. A subject earns a folder once it has several files. The rule guides new folders; the single-file folders already in the tree are fine and need no flattening.
 
-- `modules/nix/` — nix itself: settings, garbage collection, caches, the unfree allowlist
+- `modules/nix/` — nix itself: settings, garbage collection, caches, the unfree allowlist, the index
 - `modules/system/` — the machine: the user, darwin defaults, home-manager, homebrew, state version
 - `modules/` — programs, one file each
 
@@ -29,7 +29,7 @@ Run `just` to see available commands.
 **Cross-module sharing** uses two namespaces, and neither needs `specialArgs`. Both declare each option in the module that sets it.
 
 - `flake.meta.*` — facts worth querying from outside, like the user and the nixpkgs config. It is a flake output, so `nix eval .#meta` reports the whole contract. See `modules/system/user.nix` (defines) and `modules/git.nix` (reads).
-- `my.*` — internal plumbing that several modules coordinate on, like `my.zsh.initOrder`. It is not a flake output. Use it when the value only matters inside this flake.
+- `my.*` — internal plumbing, never a flake output. Use it when the value only matters inside this flake. It lives at two unrelated levels: `my.zsh.initOrder` is a top-level flake-parts option that six other modules read; `my.onepassword` is a home-manager option that only `modules/onepassword.nix` uses, to keep a darwin-only path out of the shared config.
 
 **Unfree packages**: add to `nixpkgs.allowedUnfreePackages` in the relevant module; `modules/nix/unfree-packages.nix` aggregates them.
 

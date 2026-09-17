@@ -11,28 +11,32 @@ Nix-based system configuration using flakes, nix-darwin, and home-manager. Organ
 1. [Install Nix](https://nixos.org/download#nix-install-macos)
 2. Clone this repo
 3. Update hostname in `hosts/flake-module.nix` to match your system by running: `hostname`
-4. Update username in `modules/user.nix`
+4. Update username in `modules/system/user.nix`
 5. Run initial build: `nix run --extra-experimental-features 'nix-command flakes' nix-darwin -- switch --flake .#`
 
 ## Adding New Hosts
 
-Add a new configuration in `hosts/flake-module.nix`:
+Add a configuration in `hosts/flake-module.nix`:
 
 ```nix
-darwinConfigurations = {
-  new-hostname = self.lib.mkDarwinHost {
-    hostname = "new-hostname";
+let
+  hostname = "new-hostname";
+in
+{
+  flake.darwinConfigurations.${hostname} = inputs.nix-darwin.lib.darwinSystem {
+    modules = [
+      self.modules.darwin.base
+      {
+        nixpkgs.hostPlatform = "aarch64-darwin";
+        networking.hostName = hostname;
+      }
+    ];
   };
-};
+}
 ```
 
-The helpers (defined in `modules/host-helpers.nix`) automatically:
-
-- Include platform-specific modules
-- Include GUI applications (all macOS systems are desktop systems)
-- Configure home-manager with the user from `modules/user.nix`
-- Set up nixpkgs for the target platform
+`self.modules.darwin.base` carries every module in the flake. The inline attrset holds only what this host needs: its platform, its hostname, and any per-host override. `modules/system/home-manager.nix` wires home-manager into that system, using the user from `modules/system/user.nix`.
 
 ## Module Organization
 
-All configuration lives in `modules/` as flat files following the dendritic pattern. Each module exports to appropriate namespaces (`darwin.base`, `homeManager.base`, etc.). See `CLAUDE.md` for detailed architecture documentation.
+All configuration lives in `modules/`, one file per subject, following the dendritic pattern. Each file exports to one or more targets (`darwin.base`, `homeManager.base`, `homeManager.darwin`). Directories are navigation only. See `CLAUDE.md` for detailed architecture documentation.
