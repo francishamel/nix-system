@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import webbrowser
 from collections import Counter
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -134,10 +135,16 @@ class Handler(BaseHTTPRequestHandler):
 parser = argparse.ArgumentParser(description="View local AI work telemetry.")
 parser.add_argument("--port", type=int, default=4319)
 parser.add_argument("--trace-file", type=Path, required=True)
+parser.add_argument("--open", action="store_true", help="open the page in a browser")
 args = parser.parse_args()
 Handler.trace_file = args.trace_file
 server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
-print(f"AI work trace dashboard: http://127.0.0.1:{args.port}")
+url = f"http://127.0.0.1:{args.port}"
+print(f"AI work trace dashboard: {url}")
+# The constructor already bound and listened, so the browser cannot arrive
+# before the socket is ready to queue it.
+if args.open:
+    webbrowser.open(url)
 try:
     server.serve_forever()
 except KeyboardInterrupt:

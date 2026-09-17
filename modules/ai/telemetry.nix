@@ -65,6 +65,10 @@
     {
       home.packages = [ dashboard ];
 
+      # The dashboard is short-lived, so the entry point is one alias rather
+      # than a second launchd agent. --open means the port never gets typed.
+      programs.zsh.shellAliases.awt = "${dashboard}/bin/ai-work-trace-dashboard --open";
+
       # Both coding agents export local-only telemetry to this collector.
       programs.claude-code.settings.env = {
         CLAUDE_CODE_ENABLE_TELEMETRY = "1";
