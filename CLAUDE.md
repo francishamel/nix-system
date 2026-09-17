@@ -16,23 +16,29 @@ Run `just` to see available commands.
 
 `import-tree` auto-imports those files recursively. Non-`.nix` files under `modules/` (`.py`, `.ts`, `.toml`, `.json`) are assets a sibling module references, not modules.
 
-`modules/host-helpers.nix` builds the system — `mkDarwinHost` feeds `flake.modules.darwin.base` to `darwinSystem`. `hosts/flake-module.nix` names the host and adds per-host overrides. `modules/home-manager.nix` pulls the two `homeManager` targets into that system.
+`hosts/flake-module.nix` builds the system. It names the host and feeds `flake.modules.darwin.base` to `darwinSystem`, alongside the per-host overrides. `modules/system/home-manager.nix` pulls the two `homeManager` targets into that system.
+
+**Directories under `modules/` are navigation only.** `import-tree` assigns them no meaning — it walks the tree and merges whatever it finds. A subject earns a folder once it has several files.
+
+- `modules/nix/` — nix itself: settings, garbage collection, caches, the unfree allowlist
+- `modules/system/` — the machine: the user, darwin defaults, home-manager, homebrew, state version
+- `modules/` — programs, one file each
 
 **`dev/` is not `modules/`**: files there configure _this repo_ — formatter, git hooks, `verify-refactor`. They write `perSystem` and touch no machine. Own `import-tree` call in `flake.nix`.
 
 **Cross-module sharing** uses two namespaces, and neither needs `specialArgs`. Both declare each option in the module that sets it.
 
-- `flake.meta.*` — facts worth querying from outside, like the user and the nixpkgs config. It is a flake output, so `nix eval .#meta` reports the whole contract. See `modules/user.nix` (defines) and `modules/git.nix` (reads).
+- `flake.meta.*` — facts worth querying from outside, like the user and the nixpkgs config. It is a flake output, so `nix eval .#meta` reports the whole contract. See `modules/system/user.nix` (defines) and `modules/git.nix` (reads).
 - `my.*` — internal plumbing that several modules coordinate on, like `my.zsh.initOrder`. It is not a flake output. Use it when the value only matters inside this flake.
 
-**Unfree packages**: add to `nixpkgs.allowedUnfreePackages` in the relevant module; `modules/unfree-packages.nix` aggregates them.
+**Unfree packages**: add to `nixpkgs.allowedUnfreePackages` in the relevant module; `modules/nix/unfree-packages.nix` aggregates them.
 
-**Global nix settings**: add to `nix.settings` in any module; `modules/settings.nix` propagates them.
+**Global nix settings**: add to `nix.settings` in any module; `modules/nix/settings.nix` propagates them.
 
 **zsh startup**: never write a bare `programs.zsh.initContent`. Pick a slot from `my.zsh.initOrder` and wrap the block in `lib.mkOrder`. The four slots and the reason for each number live in `modules/zsh.nix`.
 
 ## Gotchas
 
 - Hostname in `hosts/flake-module.nix` must match the system hostname
-- User config (username, git email, GitHub handle) lives in `modules/user.nix`
+- User config (username, git email, GitHub handle) lives in `modules/system/user.nix`
 - Always check existing modules with `rg "programs\." modules/` before adding new ones
