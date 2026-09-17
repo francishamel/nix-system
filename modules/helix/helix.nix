@@ -4,7 +4,7 @@
     let
       # flake8's E501 (79 cols) conflicts with ruff-format's 88; let ruff own width.
       open-in-forge = pkgs.writers.writePython3Bin "open-in-forge" { flakeIgnore = [ "E501" ]; } (
-        builtins.readFile ./scripts/open-in-forge.py
+        builtins.readFile ./open-in-forge.py
       );
       noopKeys = {
         up = "no_op";
