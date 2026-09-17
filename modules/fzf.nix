@@ -1,4 +1,7 @@
-{ lib, ... }:
+{ config, lib, ... }:
+let
+  initOrder = config.flake.meta.zsh.initOrder;
+in
 {
   flake.modules.homeManager.base =
     { config, pkgs, ... }:
@@ -45,7 +48,7 @@
               file = "share/fzf-tab/fzf-tab.plugin.zsh";
             }
           ];
-          initContent = ''
+          initContent = lib.mkOrder initOrder.interactive ''
             # fzf-tab does not take default options into consideration so we have to set the height directly
             zstyle ':fzf-tab:*' fzf-flags --height=40%
           '';

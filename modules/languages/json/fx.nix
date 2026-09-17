@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 {
   flake.modules.homeManager.base =
@@ -6,7 +6,7 @@
     {
       home.packages = [ pkgs.fx ];
 
-      programs.zsh.initContent = ''
+      programs.zsh.initContent = lib.mkOrder config.flake.meta.zsh.initOrder.aliases ''
         alias -s json=${lib.getExe pkgs.fx}
       '';
     };

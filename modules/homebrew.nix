@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
   flake.modules = {
     darwin.base.homebrew = {
@@ -10,7 +10,7 @@
       };
     };
 
-    homeManager.darwin.programs.zsh.initContent = lib.mkBefore ''
+    homeManager.darwin.programs.zsh.initContent = lib.mkOrder config.flake.meta.zsh.initOrder.path ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
   };
