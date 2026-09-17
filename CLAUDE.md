@@ -33,4 +33,3 @@ Run `just` to see available commands.
 - Hostname in `hosts/flake-module.nix` must match the system hostname
 - User config (username, git email, GitHub handle) lives in `modules/user.nix`
 - Always check existing modules with `rg "programs\." modules/` before adding new ones
-- A list-valued `nix.settings` key set by two modules fails at eval unless `modules/settings.nix` declares it as `listOf str` first. Declared keys concatenate; undeclared ones conflict

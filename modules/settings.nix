@@ -1,21 +1,16 @@
 { lib, config, ... }:
-
+let
+  # A nix.conf value: a scalar, or a list of them. Lists concatenate when two
+  # modules set the same key, so no key needs declaring before a module uses it.
+  atom = lib.types.oneOf [
+    lib.types.bool
+    lib.types.int
+    lib.types.str
+  ];
+in
 {
   options.nix.settings = lib.mkOption {
-    type = lib.types.submodule {
-      freeformType = lib.types.attrsOf lib.types.anything;
-      options = {
-        extra-substituters = lib.mkOption {
-          type = lib.types.listOf lib.types.str;
-          default = [ ];
-        };
-        extra-trusted-public-keys = lib.mkOption {
-          type = lib.types.listOf lib.types.str;
-          default = [ ];
-        };
-
-      };
-    };
+    type = lib.types.attrsOf (lib.types.either atom (lib.types.listOf atom));
     default = { };
   };
 
