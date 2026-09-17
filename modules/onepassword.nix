@@ -15,7 +15,29 @@ in
     };
     homeManager = {
       base =
-        { config, pkgs, ... }:
+        { pkgs, ... }:
+        {
+          programs.git.settings = {
+            commit.gpgsign = true;
+            tag.gpgsign = true;
+            gpg = {
+              format = "ssh";
+              ssh.allowedSignersFile = toString (
+                pkgs.writeText "git-allowed-signers" "${gitEmail} ${signingKey}\n"
+              );
+            };
+            user.signingkey = signingKey;
+          };
+        };
+      # The agent socket and the signing binary are macOS paths. They evaluate
+      # anywhere, so keeping them in `base` would break a Linux host silently.
+      darwin =
+        {
+          config,
+          lib,
+          pkgs,
+          ...
+        }:
         let
           sockPath = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
         in
@@ -23,26 +45,12 @@ in
           home.sessionVariables.SSH_AUTH_SOCK = sockPath;
 
           programs = {
-            git.settings = {
-              commit.gpgsign = true;
-              tag.gpgsign = true;
-              gpg = {
-                format = "ssh";
-                ssh = {
-                  allowedSignersFile = toString (pkgs.writeText "git-allowed-signers" "${gitEmail} ${signingKey}\n");
-                  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-                };
-              };
-              user.signingkey = signingKey;
-            };
+            git.settings.gpg.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+
+            zsh.initContent = lib.mkOrder 550 ''
+              fpath=(${pkgs._1password-cli}/share/zsh/site-functions $fpath)
+            '';
           };
-        };
-      darwin =
-        { lib, pkgs, ... }:
-        {
-          programs.zsh.initContent = lib.mkOrder 550 ''
-            fpath=(${pkgs._1password-cli}/share/zsh/site-functions $fpath)
-          '';
         };
     };
   };
