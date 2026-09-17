@@ -60,6 +60,52 @@
             exit 0
           fi
 
+          # import-tree walks modules/ lexicographically, so moving a file moves
+          # its entries inside the merged package lists. buildEnv hashes that
+          # order, which makes a pure rename look like a changed system even
+          # though the environment holds exactly the same store paths.
+          packages() {
+            nix eval --raw "$1#darwinConfigurations.$host.config" --apply '
+              config:
+              let
+                users = builtins.attrValues (config.home-manager.users or { });
+                lists = [ config.environment.systemPackages ] ++ builtins.map (u: u.home.packages) users;
+                paths = builtins.concatMap (l: builtins.map toString l) lists;
+              in
+              builtins.concatStringsSep "\n" (builtins.sort builtins.lessThan paths)
+            '
+          }
+
+          mapfile -t basePkgs < <(packages "git+file://$root?rev=$rev")
+          mapfile -t treePkgs < <(packages ".")
+
+          declare -A inBase inTree
+          for p in "''${basePkgs[@]}"; do inBase["$p"]=1; done
+          for p in "''${treePkgs[@]}"; do inTree["$p"]=1; done
+
+          same=1
+          for p in "''${basePkgs[@]}"; do
+            if [ -z "''${inTree[$p]:-}" ]; then
+              same=0
+              echo "  removed: ''${p##*/}"
+            fi
+          done
+          for p in "''${treePkgs[@]}"; do
+            if [ -z "''${inBase[$p]:-}" ]; then
+              same=0
+              echo "  added:   ''${p##*/}"
+            fi
+          done
+
+          if [ "$same" = 1 ]; then
+            echo "same packages, different order — all ''${#basePkgs[@]} store paths match"
+            echo "a file move reorders the merged lists, and buildEnv hashes the order"
+          else
+            echo
+            echo "the package sets above differ, so this is not a pure reordering"
+          fi
+          echo
+
           nix-diff --line-oriented --context 2 --skip-already-compared "$base" "$tree"
         '';
       };
