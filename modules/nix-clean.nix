@@ -3,10 +3,8 @@
     { pkgs, ... }:
     {
       home.packages = [
-        # Aggressive manual counterpart to the scheduled gc in modules/gc.nix.
         (pkgs.writeShellApplication {
           name = "nix-clean";
-          # `sudo` is intentionally absent — it must be the setuid system binary.
           runtimeInputs = [ pkgs.nix ];
           text = ''
             keep=3
