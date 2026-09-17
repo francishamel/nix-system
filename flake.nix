@@ -52,7 +52,16 @@
   outputs =
     inputs@{ ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "aarch64-darwin"
+        # Headroom for a Linux machine, not leftovers from the nixos.base
+        # target removed in a02749b.
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
+
       imports = [
+        inputs.flake-parts.flakeModules.modules
         ./hosts/flake-module.nix
         (inputs.import-tree ./dev)
         (inputs.import-tree ./modules)
