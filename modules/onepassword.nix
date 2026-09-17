@@ -35,10 +35,6 @@ in
               };
               user.signingkey = signingKey;
             };
-
-            ssh.extraConfig = ''
-              IdentityAgent "${sockPath}"
-            '';
           };
         };
       darwin =
