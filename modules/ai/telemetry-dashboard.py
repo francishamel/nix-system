@@ -1,15 +1,11 @@
-#!/usr/bin/env python3
 """A local, privacy-preserving viewer for ai-work-trace OTLP JSONL data."""
 
 import argparse
 import json
-import os
 from collections import Counter
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
-
-TRACE_FILE = Path.home() / "Library/Application Support/ai-work-trace/otel.jsonl"
 
 
 def value(attribute):
@@ -21,11 +17,11 @@ def attributes(items):
     return {item["key"]: value(item) for item in items or []}
 
 
-def records():
-    if not TRACE_FILE.exists():
+def records(trace_file):
+    if not trace_file.exists():
         return []
     result = []
-    with TRACE_FILE.open(encoding="utf-8") as stream:
+    with trace_file.open(encoding="utf-8") as stream:
         for line in stream:
             try:
                 result.append(json.loads(line))
@@ -34,11 +30,11 @@ def records():
     return result
 
 
-def summary():
+def summary(trace_file):
     services, event_names, span_names, metric_names = (Counter() for _ in range(4))
     logs = spans = metrics = 0
     sessions = set()
-    for batch in records():
+    for batch in records(trace_file):
         for resource_log in batch.get("resourceLogs", []):
             service = attributes(
                 resource_log.get("resource", {}).get("attributes")
@@ -73,7 +69,8 @@ def summary():
                     services[service] += 1
                     metric_names[metric.get("name", "unnamed metric")] += 1
     return {
-        "fileBytes": TRACE_FILE.stat().st_size if TRACE_FILE.exists() else 0,
+        "traceFile": str(trace_file),
+        "fileBytes": trace_file.stat().st_size if trace_file.exists() else 0,
         "logs": logs,
         "spans": spans,
         "metrics": metrics,
@@ -96,11 +93,12 @@ table { width:100%; border-collapse:collapse } td { padding:6px; border-bottom:1
 small { color:#a6adc8 } code { color:#f9e2af }
 </style><body><h1>AI work trace</h1><p>Local-only summary. Prompt and response bodies are never displayed.</p>
 <div class="cards" id="cards"></div><div class="grid"><section><h2>Services</h2><div id="services"></div></section><section><h2>Log events</h2><div id="events"></div></section><section><h2>Top spans</h2><div id="spans"></div></section><section><h2>Metrics</h2><div id="metrics"></div></section></div>
-<p><small>Source: <code>~/Library/Application Support/ai-work-trace/otel.jsonl</code> · refreshes every 15 seconds</small></p>
+<p><small>Source: <code id="source"></code> · refreshes every 15 seconds</small></p>
 <script>
 const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const table = rows => '<table>' + rows.map(([name,count]) => `<tr><td>${escapeHtml(name)}</td><td>${count}</td></tr>`).join('') + '</table>';
 async function refresh() { const d=await (await fetch('/api/summary')).json();
+ document.querySelector('#source').textContent=d.traceFile;
  document.querySelector('#cards').innerHTML=[['Log records',d.logs],['Spans',d.spans],['Metric definitions',d.metrics],['Sessions',d.sessions],['Stored',`${(d.fileBytes/1024).toFixed(1)} KiB`]].map(([n,v])=>`<div class="card"><small>${n}</small><div class="number">${v}</div></div>`).join('');
  for (const [id, rows] of Object.entries({services:d.services,events:d.events,spans:d.spansByName,metrics:d.metricsByName})) document.querySelector('#'+id).innerHTML=table(rows);
 } refresh(); setInterval(refresh,15000);
@@ -108,10 +106,14 @@ async function refresh() { const d=await (await fetch('/api/summary')).json();
 
 
 class Handler(BaseHTTPRequestHandler):
+    # Set from --trace-file before the server starts; the module that writes
+    # the file is the one that names it.
+    trace_file = None
+
     def do_GET(self):
         path = urlparse(self.path).path
         if path == "/api/summary":
-            payload = json.dumps(summary()).encode()
+            payload = json.dumps(summary(self.trace_file)).encode()
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
         elif path == "/":
@@ -131,7 +133,9 @@ class Handler(BaseHTTPRequestHandler):
 
 parser = argparse.ArgumentParser(description="View local AI work telemetry.")
 parser.add_argument("--port", type=int, default=4319)
+parser.add_argument("--trace-file", type=Path, required=True)
 args = parser.parse_args()
+Handler.trace_file = args.trace_file
 server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
 print(f"AI work trace dashboard: http://127.0.0.1:{args.port}")
 try:

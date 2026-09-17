@@ -45,13 +45,22 @@
           exec ${pkgs.opentelemetry-collector-contrib}/bin/otelcol-contrib --config=${collectorConfig}
         '';
       };
-      dashboard = pkgs.writeShellApplication {
-        name = "ai-work-trace-dashboard";
-        runtimeInputs = [ pkgs.python3 ];
-        text = ''
-          exec python ${./telemetry-dashboard.py} "$@"
-        '';
-      };
+      # flake8's E501 (79 cols) conflicts with ruff-format's 88; let ruff own width.
+      dashboardProgram = pkgs.writers.writePython3Bin "ai-work-trace-dashboard" {
+        flakeIgnore = [ "E501" ];
+      } (builtins.readFile ./telemetry-dashboard.py);
+      # The dashboard takes --trace-file rather than deriving the path itself,
+      # so this module stays the only place that knows where traces land.
+      dashboard =
+        pkgs.runCommand "ai-work-trace-dashboard"
+          {
+            nativeBuildInputs = [ pkgs.makeWrapper ];
+          }
+          ''
+            makeWrapper ${lib.getExe dashboardProgram} "$out/bin/ai-work-trace-dashboard" \
+              --add-flag --trace-file \
+              --add-flag ${lib.escapeShellArg "${traceDirectory}/otel.jsonl"}
+          '';
     in
     {
       home.packages = [ dashboard ];
