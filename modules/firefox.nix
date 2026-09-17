@@ -4,10 +4,15 @@
     "onepassword-password-manager"
   ];
 
-  flake.modules.darwin.base.nixpkgs.overlays = [ inputs.nur.overlays.default ];
-
   flake.modules.homeManager.base =
     { lib, pkgs, ... }:
+    let
+      firefox-addons =
+        (import inputs.nur {
+          nurpkgs = pkgs;
+          inherit pkgs;
+        }).repos.rycee.firefox-addons;
+    in
     {
       # Many of these settings (default_area, autoDisableScopes, onboarding prefs) only
       # apply to a fresh profile. To apply changes from scratch: quit Firefox, then
@@ -34,7 +39,7 @@
         profiles.default = {
           id = 0;
           isDefault = true;
-          extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+          extensions.packages = with firefox-addons; [
             ublock-origin
             onepassword-password-manager
             web-clipper-obsidian
