@@ -1,4 +1,7 @@
 { lib, config, ... }:
+let
+  allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.nixpkgs.allowedUnfreePackages;
+in
 {
   options = {
     nixpkgs.allowedUnfreePackages = lib.mkOption {
@@ -15,8 +18,7 @@
   };
 
   config.flake = {
-    modules.darwin.base.nixpkgs.config.allowUnfreePredicate =
-      pkg: builtins.elem (lib.getName pkg) config.nixpkgs.allowedUnfreePackages;
+    modules.darwin.base.nixpkgs.config = { inherit allowUnfreePredicate; };
 
     meta.nixpkgs.allowedUnfreePackages = config.nixpkgs.allowedUnfreePackages;
   };
