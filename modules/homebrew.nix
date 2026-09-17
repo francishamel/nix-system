@@ -10,7 +10,7 @@
       };
     };
 
-    homeManager.darwin.programs.zsh.initContent = lib.mkOrder config.flake.meta.zsh.initOrder.path ''
+    homeManager.darwin.programs.zsh.initContent = lib.mkOrder config.my.zsh.initOrder.path ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
   };

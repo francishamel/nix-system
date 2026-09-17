@@ -20,13 +20,16 @@ Run `just` to see available commands.
 
 **`dev/` is not `modules/`**: files there configure _this repo_ — formatter, git hooks, `verify-refactor`. They write `perSystem` and touch no machine. Own `import-tree` call in `flake.nix`.
 
-**Cross-module sharing** uses `flake.meta.*` — no `specialArgs` needed. Each option is declared in the module that sets it, so `nix eval .#meta` reports the whole contract. See `modules/user.nix` (defines) and `modules/git.nix` (reads) for the pattern.
+**Cross-module sharing** uses two namespaces, and neither needs `specialArgs`. Both declare each option in the module that sets it.
+
+- `flake.meta.*` — facts worth querying from outside, like the user and the nixpkgs config. It is a flake output, so `nix eval .#meta` reports the whole contract. See `modules/user.nix` (defines) and `modules/git.nix` (reads).
+- `my.*` — internal plumbing that several modules coordinate on, like `my.zsh.initOrder`. It is not a flake output. Use it when the value only matters inside this flake.
 
 **Unfree packages**: add to `nixpkgs.allowedUnfreePackages` in the relevant module; `modules/unfree-packages.nix` aggregates them.
 
 **Global nix settings**: add to `nix.settings` in any module; `modules/settings.nix` propagates them.
 
-**zsh startup**: never write a bare `programs.zsh.initContent`. Pick a slot from `flake.meta.zsh.initOrder` and wrap the block in `lib.mkOrder`. The four slots and the reason for each number live in `modules/zsh.nix`.
+**zsh startup**: never write a bare `programs.zsh.initContent`. Pick a slot from `my.zsh.initOrder` and wrap the block in `lib.mkOrder`. The four slots and the reason for each number live in `modules/zsh.nix`.
 
 ## Gotchas
 

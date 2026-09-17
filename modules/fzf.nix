@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  initOrder = config.flake.meta.zsh.initOrder;
+  initOrder = config.my.zsh.initOrder;
 in
 {
   flake.modules.homeManager.base =

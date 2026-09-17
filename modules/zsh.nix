@@ -1,10 +1,10 @@
 { config, lib, ... }:
 let
-  order = config.flake.meta.zsh.initOrder;
+  order = config.my.zsh.initOrder;
   username = config.flake.meta.user.username;
 in
 {
-  options.flake.meta.zsh.initOrder = lib.mkOption {
+  options.my.zsh.initOrder = lib.mkOption {
     description = ''
       Named slots for `programs.zsh.initContent`. Every module that writes to
       initContent picks one with `lib.mkOrder`, so the generated .zshrc stops
@@ -42,15 +42,15 @@ in
     };
   };
 
-  config.flake = {
-    meta.zsh.initOrder = {
+  config = {
+    my.zsh.initOrder = {
       path = 500;
       fpath = 550;
       interactive = 1000;
       aliases = 1050;
     };
 
-    modules = {
+    flake.modules = {
       darwin.base =
         { pkgs, ... }:
         {

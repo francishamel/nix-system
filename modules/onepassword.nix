@@ -1,7 +1,7 @@
 { config, ... }:
 let
   gitEmail = config.flake.meta.user.gitEmail;
-  initOrder = config.flake.meta.zsh.initOrder;
+  initOrder = config.my.zsh.initOrder;
   signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuLaEvAkPRVZ5v7uVOxM+Te9n/iJom7RSZogNHK+Jd3";
 in
 {

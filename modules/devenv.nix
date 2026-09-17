@@ -6,7 +6,7 @@
       home.packages = [ pkgs.devenv ];
 
       programs.zsh = {
-        initContent = lib.mkOrder config.flake.meta.zsh.initOrder.interactive ''
+        initContent = lib.mkOrder config.my.zsh.initOrder.interactive ''
           eval "$(${lib.getExe pkgs.devenv} hook zsh)"
         '';
 
