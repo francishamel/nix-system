@@ -9,28 +9,45 @@ in
     "1password-cli"
   ];
   flake.modules = {
-    darwin.base = {
-      programs._1password.enable = true;
-      # programs._1password-gui.enable = true;
-    };
+    darwin.base.programs._1password.enable = true;
     homeManager = {
       base =
-        { pkgs, ... }:
         {
-          programs.git.settings = {
-            commit.gpgsign = true;
-            tag.gpgsign = true;
-            gpg = {
-              format = "ssh";
-              ssh.allowedSignersFile = toString (
-                pkgs.writeText "git-allowed-signers" "${gitEmail} ${signingKey}\n"
-              );
+          config,
+          lib,
+          pkgs,
+          ...
+        }:
+        {
+          options.my.onepassword = {
+            agentSocket = lib.mkOption {
+              type = lib.types.str;
+              description = "Path to the 1Password SSH agent socket, used as SSH_AUTH_SOCK.";
             };
-            user.signingkey = signingKey;
+
+            sshSignProgram = lib.mkOption {
+              type = lib.types.str;
+              description = "Path to op-ssh-sign, the binary git calls to sign commits and tags.";
+            };
+          };
+
+          config = {
+            home.sessionVariables.SSH_AUTH_SOCK = config.my.onepassword.agentSocket;
+
+            programs.git.settings = {
+              commit.gpgsign = true;
+              tag.gpgsign = true;
+              gpg = {
+                format = "ssh";
+                ssh = {
+                  allowedSignersFile = toString (pkgs.writeText "git-allowed-signers" "${gitEmail} ${signingKey}\n");
+                  program = config.my.onepassword.sshSignProgram;
+                };
+              };
+              user.signingkey = signingKey;
+            };
           };
         };
-      # The agent socket and the signing binary are macOS paths. They evaluate
-      # anywhere, so keeping them in `base` would break a Linux host silently.
       darwin =
         {
           config,
@@ -38,19 +55,15 @@ in
           pkgs,
           ...
         }:
-        let
-          sockPath = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
-        in
         {
-          home.sessionVariables.SSH_AUTH_SOCK = sockPath;
-
-          programs = {
-            git.settings.gpg.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-
-            zsh.initContent = lib.mkOrder 550 ''
-              fpath=(${pkgs._1password-cli}/share/zsh/site-functions $fpath)
-            '';
+          my.onepassword = {
+            agentSocket = "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+            sshSignProgram = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
           };
+
+          programs.zsh.initContent = lib.mkOrder 550 ''
+            fpath=(${pkgs._1password-cli}/share/zsh/site-functions $fpath)
+          '';
         };
     };
   };

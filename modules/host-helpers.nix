@@ -4,7 +4,10 @@
   flake.lib = {
     # Helper function to create a nix-darwin host configuration (Apple Silicon)
     mkDarwinHost =
-      { hostname }:
+      {
+        hostname,
+        modules ? [ ],
+      }:
       inputs.nix-darwin.lib.darwinSystem {
         modules = [
           self.modules.darwin.base
@@ -12,7 +15,8 @@
             nixpkgs.hostPlatform = "aarch64-darwin";
             networking.hostName = hostname;
           }
-        ];
+        ]
+        ++ modules;
       };
   };
 }
