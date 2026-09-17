@@ -18,6 +18,9 @@ in
   };
 
   config.flake = {
+    # darwin only. home-manager.useGlobalPkgs (modules/home-manager.nix) makes
+    # home-manager reuse these pkgs, so the predicate covers it too. Setting
+    # nixpkgs.config on homeManager.base instead only warns and does nothing.
     modules.darwin.base.nixpkgs.config = { inherit allowUnfreePredicate; };
 
     meta.nixpkgs.allowedUnfreePackages = config.nixpkgs.allowedUnfreePackages;
