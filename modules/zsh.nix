@@ -1,6 +1,7 @@
 { config, lib, ... }:
 let
   order = config.flake.meta.zsh.initOrder;
+  username = config.flake.meta.user.username;
 in
 {
   options.flake.meta.zsh.initOrder = lib.mkOption {
@@ -49,38 +50,48 @@ in
       aliases = 1050;
     };
 
-    modules.homeManager = {
-      base =
-        { config, ... }:
+    modules = {
+      darwin.base =
+        { pkgs, ... }:
         {
-          programs.zsh = {
-            enable = true;
-            dotDir = "${config.xdg.configHome}/zsh";
-            historySubstringSearch.enable = true;
-            syntaxHighlighting.enable = true;
-            initContent = lib.mkOrder order.interactive ''
-              # Load edit-command-line widget
-              autoload -Uz edit-command-line
-              zle -N edit-command-line
-              bindkey '^x^e' edit-command-line
-
-              # Bind magic-space
-              bindkey ' ' magic-space
-
-              # Enable zmv (used to rename multiple files easily)
-              autoload zmv
-            '';
-          };
+          programs.zsh.enable = true;
+          users.users.${username}.shell = pkgs.zsh;
         };
-      darwin = {
-        # Disable last login message
-        home.file.".hushlogin".text = "";
 
-        programs.zsh.initContent = lib.mkOrder order.aliases ''
-          # Global aliases
-          alias -g C='| pbcopy'
-          alias -g OR='op run -- '
-        '';
+      homeManager = {
+        base =
+          { config, ... }:
+          {
+            programs.zsh = {
+              enable = true;
+              dotDir = "${config.xdg.configHome}/zsh";
+              historySubstringSearch.enable = true;
+              syntaxHighlighting.enable = true;
+              initContent = lib.mkOrder order.interactive ''
+                # Load edit-command-line widget
+                autoload -Uz edit-command-line
+                zle -N edit-command-line
+                bindkey '^x^e' edit-command-line
+
+                # Bind magic-space
+                bindkey ' ' magic-space
+
+                # Enable zmv (used to rename multiple files easily)
+                autoload zmv
+              '';
+            };
+          };
+
+        darwin = {
+          # Disable last login message
+          home.file.".hushlogin".text = "";
+
+          programs.zsh.initContent = lib.mkOrder order.aliases ''
+            # Global aliases
+            alias -g C='| pbcopy'
+            alias -g OR='op run -- '
+          '';
+        };
       };
     };
   };
