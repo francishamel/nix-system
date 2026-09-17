@@ -48,7 +48,9 @@
           attr="darwinConfigurations.$host.config.system.build.toplevel.drvPath"
 
           # ?rev= rather than ?ref= so any commit-ish resolves, not just branches and tags.
-          base=$(nix eval --raw "git+file://$root?rev=$rev#$attr")
+          baseRef="git+file://$root?rev=$rev"
+
+          base=$(nix eval --raw "$baseRef#$attr")
           tree=$(nix eval --raw ".#$attr")
 
           echo "baseline ($ref ''${rev:0:7}): $base"
@@ -64,7 +66,7 @@
           # its entries inside the merged package lists. buildEnv hashes that
           # order, which makes a pure rename look like a changed system even
           # though the environment holds exactly the same store paths.
-          packages() {
+          storePaths() {
             nix eval --raw "$1#darwinConfigurations.$host.config" --apply '
               config:
               let
@@ -76,21 +78,26 @@
             '
           }
 
-          mapfile -t basePkgs < <(packages "git+file://$root?rev=$rev")
-          mapfile -t treePkgs < <(packages ".")
+          # Assign before splitting. A failed eval inside < <(...) runs in a
+          # subshell that set -e never sees, so both sets would come back empty
+          # and the comparison below would call a broken eval a match.
+          baseRaw=$(storePaths "$baseRef")
+          treeRaw=$(storePaths ".")
+          mapfile -t basePaths <<<"$baseRaw"
+          mapfile -t treePaths <<<"$treeRaw"
 
           declare -A inBase inTree
-          for p in "''${basePkgs[@]}"; do inBase["$p"]=1; done
-          for p in "''${treePkgs[@]}"; do inTree["$p"]=1; done
+          for p in "''${basePaths[@]}"; do inBase["$p"]=1; done
+          for p in "''${treePaths[@]}"; do inTree["$p"]=1; done
 
           same=1
-          for p in "''${basePkgs[@]}"; do
+          for p in "''${basePaths[@]}"; do
             if [ -z "''${inTree[$p]:-}" ]; then
               same=0
               echo "  removed: ''${p##*/}"
             fi
           done
-          for p in "''${treePkgs[@]}"; do
+          for p in "''${treePaths[@]}"; do
             if [ -z "''${inBase[$p]:-}" ]; then
               same=0
               echo "  added:   ''${p##*/}"
@@ -98,8 +105,12 @@
           done
 
           if [ "$same" = 1 ]; then
-            echo "same packages, different order — all ''${#basePkgs[@]} store paths match"
-            echo "a file move reorders the merged lists, and buildEnv hashes the order"
+            # Matching sets rule out an added or removed package. They do not
+            # prove a reordering: any edit to config content — a darwin default,
+            # a program setting, an init block — also moves the drvPath while
+            # leaving the package sets alone. nix-diff below names the cause.
+            echo "no package added or removed — all ''${#basePaths[@]} store paths match"
+            echo "the drvPath moved for some other reason; see nix-diff below"
           else
             echo
             echo "the package sets above differ, so this is not a pure reordering"
