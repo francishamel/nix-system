@@ -29,8 +29,23 @@
             exit 1
           fi
 
+          host=$(hostname -s)
+
+          # A hostname that names no host is just a missing attribute to nix, so
+          # it reports the attribute path and nothing about the machine's name.
+          hosts=$(nix eval --raw ".#darwinConfigurations" --apply 'c: builtins.concatStringsSep " " (builtins.attrNames c)')
+          case " $hosts " in
+            *" $host "*) ;;
+            *)
+              echo "this machine is '$host', and the flake defines no host by that name" >&2
+              echo "  hosts in the flake: $hosts" >&2
+              echo "  fix: rename the host in hosts/flake-module.nix, or set this machine's hostname to one of them" >&2
+              exit 1
+              ;;
+          esac
+
           rev=$(git rev-parse --verify "$ref")
-          attr="darwinConfigurations.$(hostname -s).config.system.build.toplevel.drvPath"
+          attr="darwinConfigurations.$host.config.system.build.toplevel.drvPath"
 
           # ?rev= rather than ?ref= so any commit-ish resolves, not just branches and tags.
           base=$(nix eval --raw "git+file://$root?rev=$rev#$attr")
