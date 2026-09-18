@@ -1,15 +1,6 @@
 {
-  flake.modules =
-    let
-      gcModule = {
-        nix.gc = {
-          automatic = true;
-          options = "--delete-older-than 30d";
-        };
-      };
-    in
-    {
-      darwin.base = gcModule;
-      homeManager.base = gcModule;
-    };
+  flake.modules.darwin.base.nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 30d";
+  };
 }
