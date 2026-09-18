@@ -12,6 +12,6 @@
         packageOverrides.treefmt = config.treefmt.build.wrapper;
       };
 
-      devShells.default = config.pre-commit.devShell;
+      my.devShell.inputsFrom = [ config.pre-commit.devShell ];
     };
 }
