@@ -1,4 +1,9 @@
+{ inputs, ... }:
 {
+  flake.modules.darwin.base.nixpkgs.overlays = [
+    inputs.obsidian-extensions.overlays.default
+  ];
+
   nixpkgs.allowedUnfreePackages = [
     "obsidian"
   ];
@@ -10,13 +15,7 @@
       cli.enable = true;
 
       defaultSettings = {
-        app = {
-          spellcheck = true;
-        };
-
-        appearance = {
-          colorScheme = "obsidian";
-        };
+        app.spellcheck = true;
 
         corePlugins = [
           {
@@ -38,8 +37,6 @@
         ];
       };
 
-      # Initialize vault
-      vaults."vaults/notes" = { };
     };
   };
 }
