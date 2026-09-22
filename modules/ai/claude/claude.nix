@@ -9,7 +9,28 @@
         {
           programs.claude-code = {
             enable = true;
-            package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code;
+            # TEMPORARY: pin 2.1.280 ahead of llm-agents.nix.
+            #
+            # Its updater runs on cron at 00:00, 04:00, 18:00 and 21:00 UTC, so
+            # a release lands here up to six hours late. Revert this commit once
+            # `just update-llm-agents` brings in 2.1.280 or newer.
+            #
+            # The package downloads a prebuilt binary from Anthropic's release
+            # bucket, so only the version, the source and the codesign check
+            # need replacing. The hash is the checksum from that version's
+            # manifest.json in the same bucket, converted to SRI.
+            package =
+              let
+                version = "2.1.280";
+                src = pkgs.fetchurl {
+                  url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/${version}/darwin-arm64/claude";
+                  hash = "sha256-OHpcXc27gVCF7fC695WR+diJTv6SK86vPXWxsIBVIp0=";
+                };
+              in
+              inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code.overrideAttrs (_: {
+                inherit version src;
+                codesignSources = [ src ];
+              });
 
             # Empty string hides the attribution. `includeCoAuthoredBy` does the
             # same thing but is deprecated in favour of this.
