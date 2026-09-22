@@ -1,16 +1,12 @@
-{ config, lib, ... }:
+{ lib, ... }:
 {
   flake.modules.homeManager.base =
-    { pkgs, ... }:
+    { config, ... }:
     {
-      home.packages = [ pkgs.devenv ];
+      programs = {
+        devenv.enable = true;
 
-      programs.zsh = {
-        initContent = lib.mkOrder config.my.zsh.initOrder.interactive ''
-          eval "$(${lib.getExe pkgs.devenv} hook zsh)"
-        '';
-
-        shellAliases."dt" = "${lib.getExe pkgs.devenv} tasks run";
+        zsh.shellAliases."dt" = "${lib.getExe config.programs.devenv.package} tasks run";
       };
     };
 }
