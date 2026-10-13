@@ -10,12 +10,18 @@
           programs.claude-code = {
             enable = true;
             package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code;
+            settings = {
+              # Empty string hides the attribution. `includeCoAuthoredBy` does the
+              # same thing but is deprecated in favour of this.
+              attribution = {
+                commit = "";
+                pr = "";
+              };
 
-            # Empty string hides the attribution. `includeCoAuthoredBy` does the
-            # same thing but is deprecated in favour of this.
-            settings.attribution = {
-              commit = "";
-              pr = "";
+              promptSuggestionEnabled = false;
+
+              # Built-in output style: short replies, no preamble or narration.
+              outputStyle = "Concise";
             };
 
             # The writing style rules are based on ISO 24495-1:2023 (Plain
@@ -25,21 +31,6 @@
             # would not change how Claude behaves.
             context = # markdown
               ''
-                - Writing style. Applies to all prose you write for me: replies, code comments, commit messages, PR descriptions, and docs. It does not apply to code itself.
-                  - Answer the question, then stop. Do not add sections, background, or options I did not ask for.
-                  - If you cut something relevant, end with one short line that names it, so I can ask. Skip that line when there is nothing real to offer.
-                  - Wording rules:
-                    - Sentences under 20 words. Active voice. One idea per sentence.
-                    - Prefer the everyday word when it means the same thing. Technical terms from the codebase or the domain are fine and often clearer.
-                    - Same word for the same thing. No idioms.
-                    - Cut filler and hedges. Do not pack more meaning into fewer words.
-                    - Break one of these wording rules if following it makes the text unclear.
-                  - Form rules, always — the escape hatch above does not apply to these:
-                    - Use bullets for any list of three or more items.
-                    - Keep paragraphs to three sentences or fewer.
-                    - Use headings only when I asked several separate questions, one heading per question. Never use a heading for a topic I did not ask about.
-                    - Use a table when comparing the same two or more facts across three or more items. Keep cells to a few words. If a cell needs a full sentence, use bullets instead.
-
                 - **ALWAYS** start a PR reply with `Claude here 🤖:` and end it with `🤖 Addressed by Claude Code`. A reply is a comment or a review comment on a PR. Never put either line in the PR description.
               '';
           };
